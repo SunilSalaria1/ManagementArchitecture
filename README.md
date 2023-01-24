@@ -1,2 +1,4 @@
 # ManagementArchitecture
 Angular, Bootstrap
+
+- 
