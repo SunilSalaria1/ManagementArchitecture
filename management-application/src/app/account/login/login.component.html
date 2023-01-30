@@ -1,1 +1,118 @@
-<p>login works!</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Application</title>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- page-loader -->
+    <!-- <div id="pageLoader"
+        class="loader-wrap h-100 w-100 bg-light d-flex flex-column justify-content-center align-items-center">
+        <div class="loader">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div id="loader-text" data-text="JavascriptApplication">JavascriptApplication</div>
+    </div> -->
+    <!-- /page-loader -->
+    <!-- form section -->
+    <section class="vh-100  bg-light">
+        <div class="container-fluid">
+            <!-- form confirmation alert -->
+            <!-- success toast -->
+            <div id="loginSuccessToast"
+                class="toast ms-auto align-items-center text-white fw-bold bg-success border-0 fade hide" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" id="loginConfirmation"><span class="ms-2 h6 fw-bold">Success</span>
+                        <div class="small ms-2 text-light">You have successfully logged in.</div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 mt-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <!-- /success toast -->
+            <!-- error toast -->
+            <div id="loginErrorToast"
+                class="toast ms-auto align-items-center text-white fw-bold bg-danger border-0 fade hide" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body"><span class="ms-2 h6 fw-bold">Error</span>
+                        <div class="small ms-2 text-light">Email or password does not match. Try again.</div>
+                    </div>
+                    <button type="button" id="loginConfirmationClose" class="btn-close btn-close-white me-2 mt-2 m-auto"
+                        data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+            <!-- /error toast -->
+            <!-- /form confirmation alert -->
+            <!-- row -->
+            <div class="row vh-100">
+                <!-- col -->
+                <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
+                    <!-- card -->
+                    <div class="card bg-white shadow-sm rounded-0 border-0">
+                        <div class="card-body px-0 py-3">
+                            <!-- row -->
+                            <div class="row m-0">
+                                <!-- col -->
+                                <div class="col-12 px-4 mb-3 pb-2 border-bottom">
+                                    <h4 class="fw-bold text-primary">Login with Us!</h4>
+                                </div>
+                                <!-- /col -->
+                                <!-- col -->
+                                <div class="col-12 px-4">
+                                    <form id="loginForm" method="GET">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email <span class="text-danger">*</span></label>
+                                            <input id="loginEmail" placeholder="john@gmail.com"
+                                                class="form-control shadow-sm rounded-0" name="login_email">
+                                            <span id="requiredEmailField"
+                                                class="requiredField small text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" id="loginPassword" placeholder="******"
+                                                class="form-control shadow-sm rounded-0">
+                                            <span id="requiredPasswordField"
+                                                class="requiredField small text-danger"></span>
+                                            <div class="text-end my-2"><a href="./forgot-password.html"
+                                                    class="text-decoration-none text-dark">Forgot Passsword?</a></div>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input rounded-0">
+                                            <label class="form-check-label">Remember me</label>
+                                        </div>
+                                        <button type="submit"
+                                            class="btn btn-primary shadow-sm rounded-0 w-100 mb-3">Login
+                                            Now</button>
+                                        <div class="text-center">Don't have an account? <a href="./register.html"
+                                                class="text-dark">Register
+                                                here!</a></div>
+                                    </form>
+                                </div>
+                                <!-- /col -->
+                            </div>
+                            <!-- /row -->
+                        </div>
+                    </div>
+                    <!-- /card -->
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    </section>
+</body>
+
+</html>

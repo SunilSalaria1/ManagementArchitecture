@@ -1,1 +1,160 @@
-<p>register works!</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register - Javascript Application</title>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- page-loader -->
+    <!-- <div id="pageLoader"
+        class="loader-wrap h-100 w-100 bg-light d-flex flex-column justify-content-center align-items-center">
+        <div class="loader">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div id="loader-text" data-text="JavascriptApplication">JavascriptApplication</div>
+    </div> -->
+    <!-- /page-loader -->
+    <!-- form section -->
+    <section class="vh-100  bg-light">
+        <div class="container-fluid">
+            <!-- form confirmation alert -->
+            <!-- success toast -->
+            <div id="registerSuccessToast"
+                class="toast ms-auto align-items-center text-white fw-bold bg-success border-0 fade hide"
+                role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" id="registerConfirmation"><span class="ms-2 h6 fw-bold">Success</span>
+                        <div class="small ms-2 text-light">Your form has been submitted.</div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 mt-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <!-- /success toast -->
+            <!-- error toast -->
+            <div id="registerErrorToast"
+                class="toast ms-auto align-items-center text-white fw-bold bg-danger border-0 fade hide"
+                role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" id="registerConfirmation"><span class="ms-2 h6 fw-bold">Error</span>
+                        <div class="small ms-2 text-light">Something went wrong. Try again.</div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 mt-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <!-- /error toast -->
+            <!-- /form confirmation alert -->
+            <!-- row -->
+            <div class="row vh-100">
+                <!-- col -->
+                <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
+                    <!-- card -->
+                    <div class="card bg-white shadow-sm rounded-0 border-0">
+                        <div class="card-body px-0 py-3">
+                            <!-- row -->
+                            <div class="row m-0">
+                                <!-- col -->
+                                <div class="col-12 px-4 mb-3 pb-2 border-bottom">
+                                    <h4 class="fw-bold text-primary">Register with Us!</h4>
+                                </div>
+                                <!-- /col -->
+                                <!-- col -->
+                                <div class="col-12 px-4">
+                                    <form id="registerForm" method="POST">
+                                        <div class="mb-3">
+                                            <label class="form-label">First Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input name="firstName" type="text" placeholder="John" id="firstName"
+                                                class="form-control shadow-sm rounded-0"
+                                                >
+                                                <span id="requiredNameField"
+                                                class="requiredField small text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <input name="lastName" type="text" placeholder="Smith" id="lastName"
+                                                class="form-control shadow-sm rounded-0">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email <span class="text-danger">*</span></label>
+                                            <input name="email" placeholder="john@gmail.com" id="email"
+                                                class="form-control shadow-sm rounded-0">
+                                                <span id="requiredEmailField"
+                                                class="requiredField small text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Profession <span
+                                                    class="text-danger">*</span></label>
+                                            <select name="profession" class="shadow-sm rounded-0 form-select"
+                                                aria-label="Default select example" id="profession" required>
+                                                <option>Select your Role</option>
+                                                <option value="Human Resource">Human Resource</option>
+                                                <option value="Front End Developer">Front End Developer</option>
+                                                <option value="Backend Developer">Backend Developer</option>
+                                                <option value="Full Stack Developer">Full Stack Developer</option>
+                                            </select>
+                                            <span id="requiredProfessionField"
+                                                class="requiredField small text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <input name="phoneNumber" type="text" placeholder="+91 46383746473"
+                                               id="phoneNumber"
+                                                class="form-control shadow-sm rounded-0">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input name="password" type="password" placeholder="******" id="password"
+                                                class="form-control shadow-sm rounded-0">
+                                                <span id="requiredPasswordField"
+                                                class="requiredField small text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Confirm Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input name="confirmPassword" type="password" placeholder="******"
+                                                id="confirmPassword" class="form-control shadow-sm rounded-0">
+                                                <span id="requiredConfirmField"
+                                                class="requiredField small text-danger"></span>
+                                            <span id="passwordNotMatched" class="text-danger small d-none">Please make
+                                                sure your passwords match!</span>
+                                        </div>
+                                        <button type="submit" 
+                                            class="btn btn-primary shadow-sm rounded-0 w-100 my-3">Register
+                                            Now</button>
+                                        <div class="text-center">Already have an account? <a href="./login.html"
+                                                class="text-dark">Login
+                                                here!</a></div>
+                                    </form>
+                                </div>
+                                <!-- /col -->
+                            </div>
+                            <!-- /row -->
+                        </div>
+                    </div>
+                    <!-- /card -->
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    </section>
+</body>
+
+</html>
