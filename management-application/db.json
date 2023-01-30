@@ -1,0 +1,116 @@
+{
+  "user": [
+    {
+      "name": "Leanne Gra",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv"
+    }
+  ],
+  "headerUserDropdown": [
+    {
+      "id": 1,
+      "dropdownTitle": "Profile",
+      "dropdownTitleIcon": "fa-solid fa-user",
+      "url": "/page-not-found"
+    },
+    {
+      "id": 2,
+      "dropdownTitle": "Settings",
+      "dropdownTitleIcon": "fa-solid fa-gear",
+      "url": "/page-not-found"
+    },
+    {
+      "id": 3,
+      "dropdownTitle": "Logout",
+      "dropdownTitleIcon": "fa-solid fa-right-from-bracket",
+      "url": "/page-not-found"
+    }
+  ],
+  "headerNotificationDropdown": [
+    {
+      "id": "1",
+      "notificationIcon": "fa-solid fa-circle",
+      "notificationName": "Smith",
+      "notificationMessage": "reacted on your post",
+      "notificationTime": "Just now",
+      "url": "/page-not-found"
+    },
+    {
+      "id": "2",
+      "notificationIcon": "fa-solid fa-circle",
+      "notificationName": "Kelly",
+      "notificationMessage": "reacted on your post",
+      "notificationTime": "10 minute ago",
+      "url": "/page-not-found"
+    },
+    {
+      "id": "3",
+      "notificationIcon": "fa-solid fa-circle",
+      "notificationName": "John Doe",
+      "notificationMessage": "reacted on your post",
+      "notificationTime": "30 minute ago",
+      "url": "/page-not-found"
+    },
+    {
+      "id": "4",
+      "notificationIcon": "fa-solid fa-circle",
+      "notificationName": "Jack Maxwell",
+      "notificationMessage": "reacted on your post",
+      "notificationTime": "50 minute ago",
+      "url": "/page-not-found"
+    },
+    {
+      "id": "5",
+      "notificationIcon": "fa-solid fa-circle",
+      "notificationName": "Patrick Parker",
+      "notificationMessage": "reacted on your post",
+      "notificationTime": "2 days ago",
+      "url": "/page-not-found"
+    }
+  ],
+  "asideNav": [
+    {
+      "id": "1",
+      "aiseTitleIcon": "fa-solid fa-chart-line",
+      "asideTitle": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "id": "2",
+      "aiseTitleIcon": "fa-solid fa-cart-shopping",
+      "asideTitle": "Order",
+      "url": "/order"
+    },
+    {
+      "id": "3",
+      "aiseTitleIcon": "fa-solid fa-chart-pie",
+      "asideTitle": "Statistic",
+      "url": "/statistic"
+    },
+    {
+      "id": "4",
+      "aiseTitleIcon": "fa-solid fa-box-open",
+      "asideTitle": "Product",
+      "url": "/product"
+    },
+    {
+      "id": "5",
+      "aiseTitleIcon": "fa-solid fa-money-bill-trend-up",
+      "asideTitle": "Stock",
+      "url": "/stock"
+    },
+    {
+      "id": "6",
+      "aiseTitleIcon": "fa-solid fa-tag",
+      "asideTitle": "Offer",
+      "url": "/offer"
+    }
+  ]
+}
