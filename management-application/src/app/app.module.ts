@@ -10,6 +10,7 @@ import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.com
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard/admin-dashboard.component';
 import { EditRecordComponent } from './admin/edit-record/edit-record/edit-record.component';
 import { AddRecordComponent } from './admin/add-record/add-record/add-record.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddRecordComponent } from './admin/add-record/add-record/add-record.com
     UserDashboardComponent,
     AdminDashboardComponent,
     EditRecordComponent,
-    AddRecordComponent
+    AddRecordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
