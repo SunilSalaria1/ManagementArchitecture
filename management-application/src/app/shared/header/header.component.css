@@ -1,0 +1,18 @@
+/* header styling */
+header .dropdown .show {
+    left: auto;
+    right: 0;
+}
+
+header #aside-toggle-btn {
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+header .navbar.nav-link:focus,
+header .nav-link:hover {
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,29 @@
+/* aside styling */
+aside {
+    width: 300px;
+    overflow-x: hidden;
+    transition: width 0.5s;
+}
+
+.aside-hide {
+    width: 0px;
+}
+
+aside .nav-link {
+    color: var(--black-color);
+}
+
+aside .nav .nav-item .active,
+aside .nav .nav-item .nav-link.active:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+aside .nav .nav-item .nav-link:hover,
+aside .nav .nav-item .nav-link:focus {
+    color: var(--primary-color);
+}
+#asideToggleBtn{
+    cursor: pointer;
+}

@@ -9,6 +9,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 // import pages components
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AsideNavComponent } from './shared/aside/aside-nav.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'aside',
+    component: AsideNavComponent,
+  },
+  {
+    path: 'app',
+    component: AppComponent,
   },
   // page not found route
   {

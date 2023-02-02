@@ -1,1 +1,37 @@
-<p>aside-nav works!</p>
+<!-- aside nav-->
+<aside class="bg-white shadow-sm fixed-top vh-100" id="#aside">
+    <!-- logo -->
+    <!-- row -->
+    <div class="row p-4">
+        <!-- col -->
+        <div class="col-12 d-flex justify-content-center flex-column align-items-center border-bottom pb-3">
+            <img src="./assets/images/user-logo.jpg" alt="Logo" width="60" height="60" class="rounded-circle shadow-sm">
+            <div class="text-primary mt-2 fw-bold" id="profileName"></div>
+            <small class="text-center text-nowrap" id="profileDesignation"></small>
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-12">
+            <!-- ul -->
+            <ul class="nav flex-column">
+                <li class="nav-item mx-3 mb-2">
+                    <a class="nav-link text-nowrap" routerLink="/admin-portal"><i class="fa-solid fa-gauge"></i><span
+                            class="ms-3">Admin Portal</span></a>
+                </li>
+                <li class="nav-item mx-3 mb-2">
+                    <a class="nav-link text-nowrap" routerLink="/dashboard"><i class="fa-brands fa-wpforms"></i><span
+                            class="ms-3">Dashboard</span></a>
+                </li>
+            </ul>
+            <!-- /ul -->
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <!-- /logo -->
+</aside>
+<!-- /aside nav-->

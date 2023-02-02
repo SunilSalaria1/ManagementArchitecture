@@ -76,3 +76,22 @@ body {
     background-color: var(--primary-color) !important;
     color: white !important;
 }
+
+/* == common project styling == */
+
+/* main css */
+main {
+    margin-left: 301px;
+    transition: margin-left 0.5s;
+}
+
+.main-full {
+    margin-left: 0px;
+    transition: margin-left 0.5s;
+    z-index: 9999 !important;
+}
+
+/* breadcrumb css */
+.breadcrumb-item.active {
+    color: var(--primary-color);
+}

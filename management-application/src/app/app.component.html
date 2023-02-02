@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+    <section id="layout">
+        <!-- aside nav-->
+        <app-aside-nav></app-aside-nav>
+        <!-- /aside nav-->
+        <!-- main -->
+        <main class="bg-light vh-100">
+            <!-- header -->
+            <app-header></app-header>
+            <!-- /header -->
+            <!-- main-content -->
+            <router-outlet></router-outlet>
+            <!-- /main-content -->
+        </main>
+        <!-- /main -->
+    </section>
