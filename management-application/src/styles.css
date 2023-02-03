@@ -35,6 +35,15 @@ body {
     border-color: var(--primary-color) !important;
 }
 
+/* logo */
+#logo {
+    letter-spacing: 2px;
+}
+
+.logo-text {
+    margin-left: -5px;
+}
+
 /* == bootstrap global override == */
 
 /* form control  */
@@ -91,7 +100,10 @@ main {
     z-index: 9999 !important;
 }
 
-/* breadcrumb css */
+.body-wrapper {
+    padding-top: 56px;
+}
+
 .breadcrumb-item.active {
     color: var(--primary-color);
 }

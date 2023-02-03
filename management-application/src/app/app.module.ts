@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import http for server requests
+import { HttpClientModule } from '@angular/common/http';
+// Import forms module
+import { FormsModule } from '@angular/forms';
 // Import account components
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
@@ -33,7 +37,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     FooterComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

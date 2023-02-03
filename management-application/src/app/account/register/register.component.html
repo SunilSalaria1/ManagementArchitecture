@@ -75,11 +75,11 @@
                                 <!-- /col -->
                                 <!-- col -->
                                 <div class="col-12 px-4">
-                                    <form id="registerForm" method="POST">
+                                    <form #registerForm = "ngForm" (ngSubmit)="registerClick(registerForm.value)">
                                         <div class="mb-3">
                                             <label class="form-label">First Name <span
                                                     class="text-danger">*</span></label>
-                                            <input name="firstName" type="text" placeholder="John" id="firstName"
+                                            <input ngModel name="firstName" type="text" placeholder="John" id="firstName"
                                                 class="form-control shadow-sm rounded-0"
                                                 >
                                                 <span id="requiredNameField"
@@ -87,12 +87,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Last Name</label>
-                                            <input name="lastName" type="text" placeholder="Smith" id="lastName"
+                                            <input ngModel name="lastName" type="text" placeholder="Smith" id="lastName"
                                                 class="form-control shadow-sm rounded-0">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Email <span class="text-danger">*</span></label>
-                                            <input name="email" placeholder="john@gmail.com" id="email"
+                                            <input ngModel name="email" placeholder="john@gmail.com" id="email"
                                                 class="form-control shadow-sm rounded-0">
                                                 <span id="requiredEmailField"
                                                 class="requiredField small text-danger"></span>
@@ -113,14 +113,14 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Phone Number</label>
-                                            <input name="phoneNumber" type="text" placeholder="+91 46383746473"
+                                            <input ngModel name="phoneNumber" type="text" placeholder="+91 46383746473"
                                                id="phoneNumber"
                                                 class="form-control shadow-sm rounded-0">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password <span
                                                     class="text-danger">*</span></label>
-                                            <input name="password" type="password" placeholder="******" id="password"
+                                            <input ngModel name="password" type="password" placeholder="******" id="password"
                                                 class="form-control shadow-sm rounded-0">
                                                 <span id="requiredPasswordField"
                                                 class="requiredField small text-danger"></span>
@@ -128,14 +128,14 @@
                                         <div class="mb-3">
                                             <label class="form-label">Confirm Password <span
                                                     class="text-danger">*</span></label>
-                                            <input name="confirmPassword" type="password" placeholder="******"
+                                            <input ngModel name="confirmPassword" type="password" placeholder="******"
                                                 id="confirmPassword" class="form-control shadow-sm rounded-0">
                                                 <span id="requiredConfirmField"
                                                 class="requiredField small text-danger"></span>
                                             <span id="passwordNotMatched" class="text-danger small d-none">Please make
                                                 sure your passwords match!</span>
                                         </div>
-                                        <button type="submit" 
+                                        <button type="submit"
                                             class="btn btn-primary shadow-sm rounded-0 w-100 my-3">Register
                                             Now</button>
                                         <div class="text-center">Already have an account? <a routerLink="/login"

@@ -1,15 +1,19 @@
-    <section id="layout">
-        <!-- aside nav-->
-        <app-aside-nav></app-aside-nav>
-        <!-- /aside nav-->
-        <!-- main -->
-        <main class="bg-light vh-100">
-            <!-- header -->
-            <app-header></app-header>
-            <!-- /header -->
+<section id="layout">
+    <!-- aside nav-->
+    <app-aside-nav></app-aside-nav>
+    <!-- /aside nav-->
+    <!-- main -->
+    <main class="bg-light vh-100">
+        <!-- header -->
+        <app-header></app-header>
+        <!-- /header -->
+        <!-- main body -->
+        <section class="body-wrapper">
             <!-- main-content -->
             <router-outlet></router-outlet>
             <!-- /main-content -->
-        </main>
-        <!-- /main -->
-    </section>
+        </section>
+        <!-- /main body -->
+    </main>
+    <!-- /main -->
+</section>
