@@ -49,6 +49,36 @@
       "password": "pooja123",
       "confirmPassword": "pooja123",
       "id": 7
+    },
+    {
+      "firstName": "rahul",
+      "lastName": "kumar",
+      "email": "rahul@gmail.com",
+      "profession": "Backend Developer",
+      "phoneNumber": "+919814268272",
+      "password": "rahul123",
+      "confirmPassword": "rahul123",
+      "id": 8
+    },
+    {
+      "firstName": "john",
+      "lastName": "smith",
+      "email": "johnsmith@gmail.com",
+      "profession": "Backend Developer",
+      "phoneNumber": "+919814268272",
+      "password": "john123",
+      "confirmPassword": "john123",
+      "id": 9
+    },
+    {
+      "firstName": "johny",
+      "lastName": "Herth",
+      "email": "johny@gmail.com",
+      "profession": "Backend Developer",
+      "phoneNumber": "+919814268272",
+      "password": "johny123",
+      "confirmPassword": "johny123",
+      "id": 10
     }
   ]
 }

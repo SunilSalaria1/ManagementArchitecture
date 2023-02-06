@@ -16,9 +16,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       data.forEach( (item: any) => {
         if (item.email === loginValues.email && item.password === loginValues.password) {
-          setTimeout(() => {
-            this.router.navigateByUrl('/dashboard');
-          }, 500);
+          this.router.navigateByUrl('/dashboard');
         }
       });
     });
