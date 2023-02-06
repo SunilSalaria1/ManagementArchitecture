@@ -1,4 +1,7 @@
 /* header styling */
+header{
+    z-index: 9999;
+}
 header .dropdown .show {
     left: auto;
     right: 0;

@@ -1,11 +1,10 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
   url = 'http://localhost:3000/user';
   constructor(private http: HttpClient) {}
   // post register data
@@ -15,8 +14,6 @@ export class AuthService {
 
   // get and compare the login data
   loginUser(): any {
-    return this.http.get<any>(this.url).subscribe(function (data) {
-      console.log(data);
-    });
+    return this.http.get<any>(this.url);
   }
 }

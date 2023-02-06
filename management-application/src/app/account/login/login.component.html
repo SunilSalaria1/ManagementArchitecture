@@ -71,11 +71,11 @@
                                 <!-- /col -->
                                 <!-- col -->
                                 <div class="col-12 px-4">
-                                    <form id="loginForm" method="GET">
+                                    <form #loginForm = "ngForm" (ngSubmit)="loginClick(loginForm.value)">
                                         <div class="mb-3">
                                             <label class="form-label">Email <span class="text-danger">*</span></label>
                                             <input id="loginEmail" placeholder="john@gmail.com"
-                                                class="form-control shadow-sm rounded-0" name="login_email">
+                                                class="form-control shadow-sm rounded-0" name="email" ngModel>
                                             <span id="requiredEmailField"
                                                 class="requiredField small text-danger"></span>
                                         </div>
@@ -83,7 +83,7 @@
                                             <label class="form-label">Password <span
                                                     class="text-danger">*</span></label>
                                             <input type="password" id="loginPassword" placeholder="******"
-                                                class="form-control shadow-sm rounded-0">
+                                                class="form-control shadow-sm rounded-0" name="password" ngModel>
                                             <span id="requiredPasswordField"
                                                 class="requiredField small text-danger"></span>
                                             <div class="text-end my-2"><a routerLink="/forgot-password"

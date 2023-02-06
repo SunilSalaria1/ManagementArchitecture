@@ -46,9 +46,9 @@ export class AdminDashboardComponent implements OnInit {
   cancelDeletePopup() {
     this.deletePopup = false;
   }
-  
+
   // close success confirmation popup
-  closeConfirmation(){
+  closeConfirmation() {
     this.successConfirm = false;
   }
 }
