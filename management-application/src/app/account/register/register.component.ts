@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
   constructor(private auth: AuthService) {
-    // this.auth.loginUser();
   }
 
   // register submit button click

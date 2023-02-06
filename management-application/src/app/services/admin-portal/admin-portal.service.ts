@@ -5,11 +5,20 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AdminPortalService {
+  deleteItem(deleteItem: number) {
+    throw new Error('Method not implemented.');
+  }
   url = 'http://localhost:3000/user';
+  tableData:any = [];
   constructor(private http: HttpClient) {}
+
+  // display the table data
   renderData() {
-    return this.http.get<any>(this.url).subscribe(function (data) {
-      console.log(data);
-    });
+    return this.http.get<any>(this.url);
+  }
+
+  // delete the user from the table
+  deleteUser(user: number){
+    this.http.delete(`${this.url}/${user}`).subscribe();
   }
 }
