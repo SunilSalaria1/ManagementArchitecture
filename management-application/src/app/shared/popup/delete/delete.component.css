@@ -1,0 +1,4 @@
+/* delete popup styling */
+#deletePopupShow{
+    z-index: 9999;
+}

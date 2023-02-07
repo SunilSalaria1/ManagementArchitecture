@@ -21,6 +21,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { AsideNavComponent } from './shared/aside/aside-nav.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { DeleteComponent } from './shared/popup/delete/delete.component';
+import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
+import { TitleCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,8 +39,10 @@ import { FooterComponent } from './shared/footer/footer.component';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    DeleteComponent,
+    UserDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,TitleCasePipe],
   providers: [],
   bootstrap: [AppComponent],
 })

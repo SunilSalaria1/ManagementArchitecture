@@ -9,8 +9,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 // import pages components
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { AsideNavComponent } from './shared/aside/aside-nav.component';
-import { AppComponent } from './app.component';
+import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -19,6 +18,7 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full',
   },
+
   // account routes
   {
     path: 'login',
@@ -32,24 +32,23 @@ const routes: Routes = [
     path: 'forgot-password',
     component: ForgotPasswrdComponent,
   },
+
   // admin portal route
   {
     path: 'admin-portal',
     component: AdminDashboardComponent,
   },
-  // dashboard route
+
+  // dashboard routes
   {
     path: 'dashboard',
     component: DashboardComponent,
   },
   {
-    path: 'aside',
-    component: AsideNavComponent,
+    path: 'user-details/:userId',
+    component: UserDetailsComponent,
   },
-  {
-    path: 'app',
-    component: AppComponent,
-  },
+
   // page not found route
   {
     path: '**',

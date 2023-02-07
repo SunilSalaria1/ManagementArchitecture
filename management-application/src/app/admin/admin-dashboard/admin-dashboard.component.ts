@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.s
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  constructor(private adminportalservice: AdminPortalService) {}
+  constructor(
+    private adminportalservice: AdminPortalService,
+    private route: Router
+  ) {}
   tableData: any = [];
   // delete popup
   deletePopup: boolean = false;
@@ -50,5 +54,9 @@ export class AdminDashboardComponent implements OnInit {
   // close success confirmation popup
   closeConfirmation() {
     this.successConfirm = false;
+  }
+  // view user details
+  viewUserDetails(userId: number) {
+    this.route.navigate(['/user-details', userId]);
   }
 }
