@@ -1,26 +1,6 @@
 {
   "user": [
     {
-      "firstName": "rajeev",
-      "lastName": "Kaur",
-      "email": "rajeev@gmail.com",
-      "profession": "Front End Developer",
-      "phoneNumber": "+919814268272",
-      "password": "kanchan123",
-      "confirmPassword": "kanchan123",
-      "id": 2
-    },
-    {
-      "firstName": "Hardeep",
-      "lastName": "Kaur",
-      "email": "hardeep@gmail.com",
-      "profession": "Front End Developer",
-      "phoneNumber": "+919814268272",
-      "password": "kanchan123",
-      "confirmPassword": "kanchan123",
-      "id": 3
-    },
-    {
       "firstName": "Kanchan",
       "lastName": "Chauhan",
       "email": "pooja@gmail.com",
