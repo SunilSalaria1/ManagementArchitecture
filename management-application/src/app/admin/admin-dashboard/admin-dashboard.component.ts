@@ -26,14 +26,12 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderData();
-    console.log(this.deletePopup);
   }
 
   // render data into table
   renderData() {
     this.adminportalservice.renderData().subscribe((data) => {
       this.tableData = data;
-      console.log(this.tableData);
     });
   }
   
@@ -41,13 +39,13 @@ export class AdminDashboardComponent implements OnInit {
   showDeletePopup(ProductId: any) {
     this.deleteItem = ProductId;
     this.deletePopup = true;
-    console.log(this.deletePopup);
   }
 
   // close success confirmation popup
-  closeConfirmation() {
-    this.successConfirm = false;
-  }
+  // closeConfirmation() {
+  //   this.successConfirm = false;
+  // }
+  
   // view user details
   viewUserDetails(userId: number) {
     this.route.navigate(['/user-details', userId]);

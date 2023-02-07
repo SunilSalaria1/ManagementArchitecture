@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
   // register submit button click
   registerClick(registerValues: any) {
     return this.auth.registerUser(registerValues).subscribe((result: any) => {
-      console.log(result);
       this.router.navigateByUrl('/login');
     });
   }

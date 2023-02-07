@@ -11,9 +11,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) {}
   // login submit
   loginClick(loginValues: any) {
-    console.log(loginValues);
     this.auth.loginUser().subscribe( (data:any) => {
-      console.log(data);
       data.forEach( (item: any) => {
         if (item.email === loginValues.email && item.password === loginValues.password) {
           this.router.navigateByUrl('/dashboard');

@@ -17,6 +17,10 @@ export class AdminPortalService {
     return this.http.get<any>(this.url);
   }
 
+  get(){
+    return this.http.get<any>(this.url);
+  }
+
 // render single user data
 renderUserData(userId: number){
   return this.http.get<any>(`${this.url}/${userId}`);
