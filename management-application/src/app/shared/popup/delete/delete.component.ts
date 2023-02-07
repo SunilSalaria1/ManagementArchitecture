@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
 
 @Component({
   selector: 'app-delete',
@@ -6,14 +7,22 @@ import { Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./delete.component.css'],
 })
 export class DeleteComponent implements OnInit {
+  childDeletePopup: boolean = false;
+  @Input() getUserId: number = 0;
   @Output() popupVal = new EventEmitter<boolean>();
-  emittedValue: boolean = false;
-  constructor() {}
-  ngOnInit(): void {
+
+  constructor(private adminportalservice: AdminPortalService) {}
+  
+  ngOnInit(): void {}
+
+  // confirm delete functionality
+  confirmDelete(getUserId: number) {
+    this.adminportalservice.deleteUser(getUserId);
+    this.popupVal.emit(this.childDeletePopup);
   }
-  delClick(){
-    console.log("clicked");
-    this.popupVal.emit(this.emittedValue);
-    console.log(this.emittedValue);
+
+  // cancel delete functionality
+  cancelDeletePopup() {
+    this.popupVal.emit(this.childDeletePopup);
   }
 }

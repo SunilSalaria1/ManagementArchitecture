@@ -26,4 +26,5 @@ renderUserData(userId: number){
   deleteUser(user: number){
     this.http.delete(`${this.url}/${user}`).subscribe();
   }
+  
 }

@@ -12,16 +12,21 @@ export class AdminDashboardComponent implements OnInit {
     private adminportalservice: AdminPortalService,
     private route: Router
   ) {}
+  
   tableData: any = [];
+
   // delete popup
   deletePopup: boolean = false;
+
   // confirm popup
   successConfirm: boolean = false;
+
   // pass id to confirm delete functionality
   deleteItem: number = 0;
 
   ngOnInit(): void {
     this.renderData();
+    console.log(this.deletePopup);
   }
 
   // render data into table
@@ -31,24 +36,12 @@ export class AdminDashboardComponent implements OnInit {
       console.log(this.tableData);
     });
   }
-
-  // delete confirmation
-  confirmDelete(deleteItem: number) {
-    this.adminportalservice.deleteUser(deleteItem);
-    this.deletePopup = false;
-    this.successConfirm = true;
-    this.renderData();
-  }
-
+  
   // show delete popup
   showDeletePopup(ProductId: any) {
     this.deleteItem = ProductId;
     this.deletePopup = true;
-  }
-
-  // cancel delete popup
-  cancelDeletePopup() {
-    this.deletePopup = false;
+    console.log(this.deletePopup);
   }
 
   // close success confirmation popup
@@ -58,5 +51,12 @@ export class AdminDashboardComponent implements OnInit {
   // view user details
   viewUserDetails(userId: number) {
     this.route.navigate(['/user-details', userId]);
+  }
+
+  // recieve value
+  recieveData(event: any) {
+    this.deletePopup = event;
+    this.successConfirm = true;
+    this.renderData();
   }
 }
