@@ -56,7 +56,6 @@ export class AdminDashboardComponent implements OnInit {
   // recieve value
   recieveData(event: any) {
     this.deletePopup = event;
-    this.successConfirm = true;
     this.renderData();
   }
 }
