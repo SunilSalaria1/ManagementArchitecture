@@ -18,17 +18,17 @@
         <div class="card rounded-0 border-0 shadow-sm">
             <!-- form confirmation alert -->
             <!-- success toast -->
-            <!-- <div *ngIf="successConfirm" id="deleteSuccessToast"
+            <div *ngIf="successConfirm"
                 class="w-25 position-absolute end-0 p-2 ms-auto align-items-center text-white fw-bold bg-success"
                 role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
-                    <div class="toast-body" id="editConfirmation"><span class="ms-2 h6 fw-bold">Deleted</span>
-                        <div class="small ms-2 text-light">User has been successfully deleted</div>
+                    <div class="toast-body" id="editConfirmation"><span class="ms-2 h6 fw-bold">Updated</span>
+                        <div class="small ms-2 text-light">User has been successfully updated</div>
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 mt-2 m-auto" aria-label="Close"
                         (click)="closeConfirmation()"></button>
                 </div>
-            </div> -->
+            </div>
             <!-- /success toast -->
             <!-- /form confirmation alert -->
             <div class="card-header border-bottom bg-white py-3">
@@ -90,6 +90,8 @@
                                     <td>{{item.profession}}</td>
                                     <td>{{item.phoneNumber}}</td>
                                     <td id="actionButtons">
+                                        <a id="viewUser" (click)="editUserDetails(item.id)"
+                                            class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                         <a id="viewUser" (click)="viewUserDetails(item.id)"
                                             class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
                                                 class="fa fa-eye" aria-hidden="true"></i></a>

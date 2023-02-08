@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
 
@@ -12,20 +12,22 @@ export class AdminDashboardComponent implements OnInit {
     private adminportalservice: AdminPortalService,
     private route: Router
   ) {}
-  
+
   tableData: any = [];
 
   // delete popup
   deletePopup: boolean = false;
 
   // confirm popup
-  successConfirm: boolean = false;
+  successConfirm: boolean = this.adminportalservice.successAlert;
 
   // pass id to confirm delete functionality
   deleteItem: number = 0;
 
   ngOnInit(): void {
     this.renderData();
+    this.successConfirm = this.adminportalservice.successAlert;
+    console.log(this.successConfirm);
   }
 
   // render data into table
@@ -34,7 +36,7 @@ export class AdminDashboardComponent implements OnInit {
       this.tableData = data;
     });
   }
-  
+
   // show delete popup
   showDeletePopup(ProductId: any) {
     this.deleteItem = ProductId;
@@ -42,18 +44,31 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   // close success confirmation popup
-  // closeConfirmation() {
-  //   this.successConfirm = false;
-  // }
-  
+  closeConfirmation() {
+    this.successConfirm = false;
+  }
+
   // view user details
   viewUserDetails(userId: number) {
     this.route.navigate(['/user-details', userId]);
   }
 
+  // edit user details
+  editUserDetails(userId: number) {
+    this.successConfirm = false;
+    console.log(this.successConfirm);
+    this.adminportalservice.successAlert = false;
+    this.route.navigate(['/edit-user', userId]);
+    console.log(this.successConfirm);
+  }
   // recieve value
   recieveData(event: any) {
     this.deletePopup = event;
     this.renderData();
+  }
+
+  // destroy
+  ngOnDestroy(): void {
+    this.adminportalservice.successAlert = false;
   }
 }

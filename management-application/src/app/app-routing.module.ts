@@ -10,6 +10,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
+import { EditRecordComponent } from './admin/edit-record/edit-record.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'admin-portal',
     component: AdminDashboardComponent,
+  },
+  {
+    path: 'edit-user/:userId',
+    component: EditRecordComponent,
   },
 
   // dashboard routes
