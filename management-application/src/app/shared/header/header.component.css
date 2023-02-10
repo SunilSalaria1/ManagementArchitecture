@@ -1,6 +1,7 @@
 /* header styling */
 header{
     z-index: 9999;
+    position: fixed;
 }
 header .dropdown .show {
     left: auto;
@@ -18,4 +19,7 @@ header #aside-toggle-btn {
 header .navbar.nav-link:focus,
 header .nav-link:hover {
     background-color: #f2f2f2;
+}
+#asideToggleBtn{
+    cursor: pointer;
 }

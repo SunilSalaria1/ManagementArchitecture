@@ -19,7 +19,7 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full',
   },
-
+  
   // account routes
   {
     path: 'login',
