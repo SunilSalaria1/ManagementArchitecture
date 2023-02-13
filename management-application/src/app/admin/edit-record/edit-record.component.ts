@@ -17,7 +17,7 @@ export class EditRecordComponent implements OnInit {
   constructor(
     private adminportalservice: AdminPortalService,
     private activatedroute: ActivatedRoute,
-    private route: Router,
+    private route: Router
   ) {}
 
   ngOnInit(): void {

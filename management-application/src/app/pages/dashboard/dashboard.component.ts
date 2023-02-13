@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonservice:CommonService, private route: Router) { }
 
   ngOnInit(): void {
+    if (this.commonservice.authentication) {
+      this.route.navigateByUrl('/dashboard');
+      console.log("dashboard")
+    }
   }
 
 }

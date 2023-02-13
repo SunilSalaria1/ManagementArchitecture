@@ -24,6 +24,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { DeleteComponent } from './shared/popup/delete/delete.component';
 import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
 import { TitleCasePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,15 @@ import { TitleCasePipe } from '@angular/common';
     DeleteComponent,
     UserDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,TitleCasePipe],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    TitleCasePipe,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

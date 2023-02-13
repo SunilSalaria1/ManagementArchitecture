@@ -1,16 +1,6 @@
 {
   "user": [
     {
-      "firstName": "Sunil",
-      "lastName": "Kaur",
-      "email": "kanchan@gmail.com",
-      "profession": "Front End Developer",
-      "phoneNumber": "+919814268272",
-      "password": "kanchan123",
-      "confirmPassword": "kanchan123",
-      "id": 1
-    },
-    {
       "firstName": "rajeev",
       "lastName": "Kaur",
       "email": "kanchan@gmail.com",

@@ -27,7 +27,6 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
-    console.log(this.successConfirm);
   }
 
   // render data into table
@@ -56,10 +55,8 @@ export class AdminDashboardComponent implements OnInit {
   // edit user details
   editUserDetails(userId: number) {
     this.successConfirm = false;
-    console.log(this.successConfirm);
     this.adminportalservice.successAlert = false;
     this.route.navigate(['/edit-user', userId]);
-    console.log(this.successConfirm);
   }
   // recieve value
   recieveData(event: any) {

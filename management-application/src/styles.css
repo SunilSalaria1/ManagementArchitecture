@@ -90,20 +90,33 @@ body {
 
 /* main css */
 main {
-    margin-left: 301px;
+    /* margin-left: 301px; */
     transition: margin-left 0.5s;
 }
 
-.main-full {
-    margin-left: 0px;
-    transition: margin-left 0.5s;
-    z-index: 9999 !important;
+/* aside */
+aside {
+    transition: all 0.5s;
 }
 
+/* header */
+header{
+    width: calc(100% - 301px);
+}
 .body-wrapper {
     padding-top: 56px;
 }
 
 .breadcrumb-item.active {
     color: var(--primary-color);
+}
+
+@media (min-width: 300px) and (max-width: 992px) {
+    main {
+        margin-left: 0px !important;
+    }
+
+    aside {
+        transform: translateX(-300px) !important;
+    }
 }

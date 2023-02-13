@@ -11,19 +11,20 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
 import { EditRecordComponent } from './admin/edit-record/edit-record.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 const routes: Routes = [
   // default route redirect to login page
   {
     path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
+    component: LoginComponent,
   },
   
   // account routes
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -38,20 +39,24 @@ const routes: Routes = [
   {
     path: 'admin-portal',
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-user/:userId',
     component: EditRecordComponent,
+    canActivate: [AuthGuard]
   },
 
   // dashboard routes
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-details/:userId',
     component: UserDetailsComponent,
+    canActivate: [AuthGuard]
   },
 
   // page not found route
