@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  // password type
+  passwordType: string = 'password';
   // error alert
   error: boolean = false;
   loginForm!: FormGroup;
@@ -49,35 +51,35 @@ export class LoginComponent implements OnInit {
     }
     if (this.loginForm.valid) {
       this.auth
-      .loginUser()
-      .pipe(
-        catchError(async (error) => {
-          this.commonservice.asideHeader = false;
-          this.commonservice.authentication = false;
-          console.log(error);
-        })
-      )
-      .subscribe((data: any) => {
-        // check and match data
-        let itemIndex = data.findIndex((item: any) => {
-          return (
-            item.email == this.loginForm.value.email &&
-            item.password == this.loginForm.value.password
-          );
+        .loginUser()
+        .pipe(
+          catchError(async (error) => {
+            this.commonservice.asideHeader = false;
+            this.commonservice.authentication = false;
+            console.log(error);
+          })
+        )
+        .subscribe((data: any) => {
+          // check and match data
+          let itemIndex = data.findIndex((item: any) => {
+            return (
+              item.email == this.loginForm.value.email &&
+              item.password == this.loginForm.value.password
+            );
+          });
+          if (itemIndex === -1) {
+            if (
+              this.loginForm.value.email.length > 0 &&
+              this.loginForm.value.password.length > 0
+            )
+              this.error = true;
+          }
+          if (itemIndex !== -1) {
+            this.commonservice.authentication = true;
+            this.commonservice.asideHeader = true;
+            this.router.navigateByUrl('/dashboard');
+          }
         });
-        if (itemIndex === -1) {
-          if (
-            this.loginForm.value.email.length > 0 &&
-            this.loginForm.value.password.length > 0
-          )
-            this.error = true;
-        }
-        if (itemIndex !== -1) {
-          this.commonservice.authentication = true;
-          this.commonservice.asideHeader = true;
-          this.router.navigateByUrl('/dashboard');
-        }
-      });
     }
   }
 
@@ -85,5 +87,10 @@ export class LoginComponent implements OnInit {
   cancelErrorAlert() {
     this.error = false;
     // this.loginForm.reset();
+  }
+
+  // view password
+  showPass() {
+    this.passwordType = 'text';
   }
 }

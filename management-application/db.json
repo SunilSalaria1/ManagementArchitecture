@@ -29,6 +29,16 @@
       "password": "pooja123",
       "confirmPassword": "pooja123",
       "id": 6
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "profession": "Human Resource",
+      "phoneNumber": "",
+      "password": "",
+      "confirmPassword": "",
+      "id": 7
     }
   ]
 }
