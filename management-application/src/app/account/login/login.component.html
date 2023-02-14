@@ -1,9 +1,33 @@
-<section class="vh-100  bg-light">
+<section class="vh-100 bg-light">
+    <!-- form confirmation alert -->
+    <!-- error toast -->
+    <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0"
+        *ngIf="error" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div><span class="ms-2 small">Inavlid login credentials.</span>
+                <!-- <div class="small ms-2 text-light">Please enter valid credentials</div> -->
+            </div>
+            <button type="button" class="btn-close me-0 small m-auto" aria-label="Close"
+                (click)="cancelErrorAlert()"></button>
+        </div>
+    </div>
+    <!-- /error toast -->
+    <!-- /form confirmation alert -->
     <div class="container-fluid">
         <!-- row -->
-        <div class="row vh-100">
+        <div class="row vh-100 m-auto d-flex justify-content-center align-items-center">
             <!-- col -->
-            <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
+            <div class="col-xxl-4 col-xl-5 col-md-6 col-sm-12 d-none d-md-block">
+                <!-- <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto"> -->
+                <div class="d-md-flex d-block">
+                    <div class="d-flex align-items-center justify-content-center" id="logo">
+                        <img src="./assets/images/logo.svg" alt="Logo" width="80" height="80" class="logo-image">
+                        <span class="logo-text fs-2 fw-bold text-primary">TRACKER</span>
+                    </div>
+                </div>
+                <div class="fs-4 mt-2 d-md-block d-none">Tracker helps you connect and manage your everyday tasks with ease. Track your work with us in simple and significant way!</div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-12">
                 <!-- card -->
                 <div class="card bg-white shadow-sm rounded-0 border-0">
                     <div class="card-body px-0 py-3">
@@ -25,11 +49,11 @@
                                             *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].untouched)">
                                             <div
                                                 *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].errors['required']">
-                                                Email is required
+                                                Email is Required
                                             </div>
                                             <div
                                                 *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].errors['email']">
-                                                Include @ in the email address field
+                                                Include @ in the email address
                                             </div>
                                         </div>
                                     </div>
@@ -41,14 +65,14 @@
                                             *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].untouched)">
                                             <div
                                                 *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].errors['required']">
-                                                Password is required
+                                                Password is Required
                                             </div>
                                         </div>
                                         <div class="text-end my-2"><a routerLink="/forgot-password"
                                                 class="text-decoration-none text-dark">Forgot Passsword?</a></div>
                                     </div>
                                     <div class="mb-3 form-check">
-                                        <input type="checkbox" class="form-check-input rounded-0">
+                                        <input type="checkbox" class="form-check-input rounded-0 shadow-sm">
                                         <label class="form-check-label">Remember me</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary shadow-sm rounded-0 w-100 mb-3"

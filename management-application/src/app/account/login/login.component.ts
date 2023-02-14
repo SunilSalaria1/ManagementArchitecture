@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  // error alert
+  error: boolean = false;
   loginForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -24,21 +26,29 @@ export class LoginComponent implements OnInit {
       email: [''],
       password: [''],
     });
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.email]],
+      password: [''],
+    });
     if (this.commonservice.authentication) {
       this.router.navigateByUrl('/dashboard');
     }
   }
 
   // login submit
-
   loginClick() {
-    if (this.loginForm.value.email == 0 && this.loginForm.value.password == 0) {
+    // validations
+    if (this.loginForm.value.email == 0 || this.loginForm.value.password == 0) {
       this.loginForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]],
+        email: [
+          this.loginForm.value.email,
+          [Validators.required, Validators.email],
+        ],
+        password: [this.loginForm.value.password, [Validators.required]],
       });
     }
-    this.auth
+    if (this.loginForm.valid) {
+      this.auth
       .loginUser()
       .pipe(
         catchError(async (error) => {
@@ -48,16 +58,32 @@ export class LoginComponent implements OnInit {
         })
       )
       .subscribe((data: any) => {
-        data.forEach((item: any) => {
-          if (
+        // check and match data
+        let itemIndex = data.findIndex((item: any) => {
+          return (
             item.email == this.loginForm.value.email &&
             item.password == this.loginForm.value.password
-          ) {
-            this.commonservice.authentication = true;
-            this.commonservice.asideHeader = true;
-            this.router.navigateByUrl('/dashboard');
-          }
+          );
         });
+        if (itemIndex === -1) {
+          if (
+            this.loginForm.value.email.length > 0 &&
+            this.loginForm.value.password.length > 0
+          )
+            this.error = true;
+        }
+        if (itemIndex !== -1) {
+          this.commonservice.authentication = true;
+          this.commonservice.asideHeader = true;
+          this.router.navigateByUrl('/dashboard');
+        }
       });
+    }
+  }
+
+  // cancel error alert
+  cancelErrorAlert() {
+    this.error = false;
+    // this.loginForm.reset();
   }
 }
