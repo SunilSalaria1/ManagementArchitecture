@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   // password type
   passwordType: string = 'password';
+  svgColor: string = '#000000';
   // error alert
   error: boolean = false;
   loginForm!: FormGroup;
@@ -24,10 +25,10 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     // form building
-    this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
-    });
+    // this.loginForm = this.formBuilder.group({
+    //   email: [''],
+    //   password: [''],
+    // });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.email]],
       password: [''],
@@ -75,9 +76,18 @@ export class LoginComponent implements OnInit {
               this.error = true;
           }
           if (itemIndex !== -1) {
-            this.commonservice.authentication = true;
-            this.commonservice.asideHeader = true;
-            this.router.navigateByUrl('/dashboard');
+            console.log(data[itemIndex]);
+            if (data[itemIndex].role == 'admin') {
+              this.router.navigateByUrl('/admin-portal');
+              this.commonservice.authentication = true;
+              this.commonservice.asideHeader = true;
+              this.commonservice.adminPortal = true;
+            } else {
+              this.commonservice.authentication = true;
+              this.commonservice.asideHeader = true;
+              this.commonservice.dashboard = true;
+              this.router.navigateByUrl('/dashboard');
+            }
           }
         });
     }
@@ -90,7 +100,10 @@ export class LoginComponent implements OnInit {
   }
 
   // view password
-  showPass() {
+  showPassword() {
     this.passwordType = 'text';
+  }
+  hidePassword() {
+    this.passwordType = 'password';
   }
 }

@@ -25,6 +25,7 @@ import { DeleteComponent } from './shared/popup/delete/delete.component';
 import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
 import { TitleCasePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     DeleteComponent,
     UserDetailsComponent,
+    TrackTimeComponent,
   ],
   imports: [
     BrowserModule,

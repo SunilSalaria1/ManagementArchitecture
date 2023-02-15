@@ -115,6 +115,14 @@ header{
     top: 15px;
     right: 15px;
 }
+.alert-success{
+    background-color: white;
+    width: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 .btn-close:focus{
 box-shadow: none !important;
 }
@@ -127,6 +135,9 @@ box-shadow: none !important;
         transform: translateX(-300px) !important;
     }
     .alert-danger{
+        width: 90%;
+    }
+    .alert-success{
         width: 90%;
     }
 }

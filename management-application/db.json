@@ -1,6 +1,17 @@
 {
   "user": [
     {
+      "firstName": "Sunil",
+      "lastName": "Salaria",
+      "email": "admin@gmail.com",
+      "profession": "Front End Developer",
+      "phoneNumber": "+919814268272",
+      "password": "admin",
+      "confirmPassword": "admin",
+      "role": "admin",
+      "id": 1
+    },
+    {
       "firstName": "rajeev",
       "lastName": "Kaur",
       "email": "kanchan@gmail.com",
@@ -31,13 +42,13 @@
       "id": 6
     },
     {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "profession": "Human Resource",
-      "phoneNumber": "",
-      "password": "",
-      "confirmPassword": "",
+      "firstName": "rahul",
+      "lastName": "kaur",
+      "email": "kn@gmail.com",
+      "profession": "Front End Developer",
+      "phoneNumber": "+919814268272",
+      "password": "dddd",
+      "confirmPassword": "dddd",
       "id": 7
     }
   ]

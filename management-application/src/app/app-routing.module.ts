@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { UserDetailsComponent } from './pages/dashboard/user-details/user-details.component';
 import { EditRecordComponent } from './admin/edit-record/edit-record.component';
 import { AuthGuard } from './services/guard/auth.guard';
+import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -52,6 +53,11 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'track-time',
+    component: TrackTimeComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'user-details/:userId',

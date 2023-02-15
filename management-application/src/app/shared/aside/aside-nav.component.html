@@ -22,14 +22,14 @@
         <div class="col-12">
             <!-- ul -->
             <ul class="nav flex-column">
-                <li class="nav-item mx-3 mb-2">
+                <li class="nav-item mx-3 mb-2" *ngIf="adminPortal">
                     <a class="nav-link text-nowrap" routerLink="/admin-portal" routerLinkActive="active"><i
-                            class="fa fa-tachometer" aria-hidden="true"></i><span class="ms-3">Admin
+                            class="fa-solid fa-gauge"></i><span class="ms-3">Admin
                             Portal</span></a>
                 </li>
-                <li class="nav-item mx-3 mb-2">
+                <li class="nav-item mx-3 mb-2" *ngIf="dashboard">
                     <a class="nav-link text-nowrap" routerLink="/dashboard" routerLinkActive="active"><i
-                            class="fa fa-address-card-o" aria-hidden="true"></i>
+                        class="fa-brands fa-wpforms"></i>
                         <span class="ms-3">Dashboard</span></a>
                 </li>
             </ul>

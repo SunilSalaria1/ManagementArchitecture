@@ -10,5 +10,9 @@ export class CommonService {
   asideHeader: boolean = false;
   // authentication guard
   authentication:boolean = false;
+  // dashboard aside
+  dashboard:boolean = false;
+  // admin-portal aside
+  adminPortal:boolean = false;
   constructor() {}
 }
