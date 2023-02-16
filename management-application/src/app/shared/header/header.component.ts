@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common/common';
 
 @Component({
@@ -9,12 +10,17 @@ import { CommonService } from 'src/app/services/common/common';
 export class HeaderComponent implements OnInit {
   // show and hide aside, header
   asideHeader: boolean = this.commonservice.asideHeader;
-  constructor(private commonservice: CommonService) {}
+  aside: boolean = this.commonservice.aside;
+  constructor(private commonservice: CommonService, private route:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   ngDoCheck(): void {
     this.asideHeader = this.commonservice.asideHeader;
+    this.aside = this.commonservice.aside;
+    console.log(this.asideHeader);
+    console.log(this.aside);
   }
   // toggle function
   asideToggle() {

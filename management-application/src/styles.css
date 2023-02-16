@@ -99,10 +99,6 @@ aside {
     transition: all 0.5s;
 }
 
-/* header */
-header{
-    width: calc(100% - 301px);
-}
 .body-wrapper {
     padding-top: 56px;
 }

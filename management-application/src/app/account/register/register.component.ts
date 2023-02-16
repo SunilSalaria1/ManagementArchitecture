@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { catchError } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,11 @@ export class RegisterComponent implements OnInit {
   success: boolean = false;
   // Register form
   registerForm!: FormGroup;
-  constructor(private auth: AuthService, private formBuilder: FormBuilder) {}
+  constructor(
+    private auth: AuthService,
+    private formBuilder: FormBuilder,
+    private route: Router
+  ) {}
 
   // register submit button click
   registerClick() {
@@ -101,7 +106,15 @@ export class RegisterComponent implements OnInit {
       password: [''],
       confirmPassword: [''],
     });
+    // auth guard
+    if (
+      localStorage.getItem('loggedInUser') ||
+      localStorage.getItem('loggedInAdmin')
+    ) {
+      this.route.navigateByUrl('/page-not-found');
+    }
   }
+
   // cancel error alert
   cancelErrorAlert() {
     this.error = false;

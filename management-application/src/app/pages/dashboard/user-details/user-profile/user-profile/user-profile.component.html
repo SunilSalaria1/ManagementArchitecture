@@ -1,0 +1,60 @@
+<section class="vh-100 bg-light">
+    <div class="container-fluid">
+        <!-- row -->
+        <div class="row vh-100 m-auto d-flex justify-content-center align-items-center">
+            <!-- col -->
+            <div class="col-xl-4 col-md-6 col-sm-12">
+                <!-- card -->
+                <div class="card bg-white shadow-sm rounded-0 border-0">
+                    <div class="card-body p-0">
+                        <!-- row -->
+                        <div class="row m-0">
+                            <!-- col -->
+                            <div class="col-12 px-0">
+                                <div class="px-4 py-4 border-0 bg-primary">
+                                    <i class="edit-profile text-white fa-sharp fa-solid fa-pencil position-absolute" title="Edit detail"></i>
+                                    <div
+                                        class="profile-icon mb-3 bg-white shadow-sm rounded-circle mx-auto d-flex flex-column justify-content-center align-items-center">
+                                        <img src="/assets/images/profile-icon.png" alt="profile">
+                                    </div>
+                                    <div class="text-white text-center fs-5 mb-2">{{loggedUserData.firstName}}</div>
+                                    <div class="text-center text-white small ">
+                                        {{loggedUserData.profession}}
+                                    </div>
+                                </div>
+                                <div class="px-4 py-3 my-3 border-0 border-bottom"><i
+                                        class="fa-solid text-primary fa-user"></i>
+                                    <span class="ms-4">{{loggedUserData.firstName+ " " + loggedUserData.lastName}}</span>
+                                </div>
+                                <div class="px-4 py-3 my-3 border-0 border-bottom"><i
+                                        class="fa-solid text-primary fa-user-tie"></i>
+                                    <span class="ms-4">{{loggedUserData.profession}}</span>
+                                </div>
+                                <div class="px-4 py-3 my-3 border-0 border-bottom"><i
+                                        class="fa-sharp text-primary fa-solid fa-envelope"></i>
+                                    <span class="ms-4">{{loggedUserData.email}}</span>
+                                </div>
+                                <div class="px-4 py-3 border-0"><i class="fa-solid text-primary fa-phone"></i>
+                                    <span class="ms-4">{{loggedUserData.phoneNumber}}</span>
+                                </div>
+                                <!-- <div class="d-flex flex-column flex-sm-row justify-content-end py-3 px-4">
+                                    <button
+                                        class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
+                                            Now</span></button>
+                                    <button
+                                        class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-solid fa-check"></i><span class="ms-2">Update</span>
+                                    </button>
+                                </div> -->
+                            </div>
+                            <!-- /col -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                </div>
+                <!-- /card -->
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+    </div>
+</section>

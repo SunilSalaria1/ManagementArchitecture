@@ -13,6 +13,7 @@ import { UserDetailsComponent } from './pages/dashboard/user-details/user-detail
 import { EditRecordComponent } from './admin/edit-record/edit-record.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
+import { UserProfileComponent } from './pages/dashboard/user-details/user-profile/user-profile/user-profile.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -62,6 +63,11 @@ const routes: Routes = [
   {
     path: 'user-details/:userId',
     component: UserDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
     canActivate: [AuthGuard]
   },
 

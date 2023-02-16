@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-passwrd',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswrdComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
+     // auth guard
+     if (
+      localStorage.getItem('loggedInUser') ||
+      localStorage.getItem('loggedInAdmin')
+    ) {
+      this.route.navigateByUrl('/page-not-found');
+    }
   }
+  
 
 }

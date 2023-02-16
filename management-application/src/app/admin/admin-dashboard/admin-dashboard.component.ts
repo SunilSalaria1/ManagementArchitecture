@@ -29,11 +29,12 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
+    this.commonservice.dashboard = false;
     if (localStorage.getItem('loggedInUser') == 'true') {
       this.route.navigateByUrl('/page-not-found');
       this.commonservice.aside = false;
       this.commonservice.asideHeader = false;
-      this.commonservice.dashboard = false
+      this.commonservice.dashboard = false;
     }
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;

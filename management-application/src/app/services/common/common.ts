@@ -9,15 +9,18 @@ export class CommonService {
   // aside and header
   asideHeader: boolean = false;
   // authentication guard
-  authentication:boolean = false;
+  authentication: boolean = false;
   // dashboard aside
-  dashboard:boolean = false;
+  dashboard: boolean = false;
   // admin-portal aside
-  adminPortal:boolean = false;
+  adminPortal: boolean = false;
+  // logged in user ID
+  loggedId: number = 1;
   constructor() {}
   ngOnInit(): void {
-   if(this.authentication === true) {
-    this.aside = true;
-    this.asideHeader= true;
+    if (this.authentication === true) {
+      this.aside = true;
+      this.asideHeader = true;
+    }
   }
-}}
+}

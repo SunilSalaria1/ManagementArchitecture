@@ -1,8 +1,11 @@
 /* header styling */
-header{
+header {
     z-index: 9999;
     position: fixed;
+    right: 0;
+    transition: all 0.5s;
 }
+
 header .dropdown .show {
     left: auto;
     right: 0;
@@ -20,10 +23,12 @@ header .navbar.nav-link:focus,
 header .nav-link:hover {
     background-color: #f2f2f2;
 }
-#asideToggleBtn{
+
+#asideToggleBtn {
     cursor: pointer;
 }
+
 /* logout */
-.logout{
+.logout {
     cursor: pointer;
 }
