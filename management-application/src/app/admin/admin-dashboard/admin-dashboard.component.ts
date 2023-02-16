@@ -1,6 +1,7 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
+import { CommonService } from 'src/app/services/common/common';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,6 +10,7 @@ import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.s
 })
 export class AdminDashboardComponent implements OnInit {
   constructor(
+    private commonservice: CommonService,
     private adminportalservice: AdminPortalService,
     private route: Router
   ) {}
@@ -25,10 +27,17 @@ export class AdminDashboardComponent implements OnInit {
   deleteItem: number = 0;
 
   ngOnInit(): void {
+    this.commonservice.aside = true;
+    this.commonservice.asideHeader = true;
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.route.navigateByUrl('/page-not-found');
+      this.commonservice.aside = false;
+      this.commonservice.asideHeader = false;
+      this.commonservice.dashboard = false
+    }
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
   }
-
   // render data into table
   renderData() {
     this.adminportalservice.renderData().subscribe((data) => {

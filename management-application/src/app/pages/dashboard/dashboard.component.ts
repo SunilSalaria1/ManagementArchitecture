@@ -11,8 +11,13 @@ export class DashboardComponent implements OnInit {
   constructor(private commonservice: CommonService, private route: Router) {}
 
   ngOnInit(): void {
-    if (this.commonservice.authentication) {
-      this.route.navigateByUrl('/dashboard');
+    this.commonservice.aside = true;
+    this.commonservice.asideHeader = true;
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.route.navigateByUrl('/page-not-found');
+      this.commonservice.aside = false;
+      this.commonservice.asideHeader = false;
+      this.commonservice.adminPortal = false;
     }
   }
 }

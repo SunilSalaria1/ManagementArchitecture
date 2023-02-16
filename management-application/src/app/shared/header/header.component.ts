@@ -16,10 +16,16 @@ export class HeaderComponent implements OnInit {
   ngDoCheck(): void {
     this.asideHeader = this.commonservice.asideHeader;
   }
-
   // toggle function
   asideToggle() {
     console.log('toggled');
     this.commonservice.aside = !this.commonservice.aside;
+  }
+  // logout
+  logout(){
+    localStorage.clear();
+    this.commonservice.authentication = false;
+    this.commonservice.aside = false;
+    this.commonservice.asideHeader = false;
   }
 }

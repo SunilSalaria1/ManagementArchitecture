@@ -15,4 +15,9 @@ export class CommonService {
   // admin-portal aside
   adminPortal:boolean = false;
   constructor() {}
-}
+  ngOnInit(): void {
+   if(this.authentication === true) {
+    this.aside = true;
+    this.asideHeader= true;
+  }
+}}

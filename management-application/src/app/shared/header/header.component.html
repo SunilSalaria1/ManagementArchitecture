@@ -35,8 +35,8 @@
                             <li><a class="dropdown-item py-2 border-bottom" href="#"><i
                                         class="fa-solid fa-gear"></i><span class="ms-3">Settings</span></a>
                             </li>
-                            <li><a class="dropdown-item py-2" href="#"><i class="fa-solid fa-power-off"></i><span
-                                [routerLink]="['/login']"   class="ms-3">Logout</span></a></li>
+                            <li><a class="dropdown-item py-2"><i class="fa-solid fa-power-off logout"></i><span
+                                [routerLink]="['/login']" (click)="logout()" class="ms-3">Logout</span></a></li>
                         </ul>
                     </li>
                 </ul>

@@ -23,3 +23,7 @@ header .nav-link:hover {
 #asideToggleBtn{
     cursor: pointer;
 }
+/* logout */
+.logout{
+    cursor: pointer;
+}

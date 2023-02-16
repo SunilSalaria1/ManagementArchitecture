@@ -16,10 +16,10 @@
                             <!-- /col -->
                             <!-- col -->
                             <div class="col-12 px-4">
-                                <form>
+                                <form [formGroup]="trackTimeForm">
                                     <div class="mb-3">
-                                        <label class="form-label">Date</label>
-                                        <input type="date" class="form-control shadow-sm rounded-0">
+                                        <label class="form-label">Date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control shadow-sm rounded-0" formControlName="date">
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">
@@ -27,7 +27,7 @@
                                                 <label class="form-label">Time (hours) <span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select shadow-sm rounded-0"
-                                                    formControlName="profession">
+                                                    formControlName="timeHours">
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -48,7 +48,7 @@
                                             <div class="col-6">
                                                 <label class="form-label">Time (minutes)</label>
                                                 <select class="form-select shadow-sm rounded-0"
-                                                    formControlName="profession">
+                                                    formControlName="timeMinutes">
                                                     <option value="5">5</option>
                                                     <option value="10">10</option>
                                                     <option value="15">15</option>
@@ -67,7 +67,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Project <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-select shadow-sm rounded-0" formControlName="profession">
+                                        <select class="form-select shadow-sm rounded-0" formControlName="project">
                                             <option value="Project 1">Project 1</option>
                                             <option value="Project 2">Project 2</option>
                                             <option value="Project 3">Project 3</option>
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Task <span class="text-danger">*</span></label>
-                                        <select class="form-select shadow-sm rounded-0" formControlName="profession">
+                                        <select class="form-select shadow-sm rounded-0" formControlName="task">
                                             <option value="Development">Development</option>
                                             <option value=">Designing">Designing</option>
                                             <option value="Testing">Testing</option>
@@ -100,13 +100,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea class="form-control shadow-sm rounded-0"></textarea>
+                                        <textarea class="form-control shadow-sm rounded-0" formControlName="description"></textarea>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row justify-content-end py-3">
                                         <button
                                             class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
                                                 Now</span></button>
-                                        <button
+                                        <button (click)="trackTimeClick()"
                                             class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-solid fa-check"></i><span class="ms-2">Log Time Now</span>
                                         </button>
                                     </div>

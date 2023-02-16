@@ -33,8 +33,11 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.email]],
       password: [''],
     });
-    if (this.commonservice.authentication) {
+    if (this.commonservice.authentication && localStorage.getItem('loggedInUser')) {
       this.router.navigateByUrl('/dashboard');
+    }
+    if (this.commonservice.authentication && localStorage.getItem('loggedInAdmin')) {
+      this.router.navigateByUrl('/admin-portal');
     }
   }
 
@@ -78,14 +81,16 @@ export class LoginComponent implements OnInit {
           if (itemIndex !== -1) {
             console.log(data[itemIndex]);
             if (data[itemIndex].role == 'admin') {
-              this.router.navigateByUrl('/admin-portal');
               this.commonservice.authentication = true;
               this.commonservice.asideHeader = true;
               this.commonservice.adminPortal = true;
+              localStorage.setItem('loggedInAdmin', 'true');
+              this.router.navigateByUrl('/admin-portal');
             } else {
               this.commonservice.authentication = true;
               this.commonservice.asideHeader = true;
               this.commonservice.dashboard = true;
+              localStorage.setItem('loggedInUser', 'true');
               this.router.navigateByUrl('/dashboard');
             }
           }

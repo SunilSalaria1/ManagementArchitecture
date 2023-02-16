@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: 'track-time',
     component: TrackTimeComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-details/:userId',

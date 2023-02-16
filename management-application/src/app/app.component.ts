@@ -17,5 +17,19 @@ export class AppComponent {
     this.mainMargin = this.commonservice.aside;
     this.asideHeader = this.commonservice.asideHeader;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // localStorage.clear();
+    if (localStorage.getItem('loggedInUser')) {
+      this.commonservice.authentication = true;
+      this.commonservice.aside = true;
+      this.commonservice.asideHeader = true;
+      this.commonservice.dashboard = true;
+    }
+    if (localStorage.getItem('loggedInAdmin')) {
+      this.commonservice.authentication = true;
+      this.commonservice.aside = true;
+      this.commonservice.asideHeader = true;
+      this.commonservice.adminPortal = true;
+    }
+  }
 }
