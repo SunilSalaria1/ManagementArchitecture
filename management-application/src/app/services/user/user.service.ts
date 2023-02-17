@@ -7,11 +7,17 @@ import { CommonService } from 'src/app/services/common/common';
 })
 export class UserService {
   url = 'http://localhost:3000/user';
-  userId: number = this.commonservice.loggedId;
+  userId: any = localStorage.getItem('loggedInId');
   constructor(private commonservice: CommonService, private http: HttpClient) {}
-
+  // get logged user data
   getLoggedUserData() {
-    this.userId = this.commonservice.loggedId;
     return this.http.get<any>(`${this.url}/${this.userId}`);
+  }
+  // post the track time data
+  postTrackTime(resultArr: any) {
+    return this.http.post('http://localhost:3000/userTrackTime', resultArr);
+  }
+  getData() {
+    return this.http.get<any>('http://localhost:3000/userTrackTime');
   }
 }

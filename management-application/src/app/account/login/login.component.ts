@@ -24,11 +24,6 @@ export class LoginComponent implements OnInit {
     private commonservice: CommonService
   ) {}
   ngOnInit(): void {
-    // form building
-    // this.loginForm = this.formBuilder.group({
-    //   email: [''],
-    //   password: [''],
-    // });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.email]],
       password: [''],
@@ -85,31 +80,28 @@ export class LoginComponent implements OnInit {
               this.error = true;
           }
           if (itemIndex !== -1) {
-            console.log(data[itemIndex]);
             if (data[itemIndex].role == 'admin') {
               this.commonservice.authentication = true;
               this.commonservice.asideHeader = true;
               this.commonservice.adminPortal = true;
-              this.commonservice.loggedId = data[itemIndex].id;
               localStorage.setItem('loggedInAdmin', 'true');
+              localStorage.setItem('loggedInId', data[itemIndex].id);
               this.router.navigateByUrl('/admin-portal');
             } else {
               this.commonservice.authentication = true;
               this.commonservice.asideHeader = true;
               this.commonservice.dashboard = true;
-              this.commonservice.loggedId = data[itemIndex].id;
               localStorage.setItem('loggedInUser', 'true');
+              localStorage.setItem('loggedInId', data[itemIndex].id);
               this.router.navigateByUrl('/dashboard');
             }
           }
         });
     }
   }
-
   // cancel error alert
   cancelErrorAlert() {
     this.error = false;
-    // this.loginForm.reset();
   }
 
   // view password

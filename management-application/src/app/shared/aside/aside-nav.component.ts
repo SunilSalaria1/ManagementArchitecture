@@ -23,6 +23,5 @@ export class AsideNavComponent implements OnInit {
     this.asideHeader = this.commonservice.asideHeader;
     this.dashboard = this.commonservice.dashboard;
     this.adminPortal = this.commonservice.adminPortal;
-    console.log(this.aside);
   }
 }

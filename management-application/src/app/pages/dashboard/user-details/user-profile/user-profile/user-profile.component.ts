@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common/common';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserProfileComponent implements OnInit {
   loggedUserData: any = {};
-  constructor(private userservice: UserService) {}
+  constructor(
+    private userservice: UserService,
+    private commonservice: CommonService
+  ) {}
   ngOnInit() {
     this.userservice.getLoggedUserData().subscribe((response) => {
       this.loggedUserData = response;
     });
   }
 }
-

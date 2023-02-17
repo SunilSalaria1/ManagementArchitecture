@@ -11,24 +11,20 @@ export class HeaderComponent implements OnInit {
   // show and hide aside, header
   asideHeader: boolean = this.commonservice.asideHeader;
   aside: boolean = this.commonservice.aside;
-  constructor(private commonservice: CommonService, private route:Router) {}
+  constructor(private commonservice: CommonService, private route: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngDoCheck(): void {
     this.asideHeader = this.commonservice.asideHeader;
     this.aside = this.commonservice.aside;
-    console.log(this.asideHeader);
-    console.log(this.aside);
   }
   // toggle function
   asideToggle() {
-    console.log('toggled');
     this.commonservice.aside = !this.commonservice.aside;
   }
   // logout
-  logout(){
+  logout() {
     localStorage.clear();
     this.commonservice.authentication = false;
     this.commonservice.aside = false;

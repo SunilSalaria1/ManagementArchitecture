@@ -1,0 +1,6 @@
+.alert-wrap{
+    z-index: 9999;
+}
+.alert-danger{
+    top: 66px;
+}

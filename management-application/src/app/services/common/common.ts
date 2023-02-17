@@ -14,8 +14,8 @@ export class CommonService {
   dashboard: boolean = false;
   // admin-portal aside
   adminPortal: boolean = false;
-  // logged in user ID
-  loggedId: number = 1;
+  // recent tracking hours
+  recentTrackTime: any = 0;
   constructor() {}
   ngOnInit(): void {
     if (this.authentication === true) {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from './services/common/common';
+import { UserService } from './services/user/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,13 +13,12 @@ export class AppComponent {
   mainMargin: boolean = false;
   // show and hide aside, header
   asideHeader: boolean = this.commonservice.asideHeader;
-  constructor(private commonservice: CommonService, private route: Router) {}
+  constructor(private commonservice: CommonService) {}
   ngDoCheck(): void {
     this.mainMargin = this.commonservice.aside;
     this.asideHeader = this.commonservice.asideHeader;
   }
   ngOnInit(): void {
-    // localStorage.clear();
     if (localStorage.getItem('loggedInUser')) {
       this.commonservice.authentication = true;
       this.commonservice.aside = true;
