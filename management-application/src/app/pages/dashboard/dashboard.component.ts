@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
 import { CommonService } from 'src/app/services/common/common';
@@ -10,15 +10,18 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  // sample
-  // curr = new Date(); // get current date
-
-  // curdate = new Date().toISOString().slice(5, 7);
-  // currentDateee = new Date().toISOString().slice(5, 7);
+  // performance progress indicator
+  percentage: number = 50;
+  x = (180 * this.percentage) / 100;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
+  dateCurrent = new Date();
   // today hours
   hoursToday: any = 0;
+  // hours current week
+  hoursCurrentWeek: any = 0;
+  // hours current month
+  hoursCurrentMonth: any = 0;
   // current user details
   currentUserName: string = '';
   currentUserProfession: string = '';
@@ -34,38 +37,74 @@ export class DashboardComponent implements OnInit {
     private userservice: UserService
   ) {}
   ngOnInit(): void {
-    // console.log(this.curdate);
-    // let first = this.curr.getDate() - this.curr.getDay(); // First day is the day of the month - the day of the week
-    // let last = first + 6; // last day is the first day + 6
-    // let firstDay = new Date(this.curr.setDate(first))
-    //   .toISOString()
-    //   .substring(0, 10);
-    // let lastDay = new Date(this.curr.setDate(last))
-    //   .toISOString()
-    //   .substring(0, 10);
-    // this.userservice.getData().subscribe((data) => {
-    //   console.log(data[0].date.slice(5, 7));
-    //   debugger;
-    //   data.forEach((item: any) => {
-    //     if (item.date.slice(5, 7) == this.curdate) {
-    //       for (let day: number = first; day <= last; day++) {
-    //         debugger;
-    //         let x = item.date.slice(8, 11);
-    //         if (x == day) {
-    //           console.log(item.timeHours);
-    //         }
-    //       }
-    //     }
-    //   });
-    // });
+    // month
+    let currentMonth = this.dateCurrent.getMonth() + 1;
+    let firstDate = this.dateCurrent.getDate() - this.dateCurrent.getDay();
+    let lastDate = firstDate + 6;
+    // track time
+    let totalHoursCurrentWeek = 0;
+    let totalMinutesCurrentWeek = 0;
+    let totalHoursCurrentMonth = 0;
+    let totalMinutesCurrentMonth = 0;
 
+    this.userservice.getData().subscribe((data) => {
+      data.forEach((item: any) => {
+        // calculate hours of current week
+        let convertTimeHours;
+        let convertTimeMinutes;
+        if (item.dateOnly >= firstDate && item.dateOnly <= lastDate) {
+          convertTimeHours = parseInt(item.timeHours);
+          totalHoursCurrentWeek += convertTimeHours;
+          // minutes
+          convertTimeMinutes = parseInt(item.timeMinutes);
+          totalMinutesCurrentWeek += convertTimeMinutes;
+
+          if (totalMinutesCurrentWeek >= 60) {
+            let calculatedHours = Math.floor(totalMinutesCurrentWeek / 60);
+            totalHoursCurrentWeek = totalHoursCurrentWeek + calculatedHours;
+            console.log('hours are ' + totalHoursCurrentWeek);
+            totalMinutesCurrentWeek = totalMinutesCurrentWeek % 60;
+
+            console.log('Minutes are ' + totalMinutesCurrentWeek);
+
+            let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${totalMinutesCurrentWeek}`;
+            this.hoursCurrentWeek = totalTimeCurrentWeek;
+          }
+          if (totalMinutesCurrentWeek < 60) {
+            let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${totalMinutesCurrentWeek}`;
+            this.hoursCurrentWeek = totalTimeCurrentWeek;
+          }
+        }
+        // calculate hours of current month
+        let convertTimeMonth;
+        if ((item.dateOnly = currentMonth)) {
+          convertTimeMonth = parseInt(item.timeHours);
+          totalHoursCurrentMonth += convertTimeMonth;
+          // minutes
+          convertTimeMinutes = parseInt(item.timeMinutes);
+          totalMinutesCurrentMonth += convertTimeMinutes;
+          if (totalMinutesCurrentMonth >= 60) {
+            let calculatedHours = Math.floor(totalMinutesCurrentMonth / 60);
+            totalHoursCurrentMonth = totalHoursCurrentMonth + calculatedHours;
+            console.log('hours are ' + totalHoursCurrentMonth);
+            totalMinutesCurrentMonth = totalMinutesCurrentMonth % 60;
+            console.log('Minutes are ' + totalMinutesCurrentMonth);
+            let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${totalMinutesCurrentMonth}`;
+            this.hoursCurrentMonth = totalTimeCurrentMonth;
+          }
+          if (totalMinutesCurrentMonth < 60) {
+            let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${totalMinutesCurrentMonth}`;
+            this.hoursCurrentMonth = totalTimeCurrentMonth;
+          }
+        }
+      });
+    });
     this.userservice.getLoggedUserData().subscribe((data) => {
       this.currentUserName = data.firstName;
       this.currentUserProfession = data.profession;
     });
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
-    console.log(this.recentTrackTime);
     this.userservice.getData().subscribe((data) => {
       let UserTrackData = data.filter((data: any) => {
         return data.currentUserId == this.loggedInId;
@@ -73,15 +112,11 @@ export class DashboardComponent implements OnInit {
       let currentDateHours = UserTrackData.filter((data: any) => {
         return data.date == this.currentDate;
       });
-      console.log(
-        currentDateHours[0].timeHours,
-        currentDateHours[0].timeMinutes
-      );
-      this.hoursToday = `${currentDateHours[0].timeHours}:${currentDateHours[0].timeMinutes}`;
-
-      console.log(UserTrackData);
+      this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
       this.trackTableData = UserTrackData;
+      console.log(this.hoursToday);
     });
+
     if (localStorage.getItem('loggedInAdmin') == 'true') {
       this.route.navigateByUrl('/page-not-found');
       this.commonservice.aside = false;
@@ -101,9 +136,3 @@ export class DashboardComponent implements OnInit {
     });
   }
 }
-//   get sortData() {
-//     return .sort((a: any, b: any) => {
-//       return <any>new Date(b.date) - <any>new Date(a.date);
-//     });
-// }}
-// this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}:${this.trackTimeForm.value.timeMinutes}`;

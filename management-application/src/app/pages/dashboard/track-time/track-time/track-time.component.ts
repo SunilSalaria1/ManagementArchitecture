@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
@@ -11,10 +11,13 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./track-time.component.css'],
 })
 export class TrackTimeComponent implements OnInit {
-  error: boolean = false;
+  errorAlert: boolean = false;
   success: boolean = false;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
+  dateOnly: any;
+  monthOnly: any;
+
   // tracktime form
   trackTimeForm!: FormGroup;
   constructor(
@@ -24,8 +27,11 @@ export class TrackTimeComponent implements OnInit {
     private commonservice: CommonService
   ) {}
 
-  ngDoCheck(changes: SimpleChanges): void {
-    console.log(this.currentDate);
+  ngDoCheck(): void {
+    // date only
+    this.dateOnly = this.currentDate.substring(8, 10);
+    // month only
+    this.monthOnly = this.currentDate.substring(5, 7);
   }
 
   ngOnInit(): void {
@@ -33,8 +39,10 @@ export class TrackTimeComponent implements OnInit {
     this.trackTimeForm = this.formBuilder.group({
       currentUserId: [localStorage.getItem('loggedInId')],
       date: [''],
-      timeHours: ['-'],
-      timeMinutes: ['-'],
+      dateOnly: [],
+      monthOnly: [],
+      timeHours: ['00'],
+      timeMinutes: ['00'],
       project: [''],
       task: [''],
       description: [''],
@@ -53,6 +61,8 @@ export class TrackTimeComponent implements OnInit {
       this.trackTimeForm = this.formBuilder.group({
         currentUserId: [localStorage.getItem('loggedInId')],
         date: [this.trackTimeForm.value.date, Validators.required],
+        dateOnly: [this.trackTimeForm.value.dateOnly],
+        monthOnly: [this.trackTimeForm.value.monthOnly],
         timeHours: [this.trackTimeForm.value.timeHours],
         timeMinutes: [this.trackTimeForm.value.timeMinutes],
         project: [this.trackTimeForm.value.project, Validators.required],
@@ -61,22 +71,26 @@ export class TrackTimeComponent implements OnInit {
       });
     }
     if (this.trackTimeForm.valid) {
+      console.log(this.trackTimeForm.value);
+      console.log(this.trackTimeForm.value.date, this.trackTimeForm.value.dateOnly, this.trackTimeForm.value.monthOnly)
       this.userservice
         .postTrackTime(this.trackTimeForm.value)
         .pipe(
           catchError(async (error) => {
-            this.error = true;
+            this.errorAlert = true;
           })
         )
         .subscribe((data) => {
-          this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}:${this.trackTimeForm.value.timeMinutes}`;
-          this.success = true;
+          if(data){
+            this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
+            this.success = true;
+          }
         });
     }
   }
   // cancel alert
   cancelErrorAlert() {
     this.success = false;
-    this.error = false;
+    this.errorAlert = false;
   }
 }

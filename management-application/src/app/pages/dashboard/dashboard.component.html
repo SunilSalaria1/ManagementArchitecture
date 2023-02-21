@@ -45,7 +45,7 @@
                         <!-- card -->
                         <div class="card rounded-0 bg-white h-100 shadow-sm py-3">
                             <div class="card-body py-0">
-                                <div class="card-text fw-bold">Hours Today</div>
+                                <div class="card-text fw-bold">Time Today</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
                                 <span class="fw-bold fs-2 text-primary" [innerText]="hoursToday"></span>
@@ -59,26 +59,27 @@
                         <!-- card -->
                         <div class="card rounded-0 bg-white h-100 shadow-sm py-3">
                             <div class="card-body py-0">
-                                <div class="card-text fw-bold">Hours this Week
-                                    <!-- {{currentDate | date:'W'}} -->
+                                <div class="card-text fw-bold">Time this Week
                                 </div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-primary">23</span>
+                                <span class="fw-bold fs-2 text-primary"
+                                    [innerText]="hoursCurrentWeek|  number:'1.2-2' "></span>
                             </div>
                         </div>
                         <!-- /card -->
-                    </div>
+                    </div> 
                     <!-- /col -->
                     <!-- col -->
                     <div class="col-xl-2 col-md-6 col-12">
                         <!-- card -->
                         <div class="card rounded-0 bg-white h-100 shadow-sm py-3">
                             <div class="card-body py-0">
-                                <div class="card-text fw-bold">Hours this Month</div>
+                                <div class="card-text fw-bold">Time this Month</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-primary">23</span>
+                                <span class="fw-bold fs-2 text-primary"
+                                    [innerText]="hoursCurrentMonth"></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -89,7 +90,7 @@
                         <!-- card -->
                         <div class="card rounded-0 bg-white h-100 shadow-sm py-3">
                             <div class="card-body py-0">
-                                <div class="card-text fw-bold">Hours Total</div>
+                                <div class="card-text fw-bold">Time Total</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
                                 <span class="fw-bold fs-2 text-primary">23</span>
@@ -206,13 +207,26 @@
                     <!-- col -->
                     <div class="col-xl-4 col-md-6 col-12">
                         <!-- card -->
-                        <div class="card rounded-0 bg-white mb-3 shadow-sm py-3">
-                            <div class="card-body py-0 text-center d-flex align-items-center flex-column">
-                                <div class="fs-3 text-primary">Congratulations!</div>
-                                <p class="text-muted">For your achievements this week</p>
-                                <img src="assets/images/congratulations.png" width="100px" alt="" class="mb-2">
-                                <p class="text-muted w-50">Keep up the good work and recieve more rewards from us. Boom!
-                                </p>
+                        <div class="card rounded-0 bg-white mb-3 shadow-sm">
+                            <div class="card-header bg-white border-0 pt-3 pb-0">
+                                <div class="fw-bold mb-0">Montly Progress Report</div>
+                            </div>
+                            <div class="card-body mb-3 py-0 text-center d-flex align-items-center flex-column">
+                                <div class="circle-wrap shadow">
+                                    <div class="circle">
+                                        <div class="mask half">
+                                            <div class="fill bg-primary" [style.transform]="'rotate(' + x + 'deg)'">
+                                            </div>
+                                        </div>
+                                        <div class="mask full" [style.transform]="'rotate(' + x + 'deg)'">
+                                            <div class="fill bg-primary" [style.transform]="'rotate(' + x + 'deg)'">
+                                            </div>
+                                        </div>
+                                        <div class="inside-circle text-primary bg-white border fs-2 fw-bold">
+                                            {{ percentage }}%
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /card -->

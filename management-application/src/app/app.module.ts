@@ -27,6 +27,7 @@ import { TitleCasePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
 import { UserProfileComponent } from './pages/dashboard/user-details/user-profile/user-profile/user-profile.component';
+import { TimePipe } from './shared/pipes/time.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { UserProfileComponent } from './pages/dashboard/user-details/user-profil
     UserDetailsComponent,
     TrackTimeComponent,
     UserProfileComponent,
+    TimePipe,
   ],
   imports: [
     BrowserModule,

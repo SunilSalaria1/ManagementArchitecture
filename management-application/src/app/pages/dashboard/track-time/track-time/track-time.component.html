@@ -2,7 +2,7 @@
     <!-- form confirmation alert -->
     <!-- error toast -->
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
-        *ngIf="error" aria-live="assertive" aria-atomic="true">
+        *ngIf="errorAlert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div><span class="ms-2 small">Error! Please try again.</span>
             </div>
@@ -79,11 +79,21 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="mb-3" hidden>
+                                        <label class="form-label">dateOnly</label>
+                                        <input class="form-control shadow-sm rounded-0" formControlName="dateOnly"
+                                            [(ngModel)]="dateOnly" [value]="dateOnly">
+                                    </div>
+                                    <div class="mb-3" hidden>
+                                        <label class="form-label">monthOnly</label>
+                                        <input class="form-control shadow-sm rounded-0" formControlName="monthOnly"
+                                            [(ngModel)]="monthOnly" [value]="monthOnly">
+                                    </div>
                                     <div class="mb-3">
                                         <div class="row">
                                             <div class="col-6">
                                                 <label class="form-label">Time (hours)</label>
-                                                <select class="form-select shadow-sm rounded-0"
+                                                <select class="form-select shadow-sm rounded-0" type="text"
                                                     formControlName="timeHours">
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -100,13 +110,21 @@
                                                     <option value="13">13</option>
                                                     <option value="14">14</option>
                                                     <option value="15">15</option>
+                                                    <option value="15">16</option>
+                                                    <option value="15">17</option>
+                                                    <option value="15">18</option>
+                                                    <option value="15">19</option>
+                                                    <option value="15">20</option>
+                                                    <option value="15">21</option>
+                                                    <option value="15">22</option>
+                                                    <option value="15">23</option>
                                                 </select>
                                             </div>
                                             <div class="col-6">
                                                 <label class="form-label">Time (minutes)</label>
                                                 <select class="form-select shadow-sm rounded-0"
                                                     formControlName="timeMinutes">
-                                                    <option value="5">5</option>
+                                                    <option value="05">05</option>
                                                     <option value="10">10</option>
                                                     <option value="15">15</option>
                                                     <option value="20">20</option>
