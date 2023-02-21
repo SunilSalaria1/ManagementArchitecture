@@ -10,6 +10,10 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  // on Leave
+  onLeave: boolean = false;
+  // monthly leaves
+  leaveCount: number = 0;
   // performance progress indicator
   percentage: number = 50;
   x = (180 * this.percentage) / 100;
@@ -48,7 +52,22 @@ export class DashboardComponent implements OnInit {
     let totalMinutesCurrentMonth = 0;
 
     this.userservice.getData().subscribe((data) => {
+      //monthly leave count
+      this.leaveCount = data.filter(function (filteredData: any) {
+        if (
+          filteredData.task === 'On Leave' &&
+          filteredData.monthOnly == currentMonth
+        ) {
+          return true;
+        }
+        return false;
+      }).length;
       data.forEach((item: any) => {
+        // leave status
+        if (item.task === 'On Leave') {
+          console.log(item);
+          this.onLeave = true;
+        }
         // calculate hours of current week
         let convertTimeHours;
         let convertTimeMinutes;
@@ -77,7 +96,7 @@ export class DashboardComponent implements OnInit {
         }
         // calculate hours of current month
         let convertTimeMonth;
-        if ((item.dateOnly = currentMonth)) {
+        if (item.monthOnly == currentMonth) {
           convertTimeMonth = parseInt(item.timeHours);
           totalHoursCurrentMonth += convertTimeMonth;
           // minutes

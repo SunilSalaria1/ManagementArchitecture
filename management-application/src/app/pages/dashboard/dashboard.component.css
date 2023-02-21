@@ -47,3 +47,8 @@
       position: absolute;
       z-index: 100;
     }
+    /* availability status */
+    .availability-status{
+        width: 14px;
+        height: 14px;
+    }

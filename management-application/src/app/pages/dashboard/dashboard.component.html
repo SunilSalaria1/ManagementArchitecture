@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <!-- /card -->
-                    </div> 
+                    </div>
                     <!-- /col -->
                     <!-- col -->
                     <div class="col-xl-2 col-md-6 col-12">
@@ -78,8 +78,7 @@
                                 <div class="card-text fw-bold">Time this Month</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-primary"
-                                    [innerText]="hoursCurrentMonth"></span>
+                                <span class="fw-bold fs-2 text-primary" [innerText]="hoursCurrentMonth"></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -93,7 +92,7 @@
                                 <div class="card-text fw-bold">Time Total</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-primary">23</span>
+                                <span class="fw-bold fs-2 text-primary"></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -107,7 +106,7 @@
                                 <div class="card-text fw-bold">Monthly Leaves</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-danger">23</span>
+                                <span class="fw-bold fs-2 text-danger"[innerText]="leaveCount"></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -125,6 +124,7 @@
                                 <table class="table table-striped mb-0">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Availability</th>
                                             <th scope="col">Project</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Time (Hours)</th>
@@ -133,7 +133,14 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of sortData">
-                                            <!-- <th scope="row">{{ item.id }}</th> -->
+                                            <td>
+                                                <div class="availability-status shadow-sm rounded-circle bg-danger"
+                                                    *ngIf="item.task ==='On Leave'">
+                                                </div>
+                                                <div class="availability-status shadow-sm rounded-circle bg-success"
+                                                    *ngIf="item.task !=='On Leave'">
+                                                </div>
+                                            </td>
                                             <td>{{ item.project }}</td>
                                             <td>{{ item.date | date : "dd-MMM-yyyy" }}</td>
                                             <td>
