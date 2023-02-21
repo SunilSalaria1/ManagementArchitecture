@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   // monthly leaves
   leaveCount: number = 0;
   // performance progress indicator
-  percentage: number = 50;
+  percentage: number = 30;
   x = (180 * this.percentage) / 100;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
