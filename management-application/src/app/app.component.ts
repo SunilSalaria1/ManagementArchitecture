@@ -9,6 +9,8 @@ import { UserService } from './services/user/user.service';
 })
 export class AppComponent {
   title = 'management-application';
+  // loader
+  loader: boolean = true;
   // change margin of main
   mainMargin: boolean = false;
   // show and hide aside, header
@@ -19,6 +21,9 @@ export class AppComponent {
     this.asideHeader = this.commonservice.asideHeader;
   }
   ngOnInit(): void {
+    setTimeout(() => {
+      this.loader = false;
+    }, 1000);
     if (localStorage.getItem('loggedInUser')) {
       this.commonservice.authentication = true;
       this.commonservice.aside = true;

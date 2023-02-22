@@ -1,3 +1,15 @@
+<div class="spinner bg-white position-fixed vh-100 vw-100" *ngIf="loader">
+    <!-- col -->
+    <div class="d-flex justify-content-center spinner-logo">
+        <div class="d-flex align-items-center justify-content-center vh-100" id="logo">
+            <img src="./assets/images/logo.svg" alt="Logo" width="80" height="80">
+            <span class="logo-text fs-3 fw-bold text-primary">TRACKER</span>
+        </div>
+        <div class="text-primary mt-2 fw-bold" id="profileName"></div>
+        <small class="text-center text-nowrap" id="profileDesignation"></small>
+    </div>
+    <!-- /col -->
+</div>
 <section id="layout">
     <!-- aside nav-->
     <app-aside-nav></app-aside-nav>

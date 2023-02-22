@@ -14,9 +14,10 @@ export class DashboardComponent implements OnInit {
   onLeave: boolean = false;
   // monthly leaves
   leaveCount: number = 0;
+  totalMonthlyHours: number = 0;
   // performance progress indicator
-  percentage: number = 30;
-  x = (180 * this.percentage) / 100;
+  percentage: any;
+  x: any;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
   dateCurrent = new Date();
@@ -51,7 +52,20 @@ export class DashboardComponent implements OnInit {
     let totalHoursCurrentMonth = 0;
     let totalMinutesCurrentMonth = 0;
 
+    this.userservice.getLoggedUserData().subscribe((data) => {
+      this.currentUserName = data.firstName;
+      this.currentUserProfession = data.profession;
+    });
+
     this.userservice.getData().subscribe((data) => {
+      // total month hours according to the records
+      this.totalMonthlyHours = data.filter(function (filteredData: any) {
+        if (filteredData.monthOnly == currentMonth) {
+          return true;
+        }
+        return false;
+      }).length;
+      this.totalMonthlyHours = this.totalMonthlyHours * 8;
       //monthly leave count
       this.leaveCount = data.filter(function (filteredData: any) {
         if (
@@ -90,8 +104,15 @@ export class DashboardComponent implements OnInit {
             this.hoursCurrentWeek = totalTimeCurrentWeek;
           }
           if (totalMinutesCurrentWeek < 60) {
-            let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${totalMinutesCurrentWeek}`;
-            this.hoursCurrentWeek = totalTimeCurrentWeek;
+            if (totalMinutesCurrentWeek < 10) {
+              let prependedNumber = '0' + totalMinutesCurrentWeek;
+              let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${prependedNumber}`;
+              this.hoursCurrentWeek = totalTimeCurrentWeek;
+            }
+            if (totalMinutesCurrentWeek > 9) {
+              let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${totalMinutesCurrentWeek}`;
+              this.hoursCurrentWeek = totalTimeCurrentWeek;
+            }
           }
         }
         // calculate hours of current month
@@ -112,15 +133,22 @@ export class DashboardComponent implements OnInit {
             this.hoursCurrentMonth = totalTimeCurrentMonth;
           }
           if (totalMinutesCurrentMonth < 60) {
-            let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${totalMinutesCurrentMonth}`;
-            this.hoursCurrentMonth = totalTimeCurrentMonth;
+            console.log('less than 60   ' + totalMinutesCurrentMonth);
+            if (totalMinutesCurrentMonth < 10) {
+              let prependedNumber = '0' + totalMinutesCurrentMonth;
+              let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${prependedNumber}`;
+              this.hoursCurrentMonth = totalTimeCurrentMonth;
+            }
+            if (totalMinutesCurrentMonth > 9) {
+              let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${totalMinutesCurrentMonth}`;
+              this.hoursCurrentMonth = totalTimeCurrentMonth;
+            }
           }
+          this.percentage =
+            (this.hoursCurrentMonth / this.totalMonthlyHours) * 100;
+          this.x = (180 * this.percentage) / 100;
         }
       });
-    });
-    this.userservice.getLoggedUserData().subscribe((data) => {
-      this.currentUserName = data.firstName;
-      this.currentUserProfession = data.profession;
     });
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
@@ -131,8 +159,9 @@ export class DashboardComponent implements OnInit {
       let currentDateHours = UserTrackData.filter((data: any) => {
         return data.date == this.currentDate;
       });
-      this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
+
       this.trackTableData = UserTrackData;
+      this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
       console.log(this.hoursToday);
     });
 
@@ -142,12 +171,6 @@ export class DashboardComponent implements OnInit {
       this.commonservice.asideHeader = false;
       this.commonservice.adminPortal = false;
     }
-  }
-  firstDay(firstDay: any, lastDay: any) {
-    throw new Error('Method not implemented.');
-  }
-  lastDay(firstDay: any, lastDay: any) {
-    throw new Error('Method not implemented.');
   }
   get sortData() {
     return this.trackTableData.sort((a: any, b: any) => {

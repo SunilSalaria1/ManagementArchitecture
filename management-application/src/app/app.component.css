@@ -1,0 +1,17 @@
+@keyframes ScaleInOut {
+    0% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+.spinner {
+    z-index: 9999;
+}
+
+.spinner-logo {
+    animation: ScaleInOut 0.6s ease-in-out 0.4s infinite alternate;
+}

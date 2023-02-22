@@ -34,14 +34,6 @@
     from {
         transform: rotate(0deg);
     }
-
-    /* 0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(90deg);
-    } */
 }
 
 .circle-wrap .inside-circle {
@@ -57,7 +49,9 @@
 }
 
 /* availability status */
-.availability-status {
+.availability-status, .indicator {
     width: 14px;
     height: 14px;
 }
+/* below average */
+

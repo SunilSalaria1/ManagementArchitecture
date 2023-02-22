@@ -89,7 +89,7 @@
                         <!-- card -->
                         <div class="card rounded-0 bg-white h-100 shadow-sm py-3">
                             <div class="card-body py-0">
-                                <div class="card-text fw-bold">Time Total</div>
+                                <div class="card-text fw-bold">Monthly Over Time</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
                                 <span class="fw-bold fs-2 text-primary"></span>
@@ -106,7 +106,7 @@
                                 <div class="card-text fw-bold">Monthly Leaves</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-danger"[innerText]="leaveCount"></span>
+                                <span class="fw-bold fs-2 text-danger" [innerText]="leaveCount"></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -148,11 +148,11 @@
                                                 }}{{ item.timeMinutes}}
                                             </td>
                                             <td>
-                                                <a
+                                                <!-- <a
                                                     class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
-                                                        class="text-primary fa-sharp fa-solid fa-pencil"></i></a>
+                                                        class="text-primary fa-sharp fa-solid fa-pencil"></i></a> -->
                                                 <a
-                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none">
+                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none" title="View & Edit Detail">
                                                     <svg height="16px" width="16px"
                                                         class="position absolute password-svg" version="1.1" id="_x32_"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -174,36 +174,6 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        <!-- <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                                <a
-                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
-                                                        class="text-primary fa-sharp fa-solid fa-pencil"></i></a>
-                                                <a
-                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><svg
-                                                        height="16px" width="16px"
-                                                        class="position absolute password-svg" version="1.1" id="_x32_"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <path #fill: #000000; d="M512,282.163c-0.881-1.49-21.826-38.71-63.998-76.621c-21.106-18.932-47.584-38.03-79.667-52.494
-            c-32.041-14.455-69.743-24.183-112.337-24.162c-42.595-0.014-80.296,9.707-112.341,24.162
-            c-48.12,21.722-83.626,53.753-107.33,80.244C12.627,259.846,0.644,281.037,0,282.163l29.331,16.484l13.676,7.749l0.024-0.042
-            l0.007-0.014c0.895-1.629,20.324-34.688,56.487-66.326c18.068-15.848,40.244-31.331,66.274-42.786
-            c26.061-11.456,55.91-18.96,90.199-18.974c35.104,0.014,65.561,7.881,92.056,19.798c39.685,17.848,70.324,45.171,90.808,68.131
-            c10.245,11.462,17.938,21.785,22.98,29.1c2.525,3.657,4.385,6.566,5.574,8.49c0.594,0.966,1.02,1.679,1.286,2.119l0.252,0.448
-            l0.042,0.063l9.707-5.518l-9.734,5.469L512,282.163z" />
-                                                            <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
-            c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
-                                                        </g>
-                                                    </svg></a>
-                                            </td>
-                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -216,22 +186,50 @@
                         <!-- card -->
                         <div class="card rounded-0 bg-white mb-3 shadow-sm">
                             <div class="card-header bg-white border-0 pt-3 pb-0">
-                                <div class="fw-bold mb-0">Montly Progress Report</div>
+                                <div class="fw-bold mb-0">Monthly Performance Report</div>
                             </div>
                             <div class="card-body mb-3 py-0 text-center d-flex align-items-center flex-column">
                                 <div class="circle-wrap shadow">
                                     <div class="circle">
                                         <div class="mask half">
-                                            <div class="fill bg-primary" [style.transform]="'rotate(' + x + 'deg)'">
+                                            <div class="fill" [style.transform]="'rotate(' + x + 'deg)'"
+                                                [ngStyle]="{'background-color': (percentage<=30) ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :'#5e14b2'}">
                                             </div>
                                         </div>
                                         <div class="mask full" [style.transform]="'rotate(' + x + 'deg)'">
-                                            <div class="fill bg-primary" [style.transform]="'rotate(' + x + 'deg)'">
+                                            <div class="fill" [style.transform]="'rotate(' + x + 'deg)'"
+                                                [ngStyle]="{'background-color': (percentage<=30) ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :'#5e14b2'}">
                                             </div>
                                         </div>
-                                        <div class="inside-circle text-primary bg-white border fs-2 fw-bold">
-                                            {{ percentage }}%
-                                        </div>
+                                        <div class="inside-circle bg-white border fs-2 fw-bold">{{percentage|
+                                            number:'1.0-0'}}%</div>
+                                    </div>
+                                </div>
+                                <div class="row w-100">
+                                    <div class="col-6 d-flex align-items-center">
+                                        <span class="indicator d-block shadow-sm bg-danger">
+                                        </span>
+                                       <span class="small ms-2">Below Average</span>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <span class="indicator d-block shadow-sm" style="background-color: #48b3f6;">
+                                        </span>
+                                       <span class="small ms-2">Average</span>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <span class="indicator d-block shadow-sm" style="background-color: #ffa500;">
+                                        </span>
+                                       <span class="small ms-2">Good</span>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <span class="indicator d-block shadow-sm bg-success">
+                                        </span>
+                                       <span class="small ms-2">Excellent</span>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <span class="indicator d-block shadow-sm bg-primary">
+                                        </span>
+                                       <span class="small ms-2">Outstanding</span>
                                     </div>
                                 </div>
                             </div>
