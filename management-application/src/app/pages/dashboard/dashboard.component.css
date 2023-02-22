@@ -49,9 +49,33 @@
 }
 
 /* availability status */
-.availability-status, .indicator {
+.availability-status,
+.indicator {
     width: 14px;
     height: 14px;
 }
-/* below average */
 
+/* below average */
+.below-average {
+    background-color: #dc3545;
+}
+
+/* average */
+.average {
+    background-color: #48b3f6;
+}
+
+/* good */
+.good {
+    background-color: #ffa500;
+}
+
+/* excellent */
+.excellent {
+    background-color: #198754;
+}
+
+/* exceptional */
+.exceptional {
+    background-color: #5e14b2;
+}

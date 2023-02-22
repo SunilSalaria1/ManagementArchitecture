@@ -14,6 +14,8 @@ import { EditRecordComponent } from './admin/edit-record/edit-record.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
 import { UserProfileComponent } from './pages/dashboard/user-details/user-profile/user-profile/user-profile.component';
+import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
+import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -70,7 +72,16 @@ const routes: Routes = [
     component: UserProfileComponent,
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'edit-tracktime/:trackUserId',
+    component: EditTracktimeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'view-tracktime/:trackUserId',
+    component: ViewTracktimeComponent,
+    canActivate: [AuthGuard]
+  },
   // page not found route
   {
     path: '**',

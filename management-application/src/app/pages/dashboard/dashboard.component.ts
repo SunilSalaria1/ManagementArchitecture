@@ -179,4 +179,12 @@ export class DashboardComponent implements OnInit {
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
   }
+  // edit track time
+  editTime(trackUserId:number){
+    this.route.navigate(['/edit-tracktime', trackUserId]);
+  }
+  // view time
+  viewTime(trackUserId:number){
+    this.route.navigate(['/view-tracktime', trackUserId]);
+  }
 }

@@ -28,6 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/track-time.component';
 import { UserProfileComponent } from './pages/dashboard/user-details/user-profile/user-profile/user-profile.component';
 import { TimePipe } from './shared/pipes/time.pipe';
+import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
+import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TimePipe } from './shared/pipes/time.pipe';
     TrackTimeComponent,
     UserProfileComponent,
     TimePipe,
+    EditTracktimeComponent,
+    ViewTracktimeComponent,
   ],
   imports: [
     BrowserModule,

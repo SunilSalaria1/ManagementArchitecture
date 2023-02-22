@@ -1,5 +1,5 @@
 <section class="vh-100 bg-light">
-    <!-- form confirmation alert -->
+      <!-- form confirmation alert -->
     <!-- error toast -->
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
         *ngIf="errorAlert" aria-live="assertive" aria-atomic="true">
@@ -33,7 +33,7 @@
                     </g>
                 </svg>
                 <div class="text-center d-flex flex-column justify-content-center align-items-center"><span
-                        class="ms-2 fs-5 text-dark">Time added successfully.</span>
+                        class="ms-2 fs-5 text-dark">Time updated successfully.</span>
                     <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3" routerLink="/dashboard">Back
                         to Dashboard</button>
                 </div>
@@ -60,7 +60,7 @@
                             <!-- /col -->
                             <!-- col -->
                             <div class="col-12 px-4">
-                                <form [formGroup]="trackTimeForm">
+                                <form [formGroup]="editTrackTimeForm">
                                     <div class="mb-3" hidden>
                                         <label class="form-label">currentUserId<span
                                                 class="text-danger">*</span></label>
@@ -69,25 +69,16 @@
                                     <div class="mb-3">
                                         <label class="form-label">Date <span class="text-danger">*</span></label>
                                         <input type="date" class="form-control shadow-sm rounded-0"
-                                            formControlName="date" [(ngModel)]="currentDate" [value]="currentDate">
-                                        <!-- date validation errors -->
-                                        <div class="text-danger small mt-2"
-                                            *ngIf="trackTimeForm.controls['date'].invalid && (trackTimeForm.controls['date'].dirty || trackTimeForm.controls['date'].untouched)">
-                                            <div
-                                                *ngIf="trackTimeForm.controls['date'].errors && trackTimeForm.controls['date'].errors['required']">
-                                                This is Required field.
-                                            </div>
-                                        </div>
+                                            formControlName="date">
                                     </div>
                                     <div class="mb-3" hidden>
                                         <label class="form-label">dateOnly</label>
                                         <input class="form-control shadow-sm rounded-0" formControlName="dateOnly"
-                                            [(ngModel)]="dateOnly" [value]="dateOnly">
+                                            >
                                     </div>
                                     <div class="mb-3" hidden>
                                         <label class="form-label">monthOnly</label>
-                                        <input class="form-control shadow-sm rounded-0" formControlName="monthOnly"
-                                            [(ngModel)]="monthOnly" [value]="monthOnly">
+                                       >
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">
@@ -147,14 +138,6 @@
                                             <option value="Project 3">Project 3</option>
                                             <option value="Project 4">Project 4</option>
                                         </select>
-                                        <!-- project validation errors -->
-                                        <div class="text-danger small mt-2"
-                                            *ngIf="trackTimeForm.controls['project'].invalid && (trackTimeForm.controls['project'].dirty || trackTimeForm.controls['project'].untouched)">
-                                            <div
-                                                *ngIf="trackTimeForm.controls['project'].errors && trackTimeForm.controls['project'].errors['required']">
-                                                This is Required field.
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Task <span class="text-danger">*</span></label>
@@ -164,28 +147,20 @@
                                             <option value="Testing">Testing</option>
                                             <option value="On Leave">On Leave</option>
                                         </select>
-                                        <!-- task validation errors -->
-                                        <div class="text-danger small mt-2"
-                                            *ngIf="trackTimeForm.controls['task'].invalid && (trackTimeForm.controls['task'].dirty || trackTimeForm.controls['task'].untouched)">
-                                            <div
-                                                *ngIf="trackTimeForm.controls['task'].errors && trackTimeForm.controls['task'].errors['required']">
-                                                This is Required field.
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
                                         <textarea class="form-control shadow-sm rounded-0"
-                                            style="white-space: pre-line;" formControlName="description"></textarea>
+                                            formControlName="description"></textarea>
                                     </div>
                                     <div class="d-flex flex-column flex-sm-row justify-content-end py-3">
                                         <button [routerLink]="['/dashboard']"
                                             class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i
                                                 class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
                                                 Now</span></button>
-                                        <button (click)="trackTimeClick()"
+                                        <button (click)="editTrackTimeDetail(editTrackTimeForm.value)"
                                             class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i
-                                                class="fa-solid fa-check"></i><span class="ms-2">Log Time Now</span>
+                                                class="fa-solid fa-check"></i><span class="ms-2">Update</span>
                                         </button>
                                     </div>
                                 </form>

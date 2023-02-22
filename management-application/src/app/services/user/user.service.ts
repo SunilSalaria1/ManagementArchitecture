@@ -20,4 +20,10 @@ export class UserService {
   getData() {
     return this.http.get<any>('http://localhost:3000/userTrackTime');
   }
+  renderUserTrackTime(userId: number) {
+    return this.http.get<any>(`http://localhost:3000/userTrackTime/${userId}`);
+  }
+  editTrackTimeDetail(userId: number, value: any) {
+    return this.http.put(`http://localhost:3000/userTrackTime//${userId}`, value);
+  }
 }

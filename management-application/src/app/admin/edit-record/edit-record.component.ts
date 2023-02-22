@@ -8,9 +8,6 @@ import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.s
   styleUrls: ['./edit-record.component.css'],
 })
 export class EditRecordComponent implements OnInit {
-  static demofun() {
-    throw new Error('Method not implemented.');
-  }
   showSuccessAlert: boolean = false;
   editUserId: number = 0;
   tableData: any = [];

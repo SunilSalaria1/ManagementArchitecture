@@ -125,6 +125,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Availability</th>
+                                            <th scope="col">Id</th>
                                             <th scope="col">Project</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Time (Hours)</th>
@@ -141,6 +142,7 @@
                                                     *ngIf="item.task !=='On Leave'">
                                                 </div>
                                             </td>
+                                            <td>{{ item.id }}</td>
                                             <td>{{ item.project }}</td>
                                             <td>{{ item.date | date : "dd-MMM-yyyy" }}</td>
                                             <td>
@@ -148,11 +150,11 @@
                                                 }}{{ item.timeMinutes}}
                                             </td>
                                             <td>
-                                                <a
+                                                <a (click)="editTime(item.id)" title="Edit Detail"
                                                     class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
                                                         class="text-primary fa-sharp fa-solid fa-pencil"></i></a>
-                                                <a class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"
-                                                    title="View & Edit Detail">
+                                                <a (click)="viewTime(item.id)" class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"
+                                                    title="View Detail">
                                                     <svg height="16px" width="16px"
                                                         class="position absolute password-svg" version="1.1" id="_x32_"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -193,12 +195,12 @@
                                     <div class="circle">
                                         <div class="mask half">
                                             <div class="fill" [style.transform]="'rotate(' + x + 'deg)'"
-                                                [ngStyle]="{'background-color': (percentage<=30) ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :'#5e14b2'}">
+                                                [ngStyle]="{'background-color': percentage<=30 ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :percentage<100 ? '#198754' :'#5e14b2'}">
                                             </div>
                                         </div>
                                         <div class="mask full" [style.transform]="'rotate(' + x + 'deg)'">
                                             <div class="fill" [style.transform]="'rotate(' + x + 'deg)'"
-                                                [ngStyle]="{'background-color': (percentage<=30) ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :'#5e14b2'}">
+                                            [ngStyle]="{'background-color': percentage<=30 ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :percentage<100 ? '#198754' :'#5e14b2'}">
                                             </div>
                                         </div>
                                         <div class="inside-circle bg-white border fs-2 fw-bold">{{percentage|
@@ -207,29 +209,29 @@
                                 </div>
                                 <div class="row w-100">
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="indicator d-block shadow-sm bg-danger">
+                                        <span class="indicator d-block shadow-sm below-average">
                                         </span>
-                                        <span class="small ms-2">Below Average</span>
+                                        <span class="small ms-2">0-30 Below Average</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="indicator d-block shadow-sm" style="background-color: #48b3f6;">
+                                        <span class="indicator d-block shadow-sm average">
                                         </span>
-                                        <span class="small ms-2">Average</span>
+                                        <span class="small ms-2">30-60 Average</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="indicator d-block shadow-sm" style="background-color: #ffa500;">
+                                        <span class="indicator d-block shadow-sm good">
                                         </span>
-                                        <span class="small ms-2">Good</span>
+                                        <span class="small ms-2">60-80 Good</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="indicator d-block shadow-sm bg-success">
+                                        <span class="indicator d-block shadow-sm excellent">
                                         </span>
-                                        <span class="small ms-2">Excellent</span>
+                                        <span class="small ms-2">80-100 Excellent</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="indicator d-block shadow-sm bg-primary">
+                                        <span class="indicator d-block shadow-sm exceptional">
                                         </span>
-                                        <span class="small ms-2">Above 100 Percentage</span>
+                                        <span class="small ms-2">100+ Exceptional</span>
                                     </div>
                                 </div>
                             </div>
