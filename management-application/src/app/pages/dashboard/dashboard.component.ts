@@ -14,7 +14,10 @@ export class DashboardComponent implements OnInit {
   onLeave: boolean = false;
   // monthly leaves
   leaveCount: number = 0;
+  // totalmonth hours
   totalMonthlyHours: number = 0;
+  // overtime
+  overtime: number = 0;
   // performance progress indicator
   percentage: any;
   x: any;
@@ -79,7 +82,6 @@ export class DashboardComponent implements OnInit {
       data.forEach((item: any) => {
         // leave status
         if (item.task === 'On Leave') {
-          console.log(item);
           this.onLeave = true;
         }
         // calculate hours of current week
@@ -95,11 +97,7 @@ export class DashboardComponent implements OnInit {
           if (totalMinutesCurrentWeek >= 60) {
             let calculatedHours = Math.floor(totalMinutesCurrentWeek / 60);
             totalHoursCurrentWeek = totalHoursCurrentWeek + calculatedHours;
-            console.log('hours are ' + totalHoursCurrentWeek);
             totalMinutesCurrentWeek = totalMinutesCurrentWeek % 60;
-
-            console.log('Minutes are ' + totalMinutesCurrentWeek);
-
             let totalTimeCurrentWeek = `${totalHoursCurrentWeek}.${totalMinutesCurrentWeek}`;
             this.hoursCurrentWeek = totalTimeCurrentWeek;
           }
@@ -126,14 +124,11 @@ export class DashboardComponent implements OnInit {
           if (totalMinutesCurrentMonth >= 60) {
             let calculatedHours = Math.floor(totalMinutesCurrentMonth / 60);
             totalHoursCurrentMonth = totalHoursCurrentMonth + calculatedHours;
-            console.log('hours are ' + totalHoursCurrentMonth);
             totalMinutesCurrentMonth = totalMinutesCurrentMonth % 60;
-            console.log('Minutes are ' + totalMinutesCurrentMonth);
             let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${totalMinutesCurrentMonth}`;
             this.hoursCurrentMonth = totalTimeCurrentMonth;
           }
           if (totalMinutesCurrentMonth < 60) {
-            console.log('less than 60   ' + totalMinutesCurrentMonth);
             if (totalMinutesCurrentMonth < 10) {
               let prependedNumber = '0' + totalMinutesCurrentMonth;
               let totalTimeCurrentMonth = `${totalHoursCurrentMonth}.${prependedNumber}`;
@@ -144,9 +139,17 @@ export class DashboardComponent implements OnInit {
               this.hoursCurrentMonth = totalTimeCurrentMonth;
             }
           }
+          // overtime
+          if (this.hoursCurrentMonth > this.totalMonthlyHours) {
+            this.overtime = this.hoursCurrentMonth - this.totalMonthlyHours;
+          }
           this.percentage =
             (this.hoursCurrentMonth / this.totalMonthlyHours) * 100;
           this.x = (180 * this.percentage) / 100;
+          if (this.percentage > 100) {
+            this.percentage = 100;
+            this.x = 180;
+          }
         }
       });
     });
@@ -162,7 +165,6 @@ export class DashboardComponent implements OnInit {
 
       this.trackTableData = UserTrackData;
       this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
-      console.log(this.hoursToday);
     });
 
     if (localStorage.getItem('loggedInAdmin') == 'true') {

@@ -92,7 +92,7 @@
                                 <div class="card-text fw-bold">Monthly Over Time</div>
                             </div>
                             <div class="card-footer border-0 bg-white">
-                                <span class="fw-bold fs-2 text-primary"></span>
+                                <span class="fw-bold fs-2 text-primary" [innerText]="overtime| number:'1.2-2' "></span>
                             </div>
                         </div>
                         <!-- /card -->
@@ -148,11 +148,11 @@
                                                 }}{{ item.timeMinutes}}
                                             </td>
                                             <td>
-                                                <!-- <a
-                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
-                                                        class="text-primary fa-sharp fa-solid fa-pencil"></i></a> -->
                                                 <a
-                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none" title="View & Edit Detail">
+                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
+                                                        class="text-primary fa-sharp fa-solid fa-pencil"></i></a>
+                                                <a class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"
+                                                    title="View & Edit Detail">
                                                     <svg height="16px" width="16px"
                                                         class="position absolute password-svg" version="1.1" id="_x32_"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -209,27 +209,27 @@
                                     <div class="col-6 d-flex align-items-center">
                                         <span class="indicator d-block shadow-sm bg-danger">
                                         </span>
-                                       <span class="small ms-2">Below Average</span>
+                                        <span class="small ms-2">Below Average</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
                                         <span class="indicator d-block shadow-sm" style="background-color: #48b3f6;">
                                         </span>
-                                       <span class="small ms-2">Average</span>
+                                        <span class="small ms-2">Average</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
                                         <span class="indicator d-block shadow-sm" style="background-color: #ffa500;">
                                         </span>
-                                       <span class="small ms-2">Good</span>
+                                        <span class="small ms-2">Good</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
                                         <span class="indicator d-block shadow-sm bg-success">
                                         </span>
-                                       <span class="small ms-2">Excellent</span>
+                                        <span class="small ms-2">Excellent</span>
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
                                         <span class="indicator d-block shadow-sm bg-primary">
                                         </span>
-                                       <span class="small ms-2">Outstanding</span>
+                                        <span class="small ms-2">Above 100 Percentage</span>
                                     </div>
                                 </div>
                             </div>
