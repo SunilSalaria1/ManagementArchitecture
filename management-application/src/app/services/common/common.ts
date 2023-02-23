@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CommonService {
+  // user details id
+  userDettailsId:number = 0;
   // aside toggle
   aside: boolean = true;
   // aside and header

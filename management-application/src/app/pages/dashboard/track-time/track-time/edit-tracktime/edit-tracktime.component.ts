@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { catchError } from 'rxjs';
+import { CommonService } from 'src/app/services/common/common';
 
 @Component({
   selector: 'app-edit-tracktime',
@@ -10,6 +11,7 @@ import { catchError } from 'rxjs';
   styleUrls: ['./edit-tracktime.component.css'],
 })
 export class EditTracktimeComponent implements OnInit {
+  loggedInAdmin: boolean = false;
   errorAlert: boolean = false;
   success: boolean = false;
   userDetails: any = {};
@@ -17,7 +19,9 @@ export class EditTracktimeComponent implements OnInit {
   constructor(
     private userservice: UserService,
     private activatedroute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private commonservice: CommonService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,8 +30,14 @@ export class EditTracktimeComponent implements OnInit {
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
       this.userDetails = response;
       // prefilled form
+      if (localStorage.getItem('loggedInAdmin') == 'true') {
+        this.commonservice.dashboard = false;
+      }
+      if (localStorage.getItem('loggedInUser') == 'true') {
+        this.commonservice.adminPortal = false;
+      }
       this.editTrackTimeForm = this.formBuilder.group({
-        currentUserId: [localStorage.getItem('loggedInId')],
+        currentUserId: [this.userDetails.currentUserId],
         date: [this.userDetails.date],
         dateOnly: [this.userDetails.dateOnly],
         monthOnly: [this.userDetails.monthOnly],
@@ -53,8 +63,20 @@ export class EditTracktimeComponent implements OnInit {
         console.log(result);
       });
   }
+  // cancelErrorAlert
   cancelErrorAlert() {
     this.success = false;
     this.errorAlert = false;
+  }
+  // backToDashboard
+  backToDashboard() {
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.router.navigateByUrl('/dashboard');
+    }
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.router.navigateByUrl(
+        `/user-details/${this.userDetails.currentUserId}`
+      );
+    }
   }
 }

@@ -9,6 +9,7 @@ export class UserService {
   url = 'http://localhost:3000/user';
   userId: any = localStorage.getItem('loggedInId');
   constructor(private commonservice: CommonService, private http: HttpClient) {}
+  ngOnInit(): void {}
   // get logged user data
   getLoggedUserData() {
     return this.http.get<any>(`${this.url}/${this.userId}`);
@@ -24,6 +25,9 @@ export class UserService {
     return this.http.get<any>(`http://localhost:3000/userTrackTime/${userId}`);
   }
   editTrackTimeDetail(userId: number, value: any) {
-    return this.http.put(`http://localhost:3000/userTrackTime//${userId}`, value);
+    return this.http.put(
+      `http://localhost:3000/userTrackTime//${userId}`,
+      value
+    );
   }
 }

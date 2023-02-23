@@ -28,7 +28,7 @@
                                         placeholder="Smith" id="lastName" class="form-control shadow-sm rounded-0">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <label class="form-label">Email</label>
                                     <input [(ngModel)]="tableData.email" name="email" placeholder="john@gmail.com"
                                         id="email" class="form-control shadow-sm rounded-0" readonly>
                                     <span id="requiredEmailField" class="requiredField small text-danger"></span>
@@ -52,10 +52,10 @@
                                         placeholder="+91 46383746473" id="phoneNumber"
                                         class="form-control shadow-sm rounded-0">
                                 </div>
-                                <div class="mb-3 d-none">
-                                    <label class="form-label">Password <span class="text-danger">*</span></label>
-                                    <input [(ngModel)]="tableData.password" name="password" type="password"
-                                        placeholder="******" id="password" class="form-control shadow-sm rounded-0">
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input [(ngModel)]="tableData.password" name="password" type="text"
+                                        placeholder="******" id="password" class="form-control shadow-sm rounded-0" readonly>
                                     <span id="requiredPasswordField" class="requiredField small text-danger"></span>
                                 </div>
                                 <div class="mb-3 d-none">

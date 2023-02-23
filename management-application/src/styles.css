@@ -106,12 +106,14 @@ aside {
 .breadcrumb-item.active {
     color: var(--primary-color);
 }
-.alert-danger{
+
+.alert-danger {
     width: 25%;
     top: 15px;
     right: 15px;
 }
-.alert-success{
+
+.alert-success {
     background-color: white;
     width: 25%;
     top: 50%;
@@ -119,9 +121,16 @@ aside {
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
-.btn-close:focus{
-box-shadow: none !important;
+
+.btn-close:focus {
+    box-shadow: none !important;
 }
+
+/* input readonly */
+input:read-only {
+    background-color: #e9ecef !important;
+}
+
 @media (min-width: 300px) and (max-width: 768px) {
     main {
         margin-left: 0px !important;
@@ -130,10 +139,12 @@ box-shadow: none !important;
     aside {
         transform: translateX(-300px) !important;
     }
-    .alert-danger{
+
+    .alert-danger {
         width: 90%;
     }
-    .alert-success{
+
+    .alert-success {
         width: 90%;
     }
 }

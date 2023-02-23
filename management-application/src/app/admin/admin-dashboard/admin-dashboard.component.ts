@@ -9,6 +9,8 @@ import { CommonService } from 'src/app/services/common/common';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  // password type
+  passwordType: string = 'password';
   constructor(
     private commonservice: CommonService,
     private adminportalservice: AdminPortalService,

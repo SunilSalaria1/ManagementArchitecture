@@ -1,1 +1,207 @@
-<p>add-record works!</p>
+<section class="vh-100 bg-light">
+    <!-- form confirmation alert -->
+    <!-- error toast -->
+    <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
+        *ngIf="error" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div><span class="ms-2 small">Error! Please try again.</span>
+            </div>
+            <button type="button" class="btn-close me-0 small m-auto" aria-label="Close"
+                (click)="cancelErrorAlert()"></button>
+        </div>
+    </div>
+    <!-- /error toast -->
+    <!-- success toast -->
+    <div class="alert-wrap position-fixed bg-dark bg-opacity-75 vh-100 vw-100" *ngIf="success">
+        <div class="alert shadow-sm align-items-center alert-success border-0 rounded-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <button type="button" class="btn-close btn-success-close me-0 small m-auto" aria-label="Close"
+                    (click)="cancelErrorAlert()"></button>
+                <!-- success svg -->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256"
+                    width="96px" height="96px" fill-rule="nonzero" class="mb-2">
+                    <g fill="#5e14b2" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <g transform="scale(10.66667,10.66667)">
+                            <path
+                                d="M12,2c-5.514,0 -10,4.486 -10,10c0,5.514 4.486,10 10,10c5.514,0 10,-4.486 10,-10c0,-1.126 -0.19602,-2.2058 -0.54102,-3.2168l-1.61914,1.61914c0.105,0.516 0.16016,1.05066 0.16016,1.59766c0,4.411 -3.589,8 -8,8c-4.411,0 -8,-3.589 -8,-8c0,-4.411 3.589,-8 8,-8c1.633,0 3.15192,0.49389 4.41992,1.33789l1.43164,-1.43164c-1.648,-1.194 -3.66656,-1.90625 -5.85156,-1.90625zM21.29297,3.29297l-10.29297,10.29297l-3.29297,-3.29297l-1.41406,1.41406l4.70703,4.70703l11.70703,-11.70703z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+                <!-- <img src="assets/gif/success.gif" alt="" width="200" height="200"> -->
+                <div class="text-center d-flex flex-column justify-content-center align-items-center"><span class="ms-2 fs-5 text-dark">Registered successfully.</span>
+                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3"
+                        routerLink="/admin-portal">Back to Dashboard</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- /success toast -->
+    <!-- /form confirmation alert -->
+    <div class="container-fluid">
+        <!-- row -->
+        <div class="row vh-100">
+            <!-- col -->
+            <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
+                <!-- card -->
+                <div class="card bg-white shadow-sm rounded-0 border-0">
+                    <div class="card-body px-0 py-3">
+                        <!-- row -->
+                        <div class="row m-0">
+                            <!-- col -->
+                            <div class="col-12 px-4 mb-3 pb-2 border-bottom">
+                                <h4 class="fw-bold text-primary">Register with Us!</h4>
+                            </div>
+                            <!-- /col -->
+                            <!-- col -->
+                            <div class="col-12 px-4">
+                                <form [formGroup]="addUserForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                        <input name="firstName" type="text" class="form-control shadow-sm rounded-0"
+                                            formControlName="firstName">
+                                        <!-- firstname validation errors -->
+                                        <div class="text-danger small mt-2"
+                                            *ngIf="addUserForm.controls['firstName'].invalid && (addUserForm.controls['firstName'].dirty || addUserForm.controls['firstName'].untouched)">
+                                            <div
+                                                *ngIf="addUserForm.controls['firstName'].errors && addUserForm.controls['firstName'].errors['required']">
+                                                This is Required field.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Last Name</label>
+                                        <input name="lastName" type="text" class="form-control shadow-sm rounded-0"
+                                            formControlName="lastName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                                        <input name="email" id="email" class="form-control shadow-sm rounded-0"
+                                            formControlName="email">
+                                        <!-- email validation errors -->
+                                        <div class="text-danger small mt-2"
+                                            *ngIf="addUserForm.controls['email'].invalid && (addUserForm.controls['email'].dirty || addUserForm.controls['email'].untouched)">
+                                            <div
+                                                *ngIf="addUserForm.controls['email'].errors && addUserForm.controls['email'].errors['required']">
+                                                This is Required field.
+                                            </div>
+                                            <div
+                                                *ngIf="addUserForm.controls['email'].errors && addUserForm.controls['email'].errors['email']">
+                                                Include @ in the email address
+                                            </div>
+                                        </div>
+                                        <!-- email taken -->
+                                        <div class="text-danger small mt-2" *ngIf="emailExists">Email is already
+                                            registerd.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Profession <span class="text-danger">*</span></label>
+                                        <select class="form-select shadow-sm rounded-0" formControlName="profession">
+                                            <option>Select profession</option>
+                                            <option value="Human Resource">Human Resource</option>
+                                            <option value="Front End Developer">Front End Developer</option>
+                                            <option value="Backend Developer">Backend Developer</option>
+                                            <option value="Full Stack Developer">Full Stack Developer</option>
+                                        </select>
+                                        <!-- profession validation errors -->
+                                        <div class="text-danger small mt-2"
+                                            *ngIf="addUserForm.controls['profession'].invalid && (addUserForm.controls['profession'].dirty || addUserForm.controls['profession'].untouched)">
+                                            <div
+                                                *ngIf="addUserForm.controls['profession'].errors && addUserForm.controls['profession'].errors['required']">
+                                                This is Required field.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input name="phoneNumber" type="text" id="phoneNumber"
+                                            class="form-control shadow-sm rounded-0" formControlName="phoneNumber">
+                                    </div>
+                                    <div class="mb-3 position-relative">
+                                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                                        <svg (mouseenter)="showPassword()" (mouseleave)="hidePassword()" height="16px"
+                                            width="16px" class="position absolute password-svg" version="1.1" id="_x32_"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                            xml:space="preserve">
+                                            <g>
+                                                <path #fill: #000000; d="M512,282.163c-0.881-1.49-21.826-38.71-63.998-76.621c-21.106-18.932-47.584-38.03-79.667-52.494
+            c-32.041-14.455-69.743-24.183-112.337-24.162c-42.595-0.014-80.296,9.707-112.341,24.162
+            c-48.12,21.722-83.626,53.753-107.33,80.244C12.627,259.846,0.644,281.037,0,282.163l29.331,16.484l13.676,7.749l0.024-0.042
+            l0.007-0.014c0.895-1.629,20.324-34.688,56.487-66.326c18.068-15.848,40.244-31.331,66.274-42.786
+            c26.061-11.456,55.91-18.96,90.199-18.974c35.104,0.014,65.561,7.881,92.056,19.798c39.685,17.848,70.324,45.171,90.808,68.131
+            c10.245,11.462,17.938,21.785,22.98,29.1c2.525,3.657,4.385,6.566,5.574,8.49c0.594,0.966,1.02,1.679,1.286,2.119l0.252,0.448
+            l0.042,0.063l9.707-5.518l-9.734,5.469L512,282.163z" />
+                                                <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
+            c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
+                                            </g>
+                                        </svg>
+                                        <input name="password" type="{{passwordType}}"
+                                            class="password-input form-control shadow-sm rounded-0"
+                                            formControlName="password">
+                                        <!-- password validation errors -->
+                                        <div class="text-danger small mt-2"
+                                            *ngIf="addUserForm.controls['password'].invalid && (addUserForm.controls['password'].dirty || addUserForm.controls['password'].untouched)">
+                                            <div
+                                                *ngIf="addUserForm.controls['password'].errors && addUserForm.controls['password'].errors['required']">
+                                                This is Required field.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 position-relative">
+                                        <label class="form-label">Confirm Password <span
+                                                class="text-danger">*</span></label>
+                                        <svg (mouseenter)="showConfirmPassword()" (mouseleave)="hideConfirmPassword()"
+                                            height="16px" width="16px" class="position absolute password-svg"
+                                            version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                            xml:space="preserve">
+                                            <g>
+                                                <path #fill: #000000; d="M512,282.163c-0.881-1.49-21.826-38.71-63.998-76.621c-21.106-18.932-47.584-38.03-79.667-52.494
+            c-32.041-14.455-69.743-24.183-112.337-24.162c-42.595-0.014-80.296,9.707-112.341,24.162
+            c-48.12,21.722-83.626,53.753-107.33,80.244C12.627,259.846,0.644,281.037,0,282.163l29.331,16.484l13.676,7.749l0.024-0.042
+            l0.007-0.014c0.895-1.629,20.324-34.688,56.487-66.326c18.068-15.848,40.244-31.331,66.274-42.786
+            c26.061-11.456,55.91-18.96,90.199-18.974c35.104,0.014,65.561,7.881,92.056,19.798c39.685,17.848,70.324,45.171,90.808,68.131
+            c10.245,11.462,17.938,21.785,22.98,29.1c2.525,3.657,4.385,6.566,5.574,8.49c0.594,0.966,1.02,1.679,1.286,2.119l0.252,0.448
+            l0.042,0.063l9.707-5.518l-9.734,5.469L512,282.163z" />
+                                                <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
+            c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
+                                            </g>
+                                        </svg>
+                                        <input name="confirmPassword" type="{{confirmPasswordType}}"
+                                            class="password-input form-control shadow-sm rounded-0"
+                                            formControlName="confirmPassword">
+                                        <!-- confirmpassword validation errors -->
+                                        <div class="text-danger small mt-2"
+                                            *ngIf="addUserForm.controls['confirmPassword'].invalid && (addUserForm.controls['confirmPassword'].dirty || addUserForm.controls['confirmPassword'].untouched)">
+                                            <div
+                                                *ngIf="addUserForm.controls['confirmPassword'].errors && addUserForm.controls['confirmPassword'].errors['required']">
+                                                This is Required field.
+                                            </div>
+                                        </div>
+                                        <div class="text-danger small mt-2" *ngIf="passwordsNotMatched">Passwords
+                                            doesn't match.</div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 w-100 my-3"
+                                        (click)="submitNewUser()">Register
+                                        Now</button>
+                                </form>
+                            </div>
+                            <!-- /col -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                </div>
+                <!-- /card -->
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+    </div>
+</section>

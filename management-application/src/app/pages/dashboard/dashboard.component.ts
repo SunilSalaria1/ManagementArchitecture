@@ -45,6 +45,30 @@ export class DashboardComponent implements OnInit {
     private userservice: UserService
   ) {}
   ngOnInit(): void {
+    this.userservice.getLoggedUserData().subscribe((data) => {
+      this.currentUserName = data.firstName;
+      this.currentUserProfession = data.profession;
+    });
+    this.userservice.getData().subscribe((data) => {
+      let UserTrackData = data.filter((data: any) => {
+        return data.currentUserId == this.loggedInId;
+      });
+      let currentDateHours = UserTrackData.filter((data: any) => {
+        return data.date == this.currentDate;
+      });
+      this.trackTableData = UserTrackData;
+
+      this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
+      this.commonservice.aside = true;
+      this.commonservice.asideHeader = true;
+
+      if (localStorage.getItem('loggedInAdmin') == 'true') {
+        this.route.navigateByUrl('/page-not-found');
+        this.commonservice.aside = false;
+        this.commonservice.asideHeader = false;
+        this.commonservice.adminPortal = false;
+      }
+    });
     // month
     let currentMonth = this.dateCurrent.getMonth() + 1;
     let firstDate = this.dateCurrent.getDate() - this.dateCurrent.getDay();
@@ -54,11 +78,6 @@ export class DashboardComponent implements OnInit {
     let totalMinutesCurrentWeek = 0;
     let totalHoursCurrentMonth = 0;
     let totalMinutesCurrentMonth = 0;
-
-    this.userservice.getLoggedUserData().subscribe((data) => {
-      this.currentUserName = data.firstName;
-      this.currentUserProfession = data.profession;
-    });
 
     this.userservice.getData().subscribe((data) => {
       // total month hours according to the records
@@ -70,10 +89,11 @@ export class DashboardComponent implements OnInit {
       }).length;
       this.totalMonthlyHours = this.totalMonthlyHours * 8;
       //monthly leave count
-      this.leaveCount = data.filter(function (filteredData: any) {
+      this.leaveCount = data.filter((filteredData: any) => {
         if (
           filteredData.task === 'On Leave' &&
-          filteredData.monthOnly == currentMonth
+          filteredData.monthOnly == currentMonth &&
+          filteredData.currentUserId === this.loggedInId
         ) {
           return true;
         }
@@ -87,7 +107,11 @@ export class DashboardComponent implements OnInit {
         // calculate hours of current week
         let convertTimeHours;
         let convertTimeMinutes;
-        if (item.dateOnly >= firstDate && item.dateOnly <= lastDate) {
+        if (
+          item.dateOnly >= firstDate &&
+          item.dateOnly <= lastDate &&
+          item.currentUserId === this.loggedInId
+        ) {
           convertTimeHours = parseInt(item.timeHours);
           totalHoursCurrentWeek += convertTimeHours;
           // minutes
@@ -115,7 +139,10 @@ export class DashboardComponent implements OnInit {
         }
         // calculate hours of current month
         let convertTimeMonth;
-        if (item.monthOnly == currentMonth) {
+        if (
+          item.monthOnly == currentMonth &&
+          item.currentUserId === this.loggedInId
+        ) {
           convertTimeMonth = parseInt(item.timeHours);
           totalHoursCurrentMonth += convertTimeMonth;
           // minutes
@@ -153,26 +180,6 @@ export class DashboardComponent implements OnInit {
         }
       });
     });
-    this.commonservice.aside = true;
-    this.commonservice.asideHeader = true;
-    this.userservice.getData().subscribe((data) => {
-      let UserTrackData = data.filter((data: any) => {
-        return data.currentUserId == this.loggedInId;
-      });
-      let currentDateHours = UserTrackData.filter((data: any) => {
-        return data.date == this.currentDate;
-      });
-
-      this.trackTableData = UserTrackData;
-      this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
-    });
-
-    if (localStorage.getItem('loggedInAdmin') == 'true') {
-      this.route.navigateByUrl('/page-not-found');
-      this.commonservice.aside = false;
-      this.commonservice.asideHeader = false;
-      this.commonservice.adminPortal = false;
-    }
   }
   get sortData() {
     return this.trackTableData.sort((a: any, b: any) => {
@@ -180,11 +187,11 @@ export class DashboardComponent implements OnInit {
     });
   }
   // edit track time
-  editTime(trackUserId:number){
+  editTime(trackUserId: number) {
     this.route.navigate(['/edit-tracktime', trackUserId]);
   }
   // view time
-  viewTime(trackUserId:number){
+  viewTime(trackUserId: number) {
     this.route.navigate(['/view-tracktime', trackUserId]);
   }
 }

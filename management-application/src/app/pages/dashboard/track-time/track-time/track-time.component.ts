@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./track-time.component.css'],
 })
 export class TrackTimeComponent implements OnInit {
+  getcurrentUserId: any;
   errorAlert: boolean = false;
   success: boolean = false;
   // current date
@@ -35,9 +36,14 @@ export class TrackTimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.commonservice.asideHeader);
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.getcurrentUserId = localStorage.getItem('loggedInId');
+    }
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.getcurrentUserId = this.commonservice.userDettailsId;
+    }
     this.trackTimeForm = this.formBuilder.group({
-      currentUserId: [localStorage.getItem('loggedInId')],
+      currentUserId: [this.getcurrentUserId],
       date: [''],
       dateOnly: [],
       monthOnly: [],
@@ -48,9 +54,9 @@ export class TrackTimeComponent implements OnInit {
       description: [''],
     });
     // auth guard
-    if (localStorage.getItem('loggedInAdmin') == 'true') {
-      this.route.navigateByUrl('/page-not-found');
-    }
+    // if (localStorage.getItem('loggedInAdmin') == 'true') {
+    //   this.route.navigateByUrl('/page-not-found');
+    // }
   }
   trackTimeClick() {
     if (
@@ -59,7 +65,7 @@ export class TrackTimeComponent implements OnInit {
       this.trackTimeForm.value.task == 0
     ) {
       this.trackTimeForm = this.formBuilder.group({
-        currentUserId: [localStorage.getItem('loggedInId')],
+        currentUserId: [this.getcurrentUserId],
         date: [this.trackTimeForm.value.date, Validators.required],
         dateOnly: [this.trackTimeForm.value.dateOnly],
         monthOnly: [this.trackTimeForm.value.monthOnly],
@@ -72,7 +78,11 @@ export class TrackTimeComponent implements OnInit {
     }
     if (this.trackTimeForm.valid) {
       console.log(this.trackTimeForm.value);
-      console.log(this.trackTimeForm.value.date, this.trackTimeForm.value.dateOnly, this.trackTimeForm.value.monthOnly)
+      console.log(
+        this.trackTimeForm.value.date,
+        this.trackTimeForm.value.dateOnly,
+        this.trackTimeForm.value.monthOnly
+      );
       this.userservice
         .postTrackTime(this.trackTimeForm.value)
         .pipe(
@@ -81,7 +91,7 @@ export class TrackTimeComponent implements OnInit {
           })
         )
         .subscribe((data) => {
-          if(data){
+          if (data) {
             this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
             this.success = true;
           }
@@ -92,5 +102,15 @@ export class TrackTimeComponent implements OnInit {
   cancelErrorAlert() {
     this.success = false;
     this.errorAlert = false;
+  }
+  backToDashboard() {
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.route.navigateByUrl('/dashboard');
+    }
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.route.navigateByUrl(
+        `/user-details/${this.commonservice.userDettailsId}`
+      );
+    }
   }
 }

@@ -16,6 +16,7 @@ import { TrackTimeComponent } from './pages/dashboard/track-time/track-time/trac
 import { UserProfileComponent } from './pages/dashboard/user-details/user-profile/user-profile/user-profile.component';
 import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
 import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
+import { AddRecordComponent } from './admin/add-record/add-record.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'admin-portal',
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-user',
+    component: AddRecordComponent,
     canActivate: [AuthGuard]
   },
   {

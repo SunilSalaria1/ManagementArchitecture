@@ -1,5 +1,5 @@
 <section class="vh-100 bg-light">
-      <!-- form confirmation alert -->
+    <!-- form confirmation alert -->
     <!-- error toast -->
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
         *ngIf="errorAlert" aria-live="assertive" aria-atomic="true">
@@ -34,8 +34,10 @@
                 </svg>
                 <div class="text-center d-flex flex-column justify-content-center align-items-center"><span
                         class="ms-2 fs-5 text-dark">Time updated successfully.</span>
-                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3" routerLink="/dashboard">Back
+                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3"
+                        (click)="backToDashboard()">Back
                         to Dashboard</button>
+
                 </div>
             </div>
         </div>
@@ -73,12 +75,11 @@
                                     </div>
                                     <div class="mb-3" hidden>
                                         <label class="form-label">dateOnly</label>
-                                        <input class="form-control shadow-sm rounded-0" formControlName="dateOnly"
-                                            >
+                                        <input class="form-control shadow-sm rounded-0" formControlName="dateOnly">
                                     </div>
                                     <div class="mb-3" hidden>
                                         <label class="form-label">monthOnly</label>
-                                       >
+                                        >
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">
