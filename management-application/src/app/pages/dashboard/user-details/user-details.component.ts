@@ -11,6 +11,10 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
+  // delete popup
+  deletePopup: boolean = false;
+  // pass id to confirm delete functionality
+  deleteItem: number = 0;
   // on Leave
   onLeave: boolean = false;
   // monthly leaves
@@ -47,8 +51,8 @@ export class UserDetailsComponent implements OnInit {
     private commonservice: CommonService,
     private userservice: UserService
   ) {}
-
-  ngOnInit() {
+  renderFullDetail() {
+    console.log('running');
 
     let userId = this.activatedroute.snapshot.params['userId'];
     this.commonservice.userDettailsId = userId;
@@ -93,8 +97,11 @@ export class UserDetailsComponent implements OnInit {
         // calculate hours of current week
         let convertTimeHours;
         let convertTimeMinutes;
-        if (item.dateOnly >= firstDate && item.dateOnly <= lastDate && item.currentUserId === userId
-          ) {
+        if (
+          item.dateOnly >= firstDate &&
+          item.dateOnly <= lastDate &&
+          item.currentUserId === userId
+        ) {
           convertTimeHours = parseInt(item.timeHours);
           totalHoursCurrentWeek += convertTimeHours;
           // minutes
@@ -122,7 +129,7 @@ export class UserDetailsComponent implements OnInit {
         }
         // calculate hours of current month
         let convertTimeMonth;
-        if (item.monthOnly == currentMonth  && item.currentUserId === userId) {
+        if (item.monthOnly == currentMonth && item.currentUserId === userId) {
           convertTimeMonth = parseInt(item.timeHours);
           totalHoursCurrentMonth += convertTimeMonth;
           // minutes
@@ -174,17 +181,31 @@ export class UserDetailsComponent implements OnInit {
       this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
     });
   }
+  ngOnInit() {
+    this.renderFullDetail();
+  }
   get sortData() {
     return this.trackTableData.sort((a: any, b: any) => {
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
   }
   // edit track time
-  editTime(trackUserId:number){
+  editTime(trackUserId: number) {
     this.route.navigate(['/edit-tracktime', trackUserId]);
   }
   // view time
-  viewTime(trackUserId:number){
+  viewTime(trackUserId: number) {
     this.route.navigate(['/view-tracktime', trackUserId]);
+  }
+
+  // show delete popup
+  showDeletePopup(ProductId: any) {
+    this.deleteItem = ProductId;
+    this.deletePopup = true;
+  }
+  // recieve value
+  recieveData(event: any) {
+    this.deletePopup = event;
+    this.renderFullDetail();
   }
 }

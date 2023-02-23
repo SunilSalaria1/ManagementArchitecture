@@ -3,7 +3,8 @@
     <!-- header-nav -->
     <nav aria-label="Navigation" class="navbar navbar-expand w-100 py-0">
         <div class="container-fluid justify-content-lg-between py-1">
-            <div class="order-2 order-lg-1 border rounded-circle shadow-sm p-2" id="asideToggleBtn" (click)=" asideToggle()">
+            <div class="order-2 order-lg-1 border rounded-circle shadow-sm p-2" id="asideToggleBtn"
+                (click)=" asideToggle()">
                 <!-- menu-svg -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list"
                     viewBox="0 0 16 16">
@@ -35,8 +36,9 @@
                             <li><a class="dropdown-item py-2 border-bottom" href="#"><i
                                         class="fa-solid fa-gear"></i><span class="ms-3">Settings</span></a>
                             </li>
-                            <li [routerLink]="['/login']" (click)="logout()" ><a class="dropdown-item py-2"><i class="fa-solid fa-power-off logout"></i><span
-                               class="ms-3">Logout</span></a></li>
+                            <li [routerLink]="['/login']" (click)="logout()"><a class="dropdown-item py-2"><i
+                                        class="fa-solid fa-power-off logout"></i><span class="ms-3">Logout</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

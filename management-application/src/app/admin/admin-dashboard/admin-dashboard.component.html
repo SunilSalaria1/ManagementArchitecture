@@ -74,7 +74,8 @@
                         <table id="table" class="table table-striped rounded-0 shadow-sm">
                             <thead class="bg-primary text-white text-center">
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">SNo.</th>
+                                    <!-- <th scope="col">Id</th> -->
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
@@ -85,8 +86,9 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center" id="tableBody">
-                                <tr *ngFor="let item of tableData">
-                                    <td>{{item.id}}</td>
+                                <tr *ngFor="let item of tableData; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <!-- <td>{{item.id}}</td> -->
                                     <td>{{item.firstName|titlecase}}</td>
                                     <td>{{item.lastName|titlecase}}</td>
                                     <td>{{item.email}}</td>

@@ -10,6 +10,10 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  // delete popup
+  deletePopup: boolean = false;
+  // pass id to confirm delete functionality
+  deleteItem: number = 0;
   // on Leave
   onLeave: boolean = false;
   // monthly leaves
@@ -44,7 +48,7 @@ export class DashboardComponent implements OnInit {
     private route: Router,
     private userservice: UserService
   ) {}
-  ngOnInit(): void {
+  renderFullDetail() {
     this.userservice.getLoggedUserData().subscribe((data) => {
       this.currentUserName = data.firstName;
       this.currentUserProfession = data.profession;
@@ -181,6 +185,9 @@ export class DashboardComponent implements OnInit {
       });
     });
   }
+  ngOnInit(): void {
+    this.renderFullDetail();
+  }
   get sortData() {
     return this.trackTableData.sort((a: any, b: any) => {
       return <any>new Date(b.date) - <any>new Date(a.date);
@@ -193,5 +200,15 @@ export class DashboardComponent implements OnInit {
   // view time
   viewTime(trackUserId: number) {
     this.route.navigate(['/view-tracktime', trackUserId]);
+  }
+  // show delete popup
+  showDeletePopup(ProductId: any) {
+    this.deleteItem = ProductId;
+    this.deletePopup = true;
+  }
+  // recieve value
+  recieveData(event: any) {
+    this.deletePopup = event;
+    this.renderFullDetail();
   }
 }

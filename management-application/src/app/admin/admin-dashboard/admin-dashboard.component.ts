@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AdminPortalService } from 'src/app/services/admin-portal/admin-portal.service';
 import { CommonService } from 'src/app/services/common/common';
 
@@ -27,7 +27,12 @@ export class AdminDashboardComponent implements OnInit {
 
   // pass id to confirm delete functionality
   deleteItem: number = 0;
-
+  // render data into table
+  renderData() {
+    this.adminportalservice.renderData().subscribe((data) => {
+      this.tableData = data;
+    });
+  }
   ngOnInit(): void {
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
@@ -40,12 +45,6 @@ export class AdminDashboardComponent implements OnInit {
     }
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
-  }
-  // render data into table
-  renderData() {
-    this.adminportalservice.renderData().subscribe((data) => {
-      this.tableData = data;
-    });
   }
 
   // show delete popup
@@ -68,7 +67,7 @@ export class AdminDashboardComponent implements OnInit {
   editUserDetails(userId: number) {
     this.successConfirm = false;
     this.adminportalservice.successAlert = false;
-    this.route.navigate(['/edit-user', userId]);
+    this.route.navigate(['edit-user', userId]);
   }
   // recieve value
   recieveData(event: any) {

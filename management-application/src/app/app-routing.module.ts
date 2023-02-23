@@ -24,7 +24,7 @@ const routes: Routes = [
     path: '',
     component: LoginComponent,
   },
-  
+
   // account routes
   {
     path: 'login',
@@ -44,49 +44,49 @@ const routes: Routes = [
   {
     path: 'admin-portal',
     component: AdminDashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-user',
     component: AddRecordComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-user/:userId',
     component: EditRecordComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   // dashboard routes
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'track-time',
     component: TrackTimeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-details/:userId',
     component: UserDetailsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-profile',
     component: UserProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-tracktime/:trackUserId',
     component: EditTracktimeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'view-tracktime/:trackUserId',
     component: ViewTracktimeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   // page not found route
   {

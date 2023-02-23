@@ -1,4 +1,5 @@
 <section class="container-fluid">
+    <app-delete *ngIf="deletePopup" (popupVal)="recieveData($event)" [getUserId]="deleteItem"></app-delete>
     <div>
         <!-- breadcrumb -->
         <div class="row">
@@ -18,8 +19,8 @@
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold text-primary mb-0">Dashboard</h4>
                 <button id="canceldeletePopup" [routerLink]="['/track-time']"
-                class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0"><i
-                    class="fa-solid fa-plus small"></i><span> Track Time</span></button>
+                    class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0"><i
+                        class="fa-solid fa-plus small"></i><span> Track Time</span></button>
             </div>
             <div class="card-body py-5">
                 <!-- row -->
@@ -33,7 +34,8 @@
                                     style="width: max-content">
                                     <img src="/assets/images/profile-icon.png" width="30" height="30" alt="profile" />
                                 </div>
-                                <div class="text-white text-center fs-5 fw-bold" [innerText]="currentUserName|titlecase">
+                                <div class="text-white text-center fs-5 fw-bold"
+                                    [innerText]="currentUserName|titlecase">
                                 </div>
                                 <div class="text-center text-white small" [innerText]="currentUserProfession">
                                 </div>
@@ -124,8 +126,9 @@
                                 <table class="table table-striped mb-0">
                                     <thead>
                                         <tr>
+                                            <th scope="col">SNo.</th>
                                             <th scope="col">Availability</th>
-                                            <th scope="col">Id</th>
+                                            <!-- <th scope="col">Id</th> -->
                                             <th scope="col">Project</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Time (Hours)</th>
@@ -133,7 +136,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let item of sortData">
+                                        <tr *ngFor="let item of sortData;let i=index">
+                                            <td>{{i+1}}</td>
                                             <td>
                                                 <div class="availability-status shadow-sm rounded-circle bg-danger"
                                                     *ngIf="item.task ==='On Leave'">
@@ -142,7 +146,7 @@
                                                     *ngIf="item.task !=='On Leave'">
                                                 </div>
                                             </td>
-                                            <td>{{ item.id }}</td>
+                                            <!-- <td>{{ item.id }}</td> -->
                                             <td>{{ item.project }}</td>
                                             <td>{{ item.date | date : "dd-MMM-yyyy" }}</td>
                                             <td>
@@ -153,7 +157,8 @@
                                                 <a (click)="editTime(item.id)" title="Edit Detail"
                                                     class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
                                                         class="text-primary fa-sharp fa-solid fa-pencil"></i></a>
-                                                <a (click)="viewTime(item.id)" class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"
+                                                <a (click)="viewTime(item.id)"
+                                                    class="bg-white text-success btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"
                                                     title="View Detail">
                                                     <svg height="16px" width="16px"
                                                         class="position absolute password-svg" version="1.1" id="_x32_"
@@ -174,6 +179,10 @@
                                                         </g>
                                                     </svg>
                                                 </a>
+                                                <a id="deletePopup" (click)="showDeletePopup(item.id)"
+                                                    title="Delete Record"
+                                                    class="bg-white text-danger btn rounded-0 shadow-sm border py-1 px-2 text-decoration-none"><i
+                                                        class="fa-regular fa-trash-can"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -200,7 +209,7 @@
                                         </div>
                                         <div class="mask full" [style.transform]="'rotate(' + x + 'deg)'">
                                             <div class="fill" [style.transform]="'rotate(' + x + 'deg)'"
-                                            [ngStyle]="{'background-color': percentage<=30 ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :percentage<100 ? '#198754' :'#5e14b2'}">
+                                                [ngStyle]="{'background-color': percentage<=30 ? '#dc3545' :percentage<60 ? '#48b3f6' :percentage<80 ? '#ffa500' :percentage<100 ? '#198754' :'#5e14b2'}">
                                             </div>
                                         </div>
                                         <div class="inside-circle bg-white border fs-2 fw-bold">{{percentage|

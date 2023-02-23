@@ -9,7 +9,6 @@ export class UserService {
   url = 'http://localhost:3000/user';
   userId: any = localStorage.getItem('loggedInId');
   constructor(private commonservice: CommonService, private http: HttpClient) {}
-  ngOnInit(): void {}
   // get logged user data
   getLoggedUserData() {
     return this.http.get<any>(`${this.url}/${this.userId}`);
@@ -29,5 +28,11 @@ export class UserService {
       `http://localhost:3000/userTrackTime//${userId}`,
       value
     );
+  }
+  // delete the user track time from the table
+  deleteUser(userId: number) {
+    this.http
+      .delete(`http://localhost:3000/userTrackTime/${userId}`)
+      .subscribe();
   }
 }

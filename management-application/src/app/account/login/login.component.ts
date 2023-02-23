@@ -4,6 +4,7 @@ import { catchError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CommonService } from 'src/app/services/common/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private commonservice: CommonService
+    private commonservice: CommonService,
+    private userservice: UserService
   ) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -86,6 +88,7 @@ export class LoginComponent implements OnInit {
               this.commonservice.adminPortal = true;
               localStorage.setItem('loggedInAdmin', 'true');
               localStorage.setItem('loggedInId', data[itemIndex].id);
+              this.userservice.userId = data[itemIndex].id;
               this.router.navigateByUrl('/admin-portal');
             } else {
               this.commonservice.authentication = true;
@@ -93,6 +96,7 @@ export class LoginComponent implements OnInit {
               this.commonservice.dashboard = true;
               localStorage.setItem('loggedInUser', 'true');
               localStorage.setItem('loggedInId', data[itemIndex].id);
+              this.userservice.userId = data[itemIndex].id;
               this.router.navigateByUrl('/dashboard');
             }
           }

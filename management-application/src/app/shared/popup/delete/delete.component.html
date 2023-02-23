@@ -15,7 +15,9 @@
                         <button id="canceldeletePopup" (click)="cancelDeletePopup()"
                             class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
                                 Now</span></button>
-                        <button id="{{getUserId}}" (click)="confirmDelete(getUserId)" class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-regular fa-trash-can"></i><span class="ms-2">Delete Now</span>
+                        <button title="Delete Track Time"  *ngIf="deleteTimeTrack" id="{{getUserId}}" (click)="confirmDeleteTime(getUserId)" class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-regular fa-trash-can"></i><span class="ms-2">Delete Now</span>
+                        </button>
+                        <button title="Delete User" *ngIf="deleteUser" id="{{getUserId}}" (click)="confirmDeleteUser(getUserId)" class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-regular fa-trash-can"></i><span class="ms-2">Delete Now</span>
                         </button>
                     </div>
                 </div>
