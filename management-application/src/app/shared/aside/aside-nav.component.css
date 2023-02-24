@@ -2,9 +2,11 @@
 aside {
     width: 300px;
     overflow-x: hidden;
-    /* transition: width 0.5s; */
 }
-
+.aside-full{
+    width: 300px;
+    transform: translate(-300px);
+}
 aside .nav-link {
     color: var(--black-color);
 }
@@ -22,4 +24,17 @@ aside .nav .nav-item .nav-link:focus {
 }
 #asideToggleBtn{
     cursor: pointer;
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+    aside {
+        width: 0px;
+        padding-top: 56px;
+    }
+    .aside-full{
+        width: 300px;
+        transform: translate(0px);
+        padding-top: 56px;
+    }
+
 }

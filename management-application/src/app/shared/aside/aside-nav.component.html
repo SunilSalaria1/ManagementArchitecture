@@ -1,6 +1,8 @@
 <!-- aside nav-->
 <aside class="bg-white shadow-sm fixed-top vh-100" *ngIf="asideHeader"
-    [ngStyle]="{'transform': (aside==true) ? 'translateX(' + 0 + 'px)' : 'translateX(' + -300 + 'px)'}">
+[ngClass]="{'aside': (aside===true), 'aside-full' : (aside===false) }">
+<!-- <aside class="bg-white shadow-sm fixed-top vh-100" *ngIf="asideHeader"
+    [ngStyle]="{'transform': (aside==true) ? 'translateX(' + 0 + 'px)' : 'translateX(' + -300 + 'px)'}"> -->
     <!-- logo -->
     <!-- row -->
     <div class="row mb-3 p-1">

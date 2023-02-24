@@ -91,7 +91,7 @@ body {
 /* main css */
 main {
     /* margin-left: 301px; */
-    transition: margin-left 0.5s;
+    transition: all 0.5s;
 }
 
 /* aside */
@@ -101,6 +101,7 @@ aside {
 
 .body-wrapper {
     padding-top: 56px;
+    /* transition: all 0.5s; */
 }
 
 .breadcrumb-item.active {
@@ -136,9 +137,9 @@ input:read-only {
         margin-left: 0px !important;
     }
 
-    aside {
+    /* aside {
         transform: translateX(-300px) !important;
-    }
+    } */
 
     .alert-danger {
         width: 90%;
