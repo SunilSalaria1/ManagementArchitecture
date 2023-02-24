@@ -12,6 +12,7 @@ import { CommonService } from 'src/app/services/common/common';
 })
 export class EditTracktimeComponent implements OnInit {
   loggedInAdmin: boolean = false;
+  loggedInUser: boolean = false;
   errorAlert: boolean = false;
   success: boolean = false;
   userDetails: any = {};
@@ -25,8 +26,14 @@ export class EditTracktimeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.loggedInAdmin, this.loggedInUser);
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.loggedInUser = true;
+    }
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.loggedInAdmin = true;
+    }
     let trackUserId = this.activatedroute.snapshot.params['trackUserId'];
-    console.log(trackUserId);
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
       this.userDetails = response;
       // prefilled form

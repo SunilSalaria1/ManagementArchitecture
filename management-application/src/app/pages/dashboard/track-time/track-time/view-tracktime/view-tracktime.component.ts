@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./view-tracktime.component.css'],
 })
 export class ViewTracktimeComponent implements OnInit {
+  loggedInUser: boolean = false;
+  loggedInAdmin: boolean = false;
   viewTrackTimeDetails:any = {};
   constructor(
     private userservice: UserService,
@@ -18,6 +20,12 @@ export class ViewTracktimeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.loggedInUser = true;
+    }
+    if (localStorage.getItem('loggedInAdmin') == 'true') {
+      this.loggedInAdmin = true;
+    }
     let trackUserId = this.activatedroute.snapshot.params['trackUserId'];
     console.log(trackUserId);
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {

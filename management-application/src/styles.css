@@ -106,6 +106,10 @@ aside {
     color: var(--primary-color);
 }
 
+.breadcrumb-item.active {
+    cursor: pointer !important;
+}
+
 .alert-danger {
     width: 25%;
     top: 15px;
@@ -134,6 +138,7 @@ input:read-only {
     main {
         margin-left: 0px !important;
     }
+
     .alert-danger {
         width: 90%;
     }

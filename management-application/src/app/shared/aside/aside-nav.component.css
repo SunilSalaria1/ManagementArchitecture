@@ -2,11 +2,16 @@
 aside {
     width: 300px;
     overflow-x: hidden;
+    z-index: 99999 !important;
 }
-.aside-full{
+
+.aside-full {
     width: 300px;
     transform: translate(-300px);
+    z-index: 99999 !important;
+
 }
+
 aside .nav-link {
     color: var(--black-color);
 }
@@ -22,19 +27,18 @@ aside .nav .nav-item .nav-link:hover,
 aside .nav .nav-item .nav-link:focus {
     color: var(--primary-color);
 }
-#asideToggleBtn{
+
+#asideToggleBtn {
     cursor: pointer;
 }
 
 @media (min-width: 300px) and (max-width: 768px) {
     aside {
         width: 0px;
-        padding-top: 56px;
-    }
-    .aside-full{
-        width: 300px;
-        transform: translate(0px);
-        padding-top: 56px;
     }
 
+    .aside-full {
+        width: 220px;
+        transform: translate(0px);
+    }
 }

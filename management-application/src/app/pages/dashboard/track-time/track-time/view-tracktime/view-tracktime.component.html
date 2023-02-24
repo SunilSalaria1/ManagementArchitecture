@@ -1,7 +1,45 @@
 <section class="vh-100 bg-light">
     <div class="container-fluid">
         <!-- row -->
-        <div class="row vh-100 m-auto d-flex justify-content-center align-items-center">
+        <!-- breadcrumb -->
+        <div class="row">
+            <div class="col py-3">
+                <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="text-black text-decoration-none"
+                                [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span
+                                    class="ms-3">Home</span></a>
+                        </li>
+
+                        <li [routerLink]="['/dashboard']" class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Dashboard</span>
+                        </li>
+                        <li class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> View Track
+                                Time</span></li>
+                    </ol>
+                </nav>
+                <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="text-black text-decoration-none"
+                                [routerLink]="['/admin-portal']"><i class="fa fa-home" aria-hidden="true"></i><span
+                                    class="ms-3">Home</span></a>
+                        </li>
+
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Admin Portal</span>
+                        </li>
+                        <li class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> User Detail</span></li>
+                        <li class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> View Track
+                                Time</span></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- /breadcrumb -->
+        <div class="row mt-5 mx-auto d-flex justify-content-center align-items-center">
             <!-- col -->
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <!-- card -->

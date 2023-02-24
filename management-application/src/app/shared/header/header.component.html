@@ -1,47 +1,56 @@
 <!-- header -->
-<header class="shadow-sm bg-white" *ngIf="asideHeader"  [ngClass]="{'header-calc': (aside===true), 'header-full' : (aside===false) }">
+<header class="shadow-sm bg-white" *ngIf="asideHeader"
+    [ngClass]="{'header-calc': (aside===true), 'header-full' : (aside===false) }">
     <!-- header-nav -->
     <nav aria-label="Navigation" class="navbar navbar-expand w-100 py-0">
         <div class="container-fluid justify-content-lg-between py-1">
-            <div class="order-2 order-lg-1 border rounded-circle shadow-sm p-2" id="asideToggleBtn"
-                (click)=" asideToggle()">
-                <!-- menu-svg -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
-                    </path>
-                </svg>
-                <!-- /menu-svg -->
+            <div class="d-flex justify-content-end justify-content-lg-between w-100 order-2">
+                <div class="order-2 order-lg-1 border rounded-circle shadow-sm p-2" id="asideToggleBtn"
+                    (click)=" asideToggle()">
+                    <!-- menu-svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+                        </path>
+                    </svg>
+                    <!-- /menu-svg -->
+                </div>
+                <div class="order-1 order-lg-2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown user-dropdown">
+                            <a class="nav-link p-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <!--profile-svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
+                                    </path>
+                                </svg>
+                                <!--/profile-svg-->
+                            </a>
+                            <ul class="dropdown-menu p-0 shadow-sm rounded-0 border"
+                                aria-labelledby="navbarDropdownMenuLink">
+                                <li [routerLink]="['/user-profile']"><a class="dropdown-item py-2 border-bottom"><i
+                                            class="fa-regular fa-user"></i><span class="ms-3">Profile</span></a>
+                                </li>
+                                <li><a class="dropdown-item py-2 border-bottom" href="#"><i
+                                            class="fa-solid fa-gear"></i><span class="ms-3">Settings</span></a>
+                                </li>
+                                <li [routerLink]="['/login']" (click)="logout()"><a class="dropdown-item py-2"><i
+                                            class="fa-solid fa-power-off logout"></i><span
+                                            class="ms-3">Logout</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="order-1 order-lg-2">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown user-dropdown">
-                        <a class="nav-link p-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <!--profile-svg-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-person" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
-                                </path>
-                            </svg>
-                            <!--/profile-svg-->
-                        </a>
-                        <ul class="dropdown-menu p-0 shadow-sm rounded-0 border"
-                            aria-labelledby="navbarDropdownMenuLink">
-                            <li [routerLink]="['/user-profile']"><a class="dropdown-item py-2 border-bottom"><i
-                                        class="fa-regular fa-user"></i><span class="ms-3">Profile</span></a>
-                            </li>
-                            <li><a class="dropdown-item py-2 border-bottom" href="#"><i
-                                        class="fa-solid fa-gear"></i><span class="ms-3">Settings</span></a>
-                            </li>
-                            <li [routerLink]="['/login']" (click)="logout()"><a class="dropdown-item py-2"><i
-                                        class="fa-solid fa-power-off logout"></i><span class="ms-3">Logout</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <!-- logo -->
+            <div class="d-flex align-items-center justify-content-center order-1 d-lg-none" id="logo">
+                <img src="./assets/images/logo.svg" alt="Logo" width="48" height="48">
+                <span class="logo-text fs-5 fw-bold text-primary">TRACKER</span>
             </div>
         </div>
     </nav>

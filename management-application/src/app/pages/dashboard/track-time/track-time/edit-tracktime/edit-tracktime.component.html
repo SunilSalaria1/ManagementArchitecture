@@ -46,8 +46,47 @@
     <!-- /success toast -->
     <!-- /form confirmation alert -->
     <div class="container-fluid">
+        <!-- breadcrumb -->
+        <div class="row">
+            <div class="col py-3">
+                <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="text-black text-decoration-none"
+                                [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span
+                                    class="ms-3">Home</span></a>
+                        </li>
+
+                        <li [routerLink]="['/dashboard']" class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Dashboard</span>
+                        </li>
+                        <li class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Edit Track
+                                Time</span></li>
+                    </ol>
+                </nav>
+                <!-- breadcrumb admin -->
+                <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="text-black text-decoration-none"
+                                [routerLink]="['/admin-portal']"><i class="fa fa-home" aria-hidden="true"></i><span
+                                    class="ms-3">Home</span></a>
+                        </li>
+
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Admin Portal</span>
+                        </li>
+                        <li [routerLink]="['/..']" class="breadcrumb-item active"><i
+                            class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> User Detail</span></li>
+                        <li class="breadcrumb-item active"><i
+                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Edit Track
+                                Time</span></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- /breadcrumb -->
         <!-- row -->
-        <div class="row vh-100">
+        <div class="row mt-5">
             <!-- col -->
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
                 <!-- card -->
@@ -57,7 +96,7 @@
                         <div class="row m-0">
                             <!-- col -->
                             <div class="col-12 px-4 mb-3 pb-2 border-bottom">
-                                <h4 class="fw-bold text-primary">Track Time</h4>
+                                <h4 class="fw-bold text-primary">Edit Track Time</h4>
                             </div>
                             <!-- /col -->
                             <!-- col -->
