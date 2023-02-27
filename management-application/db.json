@@ -426,12 +426,24 @@
       "date": "2023-02-27",
       "dateOnly": "27",
       "monthOnly": "02",
-      "timeHours": "3",
+      "timeHours": "7",
       "timeMinutes": "15",
       "project": "Project 2",
       "task": "Designing",
       "description": "",
       "id": 52
+    },
+    {
+      "currentUserId": "10",
+      "date": "2023-02-27",
+      "dateOnly": "27",
+      "monthOnly": "02",
+      "timeHours": "6",
+      "timeMinutes": "50",
+      "project": "Project 4",
+      "task": "Designing",
+      "description": "",
+      "id": 53
     }
   ]
 }

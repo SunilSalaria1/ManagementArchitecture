@@ -51,25 +51,26 @@
             <div class="col m-3 py-3 bg-white shadow-sm">
                 <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
                     class="breadcrumb m-0">
-                    <ol class="breadcrumb m-0">
-                        <li (click)="backToDashboard()" class="breadcrumb-item"><span> Dashboard </span><i
-                                class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
+                    <ol class="breadcrumb m-0 align-items-center">
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
+                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Dashboard </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-                        <li class="breadcrumb-item active">Edit Track Time</li>
+                        <li class="small breadcrumb-item active">Edit Track Time</li>
                     </ol>
                 </nav>
                 <!-- breadcrumb admin -->
                 <!-- breadcrumb -->
                 <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
                     class="breadcrumb m-0">
-                    <ol class="breadcrumb m-0">
-                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><span> Admin
+                    <ol class="breadcrumb m-0 align-items-center">
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
+                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Admin
                                 Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-                        <li (click)="backToDashboard()" class="breadcrumb-item"><span> User Details
+                        <li (click)="backToDashboard()" class="small breadcrumb-item"><span> User Details
                             </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-                        <li class="breadcrumb-item active">Edit Track Time</li>
+                        <li class="small breadcrumb-item active">Edit Track Time</li>
                     </ol>
                 </nav>
 

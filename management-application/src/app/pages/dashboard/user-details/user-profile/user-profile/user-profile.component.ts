@@ -9,8 +9,6 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  loggedInUser:boolean = false;
-  loggedInAdmin:boolean = false;
   loggedUserData: any = {};
   constructor(
     private userservice: UserService,
@@ -19,11 +17,9 @@ export class UserProfileComponent implements OnInit {
   ) {}
   ngOnInit() {
     if (localStorage.getItem('loggedInUser') == 'true') {
-      this.loggedInUser = true;
       this.commonservice.adminPortal = false;
     }
     if (localStorage.getItem('loggedInAdmin') == 'true') {
-      this.loggedInAdmin = true;
       this.commonservice.dashboard = false;
     }
     this.userservice.getLoggedUserData().subscribe((response) => {

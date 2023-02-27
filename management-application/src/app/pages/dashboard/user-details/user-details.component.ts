@@ -191,11 +191,11 @@ export class UserDetailsComponent implements OnInit {
   }
   // edit track time
   editTime(trackUserId: number) {
-    this.route.navigate(['/edit-tracktime', trackUserId]);
+    this.route.navigate(['/admin-portal/edit-tracktime', trackUserId]);
   }
   // view time
   viewTime(trackUserId: number) {
-    this.route.navigate(['/view-tracktime', trackUserId]);
+    this.route.navigate(['/admin-portal/view-tracktime', trackUserId]);
   }
 
   // show delete popup

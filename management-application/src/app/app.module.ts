@@ -30,6 +30,7 @@ import { UserProfileComponent } from './pages/dashboard/user-details/user-profil
 import { TimePipe } from './shared/pipes/time.pipe';
 import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
 import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/
     TimePipe,
     EditTracktimeComponent,
     ViewTracktimeComponent,
+    AdminProfileComponent,
   ],
   imports: [
     BrowserModule,

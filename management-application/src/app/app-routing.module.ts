@@ -17,6 +17,7 @@ import { UserProfileComponent } from './pages/dashboard/user-details/user-profil
 import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
 import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
 import { AddRecordComponent } from './admin/add-record/add-record.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
 const routes: Routes = [
   // default route redirect to login page
@@ -47,6 +48,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'admin-portal/admin-profile',
+    component: AdminProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-portal/track-time',
+    component: TrackTimeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'admin-portal/add-user',
     component: AddRecordComponent,
     canActivate: [AuthGuard],
@@ -56,6 +67,16 @@ const routes: Routes = [
     component: EditRecordComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'admin-portal/edit-tracktime/:trackUserId',
+    component: EditTracktimeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-portal/view-tracktime/:trackUserId',
+    component: ViewTracktimeComponent,
+    canActivate: [AuthGuard],
+  },
 
   // dashboard routes
   {
@@ -63,8 +84,9 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
+
   {
-    path: 'track-time',
+    path: 'dashboard/track-time',
     component: TrackTimeComponent,
     canActivate: [AuthGuard],
   },
@@ -74,17 +96,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'user-profile',
+    path: 'dashboard/user-profile',
     component: UserProfileComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit-tracktime/:trackUserId',
+    path: 'dashboard/edit-tracktime/:trackUserId',
     component: EditTracktimeComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'view-tracktime/:trackUserId',
+    path: 'dashboard/view-tracktime/:trackUserId',
     component: ViewTracktimeComponent,
     canActivate: [AuthGuard],
   },

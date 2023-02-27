@@ -89,6 +89,10 @@ body {
     color: white !important;
 }
 
+/* font-awesome breadcrumb icon */
+.fa-chevron-right{
+    font-size: 12px !important;
+}
 /* == common project styling == */
 
 /* main css */

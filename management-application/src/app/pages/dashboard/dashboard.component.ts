@@ -201,11 +201,11 @@ export class DashboardComponent implements OnInit {
   }
   // edit track time
   editTime(trackUserId: number) {
-    this.route.navigate(['/edit-tracktime', trackUserId]);
+    this.route.navigate(['/dashboard/edit-tracktime', trackUserId]);
   }
   // view time
   viewTime(trackUserId: number) {
-    this.route.navigate(['/view-tracktime', trackUserId]);
+    this.route.navigate(['/dashboard/view-tracktime', trackUserId]);
   }
   // show delete popup
   showDeletePopup(ProductId: any) {

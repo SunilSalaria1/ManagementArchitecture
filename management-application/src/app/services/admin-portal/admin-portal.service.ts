@@ -17,7 +17,7 @@ export class AdminPortalService {
   }
 
   // render single user data
-  renderUserData(userId: number) {
+  renderUserData(userId: any) {
     return this.http.get<any>(`${this.url}/${userId}`);
   }
 
