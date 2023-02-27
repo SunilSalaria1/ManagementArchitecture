@@ -53,6 +53,10 @@ body {
     box-shadow: none;
 }
 
+.form-check-input:checked[type=checkbox]{
+    background-color: var(--primary-color) !important;
+}
+
 .form-control,
 .form-select {
     font-size: 1rem !important;
