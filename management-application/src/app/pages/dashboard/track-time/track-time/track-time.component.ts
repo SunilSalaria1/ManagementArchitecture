@@ -113,7 +113,7 @@ export class TrackTimeComponent implements OnInit {
     }
     if (localStorage.getItem('loggedInAdmin') == 'true') {
       this.route.navigateByUrl(
-        `/user-details/${this.commonservice.userDettailsId}`
+        `admin-portal/user-details/${this.commonservice.userDettailsId}`
       );
     }
   }

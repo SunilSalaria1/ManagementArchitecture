@@ -60,14 +60,14 @@ export class AdminDashboardComponent implements OnInit {
 
   // view user details
   viewUserDetails(userId: number) {
-    this.route.navigate(['/user-details', userId]);
+    this.route.navigate(['/admin-portal/user-details', userId]);
   }
 
   // edit user details
   editUserDetails(userId: number) {
     this.successConfirm = false;
     this.adminportalservice.successAlert = false;
-    this.route.navigate(['edit-user', userId]);
+    this.route.navigate(['admin-portal/edit-user', userId]);
   }
   // recieve value
   recieveData(event: any) {

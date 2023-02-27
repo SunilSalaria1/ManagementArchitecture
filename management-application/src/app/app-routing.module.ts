@@ -47,12 +47,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'add-user',
+    path: 'admin-portal/add-user',
     component: AddRecordComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit-user/:userId',
+    path: 'admin-portal/edit-user/:userId',
     component: EditRecordComponent,
     canActivate: [AuthGuard],
   },
@@ -69,7 +69,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'user-details/:userId',
+    path: 'admin-portal/user-details/:userId',
     component: UserDetailsComponent,
     canActivate: [AuthGuard],
   },

@@ -82,7 +82,7 @@ export class EditTracktimeComponent implements OnInit {
     }
     if (localStorage.getItem('loggedInAdmin') == 'true') {
       this.router.navigateByUrl(
-        `/user-details/${this.userDetails.currentUserId}`
+        `admin-portal/user-details/${this.userDetails.currentUserId}`
       );
     }
   }

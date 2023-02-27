@@ -8,7 +8,7 @@
       "phoneNumber": "+91 8765436787",
       "password": "admin",
       "confirmPassword": "admin",
-      "role":"admin",
+      "role": "admin",
       "id": 1
     },
     {
@@ -420,6 +420,18 @@
       "task": "Development",
       "description": "",
       "id": 51
+    },
+    {
+      "currentUserId": "10",
+      "date": "2023-02-27",
+      "dateOnly": "27",
+      "monthOnly": "02",
+      "timeHours": "3",
+      "timeMinutes": "15",
+      "project": "Project 2",
+      "task": "Designing",
+      "description": "",
+      "id": 52
     }
   ]
 }
