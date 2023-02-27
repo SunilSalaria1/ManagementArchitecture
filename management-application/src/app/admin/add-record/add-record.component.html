@@ -48,21 +48,14 @@
     <div class="container-fluid">
         <!-- breadcrumb -->
         <div class="row">
-            <div class="col py-3">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="text-black text-decoration-none"
-                                [routerLink]="['/admin-portal']"><i class="fa fa-home" aria-hidden="true"></i><span
-                                    class="ms-3">Home</span></a>
+            <div class="col m-3 py-3 bg-white shadow-sm">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb m-0">
+                    <ol class="breadcrumb m-0">
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><span> Admin
+                                Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-
-                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item active"><i
-                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Admin
-                                Portal</span>
-                        </li>
-                        <li [routerLink]="['/add-user']" class="breadcrumb-item active"><i
-                                class="small text-dark opacity-50 fa-solid fa-chevron-right"></i><span> Add New
-                                User</span></li>
+                        <li class="breadcrumb-item active">Add
+                            User</li>
                     </ol>
                 </nav>
             </div>

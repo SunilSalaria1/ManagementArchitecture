@@ -186,6 +186,12 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    if (localStorage.getItem('loggedInUser') == 'true') {
+      this.commonservice.aside = true;
+      this.commonservice.asideHeader = true;
+      this.commonservice.dashboard = true;
+      this.commonservice.adminPortal = false;
+    }
     this.renderFullDetail();
   }
   get sortData() {

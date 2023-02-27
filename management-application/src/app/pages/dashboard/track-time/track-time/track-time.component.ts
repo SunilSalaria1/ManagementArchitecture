@@ -11,6 +11,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./track-time.component.css'],
 })
 export class TrackTimeComponent implements OnInit {
+  loggedInUser: boolean = false;
+  loggedInAdmin: boolean = false;
   getcurrentUserId: any;
   errorAlert: boolean = false;
   success: boolean = false;
@@ -38,9 +40,11 @@ export class TrackTimeComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('loggedInUser') == 'true') {
       this.getcurrentUserId = localStorage.getItem('loggedInId');
+      this.loggedInUser = true;
     }
     if (localStorage.getItem('loggedInAdmin') == 'true') {
       this.getcurrentUserId = this.commonservice.userDettailsId;
+      this.loggedInAdmin = true;
     }
     this.trackTimeForm = this.formBuilder.group({
       currentUserId: [this.getcurrentUserId],

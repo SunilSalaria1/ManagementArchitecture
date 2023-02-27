@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
     }
     if (localStorage.getItem('loggedInAdmin') == 'true') {
       this.loggedInAdmin = true;
-      this.commonservice.adminPortal = false;
+      this.commonservice.dashboard = false;
     }
     this.userservice.getLoggedUserData().subscribe((response) => {
       this.loggedUserData = response;
