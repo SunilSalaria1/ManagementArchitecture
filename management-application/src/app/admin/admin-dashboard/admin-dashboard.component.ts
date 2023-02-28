@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common/common';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  searchText: string = '';
   // password type
   passwordType: string = 'password';
   constructor(
@@ -18,7 +19,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   tableData: any = [];
-
+  filterTable: any = [];
   // delete popup
   deletePopup: boolean = false;
 
@@ -33,6 +34,7 @@ export class AdminDashboardComponent implements OnInit {
       this.tableData = data;
     });
   }
+
   ngOnInit(): void {
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
@@ -45,6 +47,19 @@ export class AdminDashboardComponent implements OnInit {
     }
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
+  }
+  // do check
+
+  ngDoCheck(): void {
+    let filteredData = this.tableData.filter((data: any) => {
+      return (
+        data.firstName.toLocaleLowerCase().includes(this.searchText) ||
+        data.lastName.toLocaleLowerCase().includes(this.searchText) ||
+        data.email.toLocaleLowerCase().includes(this.searchText) ||
+        data.profession.toLocaleLowerCase().includes(this.searchText)
+      );
+    });
+    this.filterTable = filteredData;
   }
 
   // show delete popup
