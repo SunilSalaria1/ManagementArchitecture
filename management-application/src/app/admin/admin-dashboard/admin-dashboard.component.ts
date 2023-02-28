@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common/common';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  notFound: boolean = false;
   searchText: string = '';
   // password type
   passwordType: string = 'password';
@@ -19,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   tableData: any = [];
-  filterTable: any = [];
+  filterTable: any = this.tableData;
   // delete popup
   deletePopup: boolean = false;
 
@@ -39,6 +40,7 @@ export class AdminDashboardComponent implements OnInit {
     this.commonservice.aside = true;
     this.commonservice.asideHeader = true;
     this.commonservice.dashboard = false;
+    this.notFound = false;
     if (localStorage.getItem('loggedInUser') == 'true') {
       this.route.navigateByUrl('/page-not-found');
       this.commonservice.aside = false;
@@ -51,6 +53,7 @@ export class AdminDashboardComponent implements OnInit {
   // do check
 
   ngDoCheck(): void {
+    // search filter
     let filteredData = this.tableData.filter((data: any) => {
       return (
         data.firstName.toLocaleLowerCase().includes(this.searchText) ||
@@ -59,7 +62,14 @@ export class AdminDashboardComponent implements OnInit {
         data.profession.toLocaleLowerCase().includes(this.searchText)
       );
     });
-    this.filterTable = filteredData;
+    if (filteredData) {
+      this.notFound = false;
+      console.log(filteredData.length);
+      this.filterTable = filteredData;
+    }
+    if (filteredData.length < 1) {
+      this.notFound = true;
+    }
   }
 
   // show delete popup
