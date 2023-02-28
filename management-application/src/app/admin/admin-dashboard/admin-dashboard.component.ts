@@ -9,7 +9,12 @@ import { CommonService } from 'src/app/services/common/common';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  itemsPerPage:number = 5;
+  // pagination
+  currentPage: number = 1;
+  // not found text
   notFound: boolean = false;
+  // search text
   searchText: string = '';
   // password type
   passwordType: string = 'password';

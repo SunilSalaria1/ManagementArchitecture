@@ -31,6 +31,7 @@ import { TimePipe } from './shared/pipes/time.pipe';
 import { EditTracktimeComponent } from './pages/dashboard/track-time/track-time/edit-tracktime/edit-tracktime.component';
 import { ViewTracktimeComponent } from './pages/dashboard/track-time/track-time/view-tracktime/view-tracktime.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
     TitleCasePipe,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],
