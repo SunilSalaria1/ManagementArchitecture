@@ -10,6 +10,15 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  // selectedEntries
+  selectedEntry: any = 5;
+  // pagination
+  itemsPerPage: number = 5;
+  currentPage: number = 1;
+  // not found text
+  notFound: boolean = false;
+  // search text
+  searchText: string = '';
   // delete popup
   deletePopup: boolean = false;
   // pass id to confirm delete functionality
@@ -39,6 +48,8 @@ export class DashboardComponent implements OnInit {
   currentUserProfession: string = '';
   // table data
   trackTableData: any = [];
+  filterTable: any = this.trackTableData;
+
   // current user Id
   loggedInId: any = localStorage.getItem('loggedInId');
   // recent track time added
@@ -194,6 +205,21 @@ export class DashboardComponent implements OnInit {
     }
     this.renderFullDetail();
   }
+  // ng do check
+  ngDoCheck(): void {
+    let filteredData = this.sortData.filter((data: any) => {
+      return data.project.toLocaleLowerCase().includes(this.searchText);
+    });
+    if (filteredData) {
+      this.notFound = false;
+      console.log(filteredData.length);
+      this.filterTable = filteredData;
+    }
+    if (filteredData.length < 1) {
+      this.notFound = true;
+    }
+  }
+
   get sortData() {
     return this.trackTableData.sort((a: any, b: any) => {
       return <any>new Date(b.date) - <any>new Date(a.date);
@@ -216,5 +242,10 @@ export class DashboardComponent implements OnInit {
   recieveData(event: any) {
     this.deletePopup = event;
     this.renderFullDetail();
+  }
+  // entry change
+  entrychange(event: any) {
+    this.itemsPerPage = this.selectedEntry;
+    this.currentPage = 1;
   }
 }

@@ -9,8 +9,10 @@ import { CommonService } from 'src/app/services/common/common';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  itemsPerPage:number = 5;
+  // selectedEntries
+  selectedEntry: any = 5;
   // pagination
+  itemsPerPage: number = 5;
   currentPage: number = 1;
   // not found text
   notFound: boolean = false;
@@ -55,10 +57,13 @@ export class AdminDashboardComponent implements OnInit {
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
   }
-  // do check
+  
+  entrychange(event: any) {
+    this.itemsPerPage = this.selectedEntry;
+    this.currentPage = 1;
+  }
 
   ngDoCheck(): void {
-    // search filter
     let filteredData = this.tableData.filter((data: any) => {
       return (
         data.firstName.toLocaleLowerCase().includes(this.searchText) ||
