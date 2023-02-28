@@ -29,6 +29,9 @@ export class ViewTracktimeComponent implements OnInit {
     let trackUserId = this.activatedroute.snapshot.params['trackUserId'];
     console.log(trackUserId);
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
+      if(response.description = ' '){
+        response.description = "NA";
+      }
       this.viewTrackTimeDetails = response;
       console.log(this.viewTrackTimeDetails); 
     });

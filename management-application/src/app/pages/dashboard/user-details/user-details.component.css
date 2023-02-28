@@ -79,3 +79,10 @@
 .exceptional {
     background-color: #5e14b2;
 }
+
+/* project icon */
+.project-icon{
+    width: 17px;
+    height: 17px;
+    font-size: 12px;
+}
