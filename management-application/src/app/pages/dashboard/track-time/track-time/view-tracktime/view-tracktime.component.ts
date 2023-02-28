@@ -30,7 +30,7 @@ export class ViewTracktimeComponent implements OnInit {
     console.log(trackUserId);
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
       if(response.description = ' '){
-        response.description = "NA";
+        response.description = "-";
       }
       this.viewTrackTimeDetails = response;
       console.log(this.viewTrackTimeDetails); 

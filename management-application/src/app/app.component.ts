@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from './services/common/common';
 import { UserService } from './services/user/user.service';
@@ -15,6 +15,14 @@ export class AppComponent {
   mainMargin: boolean = false;
   // show and hide aside, header
   asideHeader: boolean = this.commonservice.asideHeader;
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeunloadHandler(event: any) {
+  //   event.preventDefault();
+  //  localStorage.clear();
+  //   return false;
+  // }
+
   constructor(private commonservice: CommonService) {}
   ngDoCheck(): void {
     this.mainMargin = this.commonservice.aside;
