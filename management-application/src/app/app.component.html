@@ -1,4 +1,4 @@
-<div class="spinner bg-white position-fixed vh-100 vw-100" *ngIf="loader">
+<div class="spinner bg-white position-fixed vw-100" *ngIf="loader">
     <!-- col -->
     <div class="d-flex justify-content-center spinner-logo">
         <div class="d-flex align-items-center justify-content-center vh-100" id="logo">
@@ -15,12 +15,12 @@
     <app-aside-nav></app-aside-nav>
     <!-- /aside nav-->
     <!-- main -->
-    <main class="bg-light vh-100" [ngStyle]="{'margin-left.px': (mainMargin==true && asideHeader==true) ? 301 : 0}">
+    <main class="bg-light " [ngStyle]="{'margin-left.px': (mainMargin==true && asideHeader==true) ? 301 : 0}">
         <!-- header -->
         <app-header></app-header>
         <!-- /header -->
         <!-- main body -->
-        <section class="body-wrapper">
+        <section class="body-wrapper" [ngStyle]="{'padding-top.px': (asideHeader==true) ? 56 : 0}">
             <!-- main-content -->
             <router-outlet></router-outlet>
             <!-- /main-content -->

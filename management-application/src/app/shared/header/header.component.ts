@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   // logout
   logout() {
     localStorage.clear();
+    this.route.navigateByUrl('/login');
     this.commonservice.authentication = false;
     this.commonservice.aside = false;
     this.commonservice.asideHeader = false;

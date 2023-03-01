@@ -15,3 +15,20 @@
 .spinner-logo {
     animation: ScaleInOut 0.6s ease-in-out 0.4s infinite alternate;
 }
+@keyframes slidein {
+    from {background-position: bottom
+    }
+    to {background-position: top
+    }
+    
+    }
+
+main{
+    background-image: url(/assets/images/time-bg-dark.jpg);
+    background-size:600px;
+    animation: slidein 90s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;              
+
+}
+

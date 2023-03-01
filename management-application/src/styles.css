@@ -97,9 +97,9 @@ aside {
     transition: all 0.5s;
 }
 /* body-wrapper */
-.body-wrapper {
+/* .body-wrapper {
     padding-top: 56px;
-}
+} */
 
 .breadcrumb-item{
     color: var(--primary-color) !important;

@@ -57,13 +57,14 @@ export class AdminDashboardComponent implements OnInit {
     this.renderData();
     this.successConfirm = this.adminportalservice.successAlert;
   }
-  
+
   entrychange(event: any) {
     this.itemsPerPage = this.selectedEntry;
     this.currentPage = 1;
   }
 
   ngDoCheck(): void {
+    
     let filteredData = this.tableData.filter((data: any) => {
       return (
         data.firstName.toLocaleLowerCase().includes(this.searchText) ||

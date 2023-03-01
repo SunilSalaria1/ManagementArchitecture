@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
