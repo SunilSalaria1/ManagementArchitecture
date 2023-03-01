@@ -26,7 +26,7 @@
 main{
     background-image: url(/assets/images/time-bg-dark.jpg);
     background-size:600px;
-    animation: slidein 90s;
+    animation: slidein 85s;
     animation-iteration-count: infinite;
     animation-direction: alternate;              
 
