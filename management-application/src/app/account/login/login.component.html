@@ -1,3 +1,15 @@
+<header class="shadow-sm bg-white">
+    <!-- header-nav -->
+    <nav aria-label="Navigation" class="navbar navbar-expand w-100 py-0">
+        <div class="container-fluid justify-content-lg-between py-1">
+            <div class="d-flex align-items-center justify-content-center" id="logo">
+                <img src="./assets/images/logo.svg" alt="Logo" width="48" height="48">
+                <span class="logo-text fs-5 fw-bold text-primary">TRACKER</span>
+            </div>
+        </div>
+    </nav>
+    <!-- /header-nav -->
+</header>
 <section>
     <!-- form confirmation alert -->
     <!-- error toast -->
@@ -30,6 +42,7 @@
                 <!-- card -->
                 <div class="card bg-white shadow-sm rounded-0 border-0">
                     <div class="card-body px-0 py-3">
+
                         <!-- row -->
                         <div class="row m-0">
                             <!-- col -->
@@ -48,7 +61,7 @@
                                             *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].untouched)">
                                             <div
                                                 *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].errors['required']">
-                                                This is Required field.                                            </div>
+                                                This is Required field. </div>
                                             <div
                                                 *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].errors['email']">
                                                 Include @ in the email address
@@ -58,8 +71,9 @@
                                     <div class="mb-3 position-relative">
                                         <label class="form-label">Password <span class="text-danger">*</span></label>
                                         <!-- password svg -->
-                                        <svg (mouseenter)="showPassword()" (mouseleave)="hidePassword()" height="16px" width="16px" class="position absolute password-svg"
-                                            version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                                        <svg (mouseenter)="showPassword()" (mouseleave)="hidePassword()" height="16px"
+                                            width="16px" class="position absolute password-svg" version="1.1" id="_x32_"
+                                            xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
                                             xml:space="preserve">
                                             <g>
@@ -73,6 +87,7 @@
                                                 <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
 		c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
                                             </g>
+                                            <title>Show Password</title>
                                         </svg>
                                         <input type="{{passwordType}}"
                                             class="form-control password-input shadow-sm rounded-0" name="password"

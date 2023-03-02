@@ -612,18 +612,6 @@
       "id": 57
     },
     {
-      "currentUserId": "6",
-      "date": "2023-03-01",
-      "dateOnly": "01",
-      "monthOnly": "03",
-      "timeHours": "2",
-      "timeMinutes": "10",
-      "project": "Project 2",
-      "task": "Designing",
-      "description": "",
-      "id": 58
-    },
-    {
       "currentUserId": "4",
       "date": "2023-02-28",
       "dateOnly": "28",
@@ -646,6 +634,30 @@
       "task": "Designing",
       "description": "",
       "id": 60
+    },
+    {
+      "currentUserId": "6",
+      "date": "2023-03-01",
+      "dateOnly": "01",
+      "monthOnly": "03",
+      "timeHours": "8",
+      "timeMinutes": "00",
+      "project": "Project 2",
+      "task": "Development",
+      "description": "",
+      "id": 61
+    },
+    {
+      "currentUserId": "6",
+      "date": "2023-03-02",
+      "dateOnly": "02",
+      "monthOnly": "03",
+      "timeHours": "8",
+      "timeMinutes": "00",
+      "project": "Project 1",
+      "task": "Development",
+      "description": "",
+      "id": 62
     }
   ]
 }

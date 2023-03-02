@@ -9,6 +9,7 @@
     right: 13px;
     top: 44px;
 }
+
 /* logo */
 @media (min-width: 300px) and (max-width: 768px){
     .logo-image{
