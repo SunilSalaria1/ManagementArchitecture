@@ -9,7 +9,9 @@
     right: 13px;
     top: 44px;
 }
-
+.remember, #rememberMe{
+    cursor: pointer !important;
+}
 /* logo */
 @media (min-width: 300px) and (max-width: 768px){
     .logo-image{

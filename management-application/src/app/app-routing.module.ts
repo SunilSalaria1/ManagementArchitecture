@@ -58,7 +58,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'admin-portal/add-user',
+    path: 'admin-portal/register-user',
     component: AddRecordComponent,
     canActivate: [AuthGuard],
   },

@@ -64,7 +64,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngDoCheck(): void {
-    
     let filteredData = this.tableData.filter((data: any) => {
       return (
         data.firstName.toLocaleLowerCase().includes(this.searchText) ||

@@ -44,7 +44,7 @@ body {
 }
 
 /* override the pagination */
-.ngx-pagination .current{
+.ngx-pagination .current {
     background-color: var(--primary-color) !important;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
 
@@ -60,7 +60,7 @@ body {
     box-shadow: none;
 }
 
-.form-check-input:checked[type=checkbox]{
+.form-check-input:checked[type=checkbox] {
     background-color: var(--primary-color) !important;
 }
 
@@ -82,9 +82,10 @@ body {
 }
 
 /* font-awesome breadcrumb icon */
-.fa-chevron-right{
+.fa-chevron-right {
     font-size: 12px !important;
 }
+
 /* == common project styling == */
 
 /* main css */
@@ -96,25 +97,28 @@ main {
 aside {
     transition: all 0.5s;
 }
+
 /* body-wrapper */
 /* .body-wrapper {
     padding-top: 56px;
 } */
 
-.breadcrumb-item{
+.breadcrumb-item {
     color: var(--primary-color) !important;
 }
+
 .breadcrumb-item.active {
     color: gray !important;
 }
 
-.breadcrumb{
+.breadcrumb {
     cursor: pointer !important;
 }
 
-.breadcrumb-item+.breadcrumb-item{
+.breadcrumb-item+.breadcrumb-item {
     padding-left: 0px !important;
 }
+
 .alert-danger {
     width: 25%;
     top: 15px;

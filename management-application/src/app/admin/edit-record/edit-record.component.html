@@ -1,109 +1,114 @@
-<div class="container-fluid">
-    <!-- breadcrumb -->
-    <!-- breadcrumb -->
-    <div class="row">
-        <div class="col m-3 py-3 bg-white shadow-sm">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb m-0">
-                <ol class="breadcrumb m-0 align-items-center">
-                    <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
-                        class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small"> Admin
-                            Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
-                    </li>
-                    <li class="small breadcrumb-item active">Edit
-                        User</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- /breadcrumb -->
-    <!-- /breadcrumb -->
-    <!-- row -->
-    <div class="row mt-5">
-        <!-- col -->
-        <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
-            <!-- card -->
-            <div class="card bg-white shadow-sm rounded-0 border-0">
-                <div class="card-body px-0 py-3">
-                    <!-- row -->
-                    <div class="row m-0">
-                        <!-- col -->
-                        <div class="col-12 px-4 mb-3 pb-2 border-bottom">
-                            <h4 class="fw-bold text-primary">Edit User Detail!</h4>
-                        </div>
-                        <!-- /col -->
-                        <!-- col -->
-                        <div class="col-12 px-4">
-                            <form #editForm="ngForm">
-                                <div class="mb-3">
-                                    <label class="form-label">First Name <span class="text-danger">*</span></label>
-                                    <input [(ngModel)]="tableData.firstName" name="firstName" type="text"
-                                        placeholder="John" id="firstName" class="form-control shadow-sm rounded-0">
-                                    <span id="requiredNameField" class="requiredField small text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Last Name</label>
-                                    <input [(ngModel)]="tableData.lastName" name="lastName" type="text"
-                                        placeholder="Smith" id="lastName" class="form-control shadow-sm rounded-0">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input [(ngModel)]="tableData.email" name="email" placeholder="john@gmail.com"
-                                        id="email" class="form-control shadow-sm rounded-0" readonly>
-                                    <span id="requiredEmailField" class="requiredField small text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Profession <span class="text-danger">*</span></label>
-                                    <select [(ngModel)]="tableData.profession" name="profession"
-                                        class="shadow-sm rounded-0 form-select" aria-label="Default select example"
-                                        id="profession" required>
-                                        <option>Select your Role</option>
-                                        <option value="Human Resource">Human Resource</option>
-                                        <option value="Front End Developer">Front End Developer</option>
-                                        <option value="Backend Developer">Backend Developer</option>
-                                        <option value="Full Stack Developer">Full Stack Developer</option>
-                                    </select>
-                                    <span id="requiredProfessionField" class="requiredField small text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Phone Number</label>
-                                    <input [(ngModel)]="tableData.phoneNumber" name="phoneNumber" type="text"
-                                        placeholder="+91 46383746473" id="phoneNumber"
-                                        class="form-control shadow-sm rounded-0">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input [(ngModel)]="tableData.password" name="password" type="text"
-                                        placeholder="******" id="password" class="form-control shadow-sm rounded-0" readonly>
-                                    <span id="requiredPasswordField" class="requiredField small text-danger"></span>
-                                </div>
-                                <div class="mb-3 d-none">
-                                    <label class="form-label">Confirm Password <span
-                                            class="text-danger">*</span></label>
-                                    <input [(ngModel)]="tableData.confirmPassword" name="confirmPassword"
-                                        type="password" placeholder="******" id="confirmPassword"
-                                        class="form-control shadow-sm rounded-0">
-                                    <span id="requiredConfirmField" class="requiredField small text-danger"></span>
-                                    <span id="passwordNotMatched" class="text-danger small d-none">Please make
-                                        sure your passwords match!</span>
-                                </div>
-                                <div class="d-flex flex-column flex-sm-row justify-content-end py-3">
-                                    <button (click)="cancelEdit()"
-                                        class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
-                                            Now</span></button>
-                                    <button (click)="updateUser(editForm.value)"
-                                        class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-solid fa-check"></i><span class="ms-2">Update</span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /col -->
-                    </div>
-                    <!-- /row -->
-                </div>
+<section class="bg-light vh-100">
+    <div class="container-fluid">
+        <!-- breadcrumb -->
+        <!-- breadcrumb -->
+        <div class="row">
+            <div class="col m-3 py-3 bg-white shadow-sm">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb m-0">
+                    <ol class="breadcrumb m-0 align-items-center">
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
+                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small"> Admin
+                                Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li class="small breadcrumb-item active">Edit
+                            User</li>
+                    </ol>
+                </nav>
             </div>
-            <!-- /card -->
         </div>
-        <!-- /col -->
+        <!-- /breadcrumb -->
+        <!-- /breadcrumb -->
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
+                <!-- card -->
+                <div class="card bg-white shadow-sm rounded-0 border-0">
+                    <div class="card-body px-0 py-3">
+                        <!-- row -->
+                        <div class="row m-0">
+                            <!-- col -->
+                            <div class="col-12 px-4 mb-3 pb-3 border-bottom">
+                                <h4 class="fw-bold text-primary mb-0">Edit User Detail!</h4>
+                            </div>
+                            <!-- /col -->
+                            <!-- col -->
+                            <div class="col-12 px-4">
+                                <form #editForm="ngForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                        <input [(ngModel)]="tableData.firstName" name="firstName" type="text"
+                                            placeholder="John" id="firstName" class="form-control shadow-sm rounded-0">
+                                        <span id="requiredNameField" class="requiredField small text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Last Name</label>
+                                        <input [(ngModel)]="tableData.lastName" name="lastName" type="text"
+                                            placeholder="Smith" id="lastName" class="form-control shadow-sm rounded-0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input [(ngModel)]="tableData.email" name="email" placeholder="john@gmail.com"
+                                            id="email" class="form-control shadow-sm rounded-0" readonly>
+                                        <span id="requiredEmailField" class="requiredField small text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Profession <span class="text-danger">*</span></label>
+                                        <select [(ngModel)]="tableData.profession" name="profession"
+                                            class="shadow-sm rounded-0 form-select" aria-label="Default select example"
+                                            id="profession" required>
+                                            <option value="" [selected]>Select profession</option>
+                                            <option value="Backend Developer">Back End Developer</option>
+                                            <option value="Business Development Executive">Business Development
+                                                Executive</option>
+                                            <option value="Data Auditor">Data Auditor</option>
+                                            <option value="Front End Developer">Front End Developer</option>
+                                            <option value="Full Stack Developer">Full Stack Developer</option>
+                                            <option value="Human Resource">Human Resource</option>
+                                        </select>
+                                        <span id="requiredProfessionField" class="requiredField small text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input [(ngModel)]="tableData.phoneNumber" name="phoneNumber" type="text"
+                                            placeholder="+91 46383746473" id="phoneNumber"
+                                            class="form-control shadow-sm rounded-0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input [(ngModel)]="tableData.password" name="password" type="text"
+                                            placeholder="******" id="password" class="form-control shadow-sm rounded-0" readonly>
+                                        <span id="requiredPasswordField" class="requiredField small text-danger"></span>
+                                    </div>
+                                    <div class="mb-3 d-none">
+                                        <label class="form-label">Confirm Password <span
+                                                class="text-danger">*</span></label>
+                                        <input [(ngModel)]="tableData.confirmPassword" name="confirmPassword"
+                                            type="password" placeholder="******" id="confirmPassword"
+                                            class="form-control shadow-sm rounded-0">
+                                        <span id="requiredConfirmField" class="requiredField small text-danger"></span>
+                                        <span id="passwordNotMatched" class="text-danger small d-none">Please make
+                                            sure your passwords match!</span>
+                                    </div>
+                                    <div class="d-flex flex-column flex-sm-row justify-content-end py-3">
+                                        <button (click)="cancelEdit()"
+                                            class="btn btn-danger shadow-sm rounded-0 mb-0 mb-sm-0 order-2 order-sm-1"><i class="fa-solid fa-xmark"></i><span class="ms-2">Cancel
+                                                Now</span></button>
+                                        <button (click)="updateUser(editForm.value)"
+                                            class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i class="fa-solid fa-check"></i><span class="ms-2">Update Now</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /col -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                </div>
+                <!-- /card -->
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
     </div>
-    <!-- /row -->
-</div>
+</section>

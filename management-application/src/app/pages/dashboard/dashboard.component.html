@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section class="container-fluid vh-100 bg-light">
     <app-delete *ngIf="deletePopup" (popupVal)="recieveData($event)" [getUserId]="deleteItem"></app-delete>
     <div>
         <!-- breadcrumb -->
@@ -119,9 +119,9 @@
                 <!-- row -->
                 <div class="row justify-content-evenly">
                     <div class="col-xl-8 col-md-6 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-text fw-bold fs-5 mb-3">Time Sheet</div>
+                        <div class="card rounded-0 shadow-sm mb-3">
+                            <div class="card-body py-0">
+                                <div class="card-text fw-bold fs-5 py-3">Time Sheet</div>
                                 <!-- search and filter -->
                                 <div class="row pb-4">
                                     <div class="col-12">
@@ -173,7 +173,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td *ngIf="notFound" colspan="12"
-                                                                class="bg-white text-primary text-center p-3">No     
+                                                                class="bg-white text-primary text-center p-3">No
                                                                 records found!</td>
                                                         </tr>
                                                     </thead>
@@ -181,7 +181,9 @@
                                                         <tr
                                                             *ngFor="let item of filterTable| paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage}">
                                                             <td class="">
-                                                                <span class="text-white d-inline-block bg-primary text-center rounded-circle me-1 shadow project-icon">{{ item.project.slice(0,1) }}</span>
+                                                                <span
+                                                                    class="text-white d-inline-block bg-primary text-center rounded-circle me-1 shadow project-icon">{{
+                                                                    item.project.slice(0,1) }}</span>
                                                                 <span>{{ item.project }}</span>
                                                             </td>
                                                             <td>{{ item.date | date : "dd-MMM-yyyy" }}</td>
@@ -308,59 +310,6 @@
                     <!-- /col -->
                 </div>
                 <!-- /row -->
-                <!-- row -->
-                <div class="row justify-content-evenly">
-                    <!-- col -->
-                    <div class="col-xl-7 col-md-6 col-12">
-                        <!-- card -->
-                        <div class="card rounded-0 bg-white mb-3 shadow-sm pt-3">
-                            <div class="card-body p-0">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="assets/images/upgrade.png" alt="" width="80%" class="mb-2">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="fs-3 text-primary">Upgrade account!</div>
-                                        <p class="text-muted">Lorem ipsum dolor sit dam deleniti animi. Eres teoru it
-                                            dam deleniti animi. Eres teoru it dam deleniti animi. Eres teoruit dam
-                                            deleniti animi. Eres teorum aliquid! Consequuntur, minus.</p>
-                                        <button id="canceldeletePopup"
-                                            class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0">Upgrade
-                                            Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /card -->
-                    </div>
-                    <!-- /col -->
-                    <!-- col -->
-                    <div class="col-xl-5 col-md-6 col-12">
-                        <!-- card -->
-                        <div class="card rounded-0 bg-white mb-3 shadow-sm py-3">
-                            <div class="card-body py-0">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="assets/images/upgrade.png" alt="" width="100%" class="mb-2">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="fs-3 text-primary">Upgrade account!</div>
-                                        <p class="text-muted">Lorem ipsum dolor sit dam deleniti animi. Eres teorum
-                                            aliquid! Consequuntur, minus.</p>
-                                        <button id="canceldeletePopup"
-                                            class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0">Upgrade
-                                            Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /card -->
-                    </div>
-                    <!-- /col -->
-                </div>
-                <!-- /row -->
-            </div>
-            <div class="card-footer border-0 bg-white py-3">
             </div>
         </div>
         <!-- /main-card -->

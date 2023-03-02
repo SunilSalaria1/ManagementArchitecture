@@ -15,12 +15,14 @@ export class TrackTimeComponent implements OnInit {
   loggedInAdmin: boolean = false;
   getcurrentUserId: any;
   errorAlert: boolean = false;
+  dateErrorAlert:boolean = false;
   success: boolean = false;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
   dateOnly: any;
   monthOnly: any;
-
+  // check if date exists
+  checkDate: any;
   // tracktime form
   trackTimeForm!: FormGroup;
   constructor(
@@ -81,31 +83,44 @@ export class TrackTimeComponent implements OnInit {
       });
     }
     if (this.trackTimeForm.valid) {
-      console.log(this.trackTimeForm.value);
-      console.log(
-        this.trackTimeForm.value.date,
-        this.trackTimeForm.value.dateOnly,
-        this.trackTimeForm.value.monthOnly
-      );
-      this.userservice
-        .postTrackTime(this.trackTimeForm.value)
-        .pipe(
-          catchError(async (error) => {
-            this.errorAlert = true;
-          })
-        )
-        .subscribe((data) => {
-          if (data) {
-            this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
-            this.success = true;
-          }
-        });
+      this.userservice.getData().subscribe((data) => {
+        console.log(data);
+        console.log('track time data is' + this.trackTimeForm.value.date);
+        let checkDate = data.filter((item: any) => {
+          return item.date === this.trackTimeForm.value.date;
+        }).length;
+        this.checkDate = checkDate;
+      });
+
+      if (this.checkDate == 0) {
+        this.userservice
+          .postTrackTime(this.trackTimeForm.value)
+          .pipe(
+            catchError(async (error) => {
+              this.errorAlert = true;
+            })
+          )
+          .subscribe((data) => {
+            if (data) {
+              this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
+              this.success = true;
+            }
+          });
+      }
+      if(this.checkDate !==0){
+        this.dateErrorAlert = true;
+      }
     }
   }
   // cancel alert
   cancelErrorAlert() {
     this.success = false;
     this.errorAlert = false;
+  }
+    // cancel date alert
+  cancelDateErrorAlert() {
+    this.success = false;
+    this.dateErrorAlert = false;
   }
   backToDashboard() {
     if (localStorage.getItem('loggedInUser') == 'true') {

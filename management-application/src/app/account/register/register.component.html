@@ -45,9 +45,9 @@
                     </g>
                 </svg>
                 <!-- <img src="assets/gif/success.gif" alt="" width="200" height="200"> -->
-                <div class="text-center d-flex flex-column justify-content-center align-items-center"><span class="ms-2 fs-5 text-dark">Registered successfully.</span>
-                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3"
-                        routerLink="/login">Login
+                <div class="text-center d-flex flex-column justify-content-center align-items-center"><span
+                        class="ms-2 fs-5 text-dark">Registered successfully.</span>
+                    <button type="submit" class="btn btn-primary shadow-sm rounded-0 my-3" routerLink="/login">Login
                         Now</button>
                 </div>
 
@@ -59,7 +59,7 @@
     <!-- /form confirmation alert -->
     <div class="container-fluid">
         <!-- row -->
-        <div class="row vh-100">
+        <div class="row mt-3">
             <!-- col -->
             <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
                 <!-- card -->
@@ -68,8 +68,8 @@
                         <!-- row -->
                         <div class="row m-0">
                             <!-- col -->
-                            <div class="col-12 px-4 mb-3 pb-2 border-bottom">
-                                <h4 class="fw-bold text-primary">Register</h4>
+                            <div class="col-12 px-4 mb-3 pb-3 border-bottom">
+                                <h4 class="fw-bold text-primary mb-0">Register</h4>
                             </div>
                             <!-- /col -->
                             <!-- col -->
@@ -116,11 +116,14 @@
                                     <div class="mb-3">
                                         <label class="form-label">Profession <span class="text-danger">*</span></label>
                                         <select class="form-select shadow-sm rounded-0" formControlName="profession">
-                                            <option>Select profession</option>
-                                            <option value="Human Resource">Human Resource</option>
+                                            <option value="" [selected]>Select profession</option>
+                                            <option value="Backend Developer">Back End Developer</option>
+                                            <option value="Business Development Executive">Business Development
+                                                Executive</option>
+                                            <option value="Data Auditor">Data Auditor</option>
                                             <option value="Front End Developer">Front End Developer</option>
-                                            <option value="Backend Developer">Backend Developer</option>
                                             <option value="Full Stack Developer">Full Stack Developer</option>
+                                            <option value="Human Resource">Human Resource</option>
                                         </select>
                                         <!-- profession validation errors -->
                                         <div class="text-danger small mt-2"
@@ -154,6 +157,7 @@
                                                 <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
             c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
                                             </g>
+                                            <title>Show Password</title>
                                         </svg>
                                         <input name="password" type="{{passwordType}}"
                                             class="password-input form-control shadow-sm rounded-0"
@@ -186,6 +190,7 @@
                                                 <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
             c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
                                             </g>
+                                            <title>Show Password</title>
                                         </svg>
                                         <input name="confirmPassword" type="{{confirmPasswordType}}"
                                             class="password-input form-control shadow-sm rounded-0"
@@ -199,7 +204,7 @@
                                             </div>
                                         </div>
                                         <div class="text-danger small mt-2" *ngIf="passwordsNotMatched">Passwords
-                                            doesn't match.</div>
+                                            don't match.</div>
                                     </div>
                                     <button type="submit" class="btn btn-primary shadow-sm rounded-0 w-100 my-3"
                                         (click)="registerClick()">Register

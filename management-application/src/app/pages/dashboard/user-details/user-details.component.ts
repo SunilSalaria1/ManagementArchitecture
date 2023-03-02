@@ -33,7 +33,7 @@ export class UserDetailsComponent implements OnInit {
   // overtime
   overtime: number = 0;
   // performance progress indicator
-  percentage: any;
+  percentage: any = 0;
   x: any;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
@@ -81,8 +81,11 @@ export class UserDetailsComponent implements OnInit {
     });
     this.userservice.getData().subscribe((data) => {
       // total month hours according to the records
-      this.totalMonthlyHours = data.filter(function (filteredData: any) {
-        if (filteredData.monthOnly == currentMonth) {
+      this.totalMonthlyHours = data.filter((filteredData: any) => {
+        if (
+          filteredData.monthOnly == currentMonth &&
+          filteredData.currentUserId === userId
+        ) {
           return true;
         }
         return false;
@@ -139,7 +142,7 @@ export class UserDetailsComponent implements OnInit {
         }
         // calculate hours of current month
         let convertTimeMonth;
-        if (item.monthOnly == currentMonth && item.currentUserId === userId) {
+        if (item.monthOnly == currentMonth && item.currentUserId == userId) {
           convertTimeMonth = parseInt(item.timeHours);
           totalHoursCurrentMonth += convertTimeMonth;
           // minutes
@@ -164,6 +167,8 @@ export class UserDetailsComponent implements OnInit {
             }
           }
           // overtime
+          console.log("overtime" + this.hoursCurrentMonth + this.totalMonthlyHours);
+          
           if (this.hoursCurrentMonth > this.totalMonthlyHours) {
             this.overtime = this.hoursCurrentMonth - this.totalMonthlyHours;
           }
@@ -174,6 +179,13 @@ export class UserDetailsComponent implements OnInit {
             this.percentage = 100;
             this.x = 180;
           }
+        }
+        else {
+          this.hoursCurrentWeek = 0;
+          this.hoursCurrentMonth = 0;
+          this.overtime = 0;
+          this.x = 0;
+          this.percentage = 0;
         }
       });
     });
@@ -186,7 +198,9 @@ export class UserDetailsComponent implements OnInit {
       let currentDateHours = UserTrackData.filter((data: any) => {
         return data.date == this.currentDate;
       });
-
+      if (currentDateHours.length == 0) {
+        this.hoursToday = 0;
+      }
       this.trackTableData = UserTrackData;
       this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
     });

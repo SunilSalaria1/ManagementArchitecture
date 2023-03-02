@@ -1,4 +1,4 @@
-<section class="bg-light">
+<section class="bg-light vh-100">
     <!-- form confirmation alert -->
     <!-- error toast -->
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
@@ -11,6 +11,17 @@
         </div>
     </div>
     <!-- /error toast -->
+    <!-- date error toast -->
+    <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
+        *ngIf="dateErrorAlert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div><span class="small">You have alreay logged your time for this date.<br> You can go back to the dashboard and edit your time.</span>
+            </div>
+            <button type="button" class="btn-close me-0 mt-0 small m-auto" aria-label="Close"
+                (click)="cancelDateErrorAlert()"></button>
+        </div>
+    </div>
+    <!-- /date error toast -->
     <!-- success toast -->
     <div class="alert-wrap position-fixed bg-dark bg-opacity-75 vh-100 vw-100" *ngIf="success">
         <div class="alert shadow-sm align-items-center alert-success border-0 rounded-0" role="alert"
@@ -61,7 +72,7 @@
                             class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Admin Portal </span><i
                                 class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-                        <li (click)="backToDashboard()" class="breadcrumb-item"><span class="ms-2 small">User Details
+                        <li (click)="backToDashboard()" class="breadcrumb-item"><span class="small">User Details
                             </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
                         <li class="small breadcrumb-item active">Track Time</li>
@@ -71,7 +82,7 @@
         </div>
         <!-- /breadcrumb -->
         <!-- row -->
-        <div class="row mt-5">
+        <div class="row">
             <!-- col -->
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 mx-auto">
                 <!-- card -->
@@ -80,8 +91,8 @@
                         <!-- row -->
                         <div class="row m-0">
                             <!-- col -->
-                            <div class="col-12 px-4 mb-3 pb-2 border-bottom">
-                                <h4 class="fw-bold text-primary">Track Time</h4>
+                            <div class="col-12 px-4 mb-3 pb-3 border-bottom">
+                                <h4 class="fw-bold text-primary mb-0">Track Time</h4>
                             </div>
                             <!-- /col -->
                             <!-- col -->
@@ -211,7 +222,7 @@
                                                 Now</span></button>
                                         <button (click)="trackTimeClick()"
                                             class="btn btn-primary shadow-sm rounded-0 mb-2 mb-sm-0 ms-sm-3 order-1 order-sm-2"><i
-                                                class="fa-solid fa-check"></i><span class="ms-2">Log Time Now</span>
+                                                class="fa-solid fa-check"></i><span class="ms-2">Submit Now</span>
                                         </button>
                                     </div>
                                 </form>

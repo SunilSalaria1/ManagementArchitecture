@@ -1,4 +1,4 @@
-<section class="container-fluid bg-light">
+<section class="container-fluid bg-light vh-100">
     <app-delete *ngIf="deletePopup" (popupVal)="recieveData($event)" [getUserId]="deleteItem"></app-delete>
     <div>
         <!-- breadcrumb -->
@@ -33,9 +33,10 @@
             <!-- /form confirmation alert -->
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold text-primary mb-0">Admin Portal</h4>
-                <button [routerLink]="['/admin-portal/add-user']"
-                    class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0">Add New
-                    User</button>
+                <button [routerLink]="['/admin-portal/register-user']"
+                    class="btn btn-primary shadow-sm rounded-0 mb-0 mb-sm-0"><i
+                    class="fa-solid fa-plus small"></i><span> Register
+                        User</span></button>
             </div>
             <div class="card-body mt-5 bg-white" id="indexCardBody">
                 <!-- search and filter -->

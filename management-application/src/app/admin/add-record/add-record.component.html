@@ -1,4 +1,4 @@
-<section class="bg-light">
+<section class="bg-light min-vh-100">
     <!-- form confirmation alert -->
     <!-- error toast -->
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
@@ -55,7 +55,7 @@
                             class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Admin
                                 Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
-                        <li class="small breadcrumb-item active">Add
+                        <li class="small breadcrumb-item active">Register
                             User</li>
                     </ol>
                 </nav>
@@ -63,7 +63,7 @@
         </div>
         <!-- /breadcrumb -->
         <!-- row -->
-        <div class="row mt-5">
+        <div class="row">
             <!-- col -->
             <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-12 m-auto">
                 <!-- card -->
@@ -72,8 +72,8 @@
                         <!-- row -->
                         <div class="row m-0">
                             <!-- col -->
-                            <div class="col-12 px-4 mb-3 pb-2 border-bottom">
-                                <h4 class="fw-bold text-primary">Add New User!</h4>
+                            <div class="col-12 px-4 mb-3 pb-3 border-bottom">
+                                <h4 class="fw-bold text-primary mb-0">Register User</h4>
                             </div>
                             <!-- /col -->
                             <!-- col -->
@@ -119,12 +119,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Profession <span class="text-danger">*</span></label>
-                                        <select class="form-select shadow-sm rounded-0" formControlName="profession">
-                                            <option>Select profession</option>
-                                            <option value="Human Resource">Human Resource</option>
+                                                    <select class="form-select shadow-sm rounded-0" formControlName="profession">
+                                            <option value="" [selected]>Select profession</option>
+                                            <option value="Backend Developer">Back End Developer</option>
+                                            <option value="Business Development Executive">Business Development
+                                                Executive</option>
+                                            <option value="Data Auditor">Data Auditor</option>
                                             <option value="Front End Developer">Front End Developer</option>
-                                            <option value="Backend Developer">Backend Developer</option>
                                             <option value="Full Stack Developer">Full Stack Developer</option>
+                                            <option value="Human Resource">Human Resource</option>
                                         </select>
                                         <!-- profession validation errors -->
                                         <div class="text-danger small mt-2"
@@ -158,6 +161,7 @@
                                                 <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
             c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
                                             </g>
+                                            <title>Show Password</title>
                                         </svg>
                                         <input name="password" type="{{passwordType}}"
                                             class="password-input form-control shadow-sm rounded-0"
@@ -190,6 +194,7 @@
                                                 <path #fill: #000000 d="M255.999,210.339c-47.71,0-86.388,38.674-86.388,86.391c0,47.71,38.678,86.384,86.388,86.384
             c47.71,0,86.388-38.674,86.388-86.384C342.386,249.014,303.708,210.339,255.999,210.339z" />
                                             </g>
+                                            <title>Show Password</title>
                                         </svg>
                                         <input name="confirmPassword" type="{{confirmPasswordType}}"
                                             class="password-input form-control shadow-sm rounded-0"
@@ -203,7 +208,7 @@
                                             </div>
                                         </div>
                                         <div class="text-danger small mt-2" *ngIf="passwordsNotMatched">Passwords
-                                            doesn't match.</div>
+                                            don't match.</div>
                                     </div>
                                     <button type="submit" class="btn btn-primary shadow-sm rounded-0 w-100 my-3"
                                         (click)="submitNewUser()">Register

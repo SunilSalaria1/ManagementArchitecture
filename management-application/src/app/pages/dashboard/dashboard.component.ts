@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   // overtime
   overtime: number = 0;
   // performance progress indicator
-  percentage: any;
+  percentage: any = 0;
   x: any;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
@@ -65,14 +65,19 @@ export class DashboardComponent implements OnInit {
       this.currentUserProfession = data.profession;
     });
     this.userservice.getData().subscribe((data) => {
-      let UserTrackData = data.filter((data: any) => {
+      let userTrackData = data.filter((data: any) => {
         return data.currentUserId == this.loggedInId;
       });
-      let currentDateHours = UserTrackData.filter((data: any) => {
+      console.log('user trackdata is' + userTrackData);
+
+      let currentDateHours = userTrackData.filter((data: any) => {
         return data.date == this.currentDate;
       });
-      this.trackTableData = UserTrackData;
-
+      this.trackTableData = userTrackData;
+      console.log('length is' + currentDateHours.length);
+      if (currentDateHours.length == 0) {
+        this.hoursToday = 0;
+      }
       this.hoursToday = `${currentDateHours[0].timeHours}.${currentDateHours[0].timeMinutes}`;
       this.commonservice.aside = true;
       this.commonservice.asideHeader = true;
@@ -86,6 +91,8 @@ export class DashboardComponent implements OnInit {
     });
     // month
     let currentMonth = this.dateCurrent.getMonth() + 1;
+    console.log('current month: ' + currentMonth);
+
     let firstDate = this.dateCurrent.getDate() - this.dateCurrent.getDay();
     let lastDate = firstDate + 6;
     // track time
@@ -96,8 +103,11 @@ export class DashboardComponent implements OnInit {
 
     this.userservice.getData().subscribe((data) => {
       // total month hours according to the records
-      this.totalMonthlyHours = data.filter(function (filteredData: any) {
-        if (filteredData.monthOnly == currentMonth) {
+      this.totalMonthlyHours = data.filter((filteredData: any) => {
+        if (
+          filteredData.monthOnly == currentMonth &&
+          filteredData.currentUserId === this.loggedInId
+        ) {
           return true;
         }
         return false;
@@ -156,7 +166,7 @@ export class DashboardComponent implements OnInit {
         let convertTimeMonth;
         if (
           item.monthOnly == currentMonth &&
-          item.currentUserId === this.loggedInId
+          item.currentUserId == this.loggedInId
         ) {
           convertTimeMonth = parseInt(item.timeHours);
           totalHoursCurrentMonth += convertTimeMonth;
@@ -187,11 +197,22 @@ export class DashboardComponent implements OnInit {
           }
           this.percentage =
             (this.hoursCurrentMonth / this.totalMonthlyHours) * 100;
+          console.log('hoursCurrentMonth: ' + this.hoursCurrentMonth);
+          console.log('totalMonthlyHours: ' + this.totalMonthlyHours);
+
+          console.log('percentage: ' + this.percentage);
+
           this.x = (180 * this.percentage) / 100;
           if (this.percentage > 100) {
             this.percentage = 100;
             this.x = 180;
           }
+        } else {
+          this.hoursCurrentWeek = 0;
+          this.hoursCurrentMonth = 0;
+          this.overtime = 0;
+          this.x = 0;
+          this.percentage = 0;
         }
       });
     });

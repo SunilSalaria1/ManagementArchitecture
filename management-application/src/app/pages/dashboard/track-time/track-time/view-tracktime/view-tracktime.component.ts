@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ViewTracktimeComponent implements OnInit {
   loggedInUser: boolean = false;
   loggedInAdmin: boolean = false;
-  viewTrackTimeDetails:any = {};
+  viewTrackTimeDetails: any = {};
   constructor(
     private userservice: UserService,
     private activatedroute: ActivatedRoute,
@@ -29,11 +29,10 @@ export class ViewTracktimeComponent implements OnInit {
     let trackUserId = this.activatedroute.snapshot.params['trackUserId'];
     console.log(trackUserId);
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
-      if(response.description = ' '){
-        response.description = "-";
+      if ((response.description.length == 0)) {
+        response.description = '-';
       }
       this.viewTrackTimeDetails = response;
-      console.log(this.viewTrackTimeDetails); 
     });
   }
   // back to dashboard
