@@ -15,14 +15,14 @@ export class TrackTimeComponent implements OnInit {
   loggedInAdmin: boolean = false;
   getcurrentUserId: any;
   errorAlert: boolean = false;
-  dateErrorAlert:boolean = false;
+  dateErrorAlert: boolean = false;
   success: boolean = false;
   // current date
   currentDate = new Date().toISOString().substring(0, 10);
   dateOnly: any;
   monthOnly: any;
   // check if date exists
-  checkDate: any;
+  checkDateExists: any;
   // tracktime form
   trackTimeForm!: FormGroup;
   constructor(
@@ -40,6 +40,8 @@ export class TrackTimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.getcurrentUserId);
+
     if (localStorage.getItem('loggedInUser') == 'true') {
       this.getcurrentUserId = localStorage.getItem('loggedInId');
       this.loggedInUser = true;
@@ -59,10 +61,6 @@ export class TrackTimeComponent implements OnInit {
       task: [''],
       description: [''],
     });
-    // auth guard
-    // if (localStorage.getItem('loggedInAdmin') == 'true') {
-    //   this.route.navigateByUrl('/page-not-found');
-    // }
   }
   trackTimeClick() {
     if (
@@ -83,33 +81,41 @@ export class TrackTimeComponent implements OnInit {
       });
     }
     if (this.trackTimeForm.valid) {
+      // getting and checking the date for current user
       this.userservice.getData().subscribe((data) => {
         console.log(data);
         console.log('track time data is' + this.trackTimeForm.value.date);
+        console.log(this.trackTimeForm.value.currentUserId);
+        
         let checkDate = data.filter((item: any) => {
-          return item.date === this.trackTimeForm.value.date;
-        }).length;
-        this.checkDate = checkDate;
+          return (
+            item.date === this.trackTimeForm.value.date &&
+            item.currentUserId === this.trackTimeForm.value.currentUserId
+          );
+        });
+        console.log('check date is' + checkDate);
+        this.checkDateExists = checkDate.length;
+        console.log('checkdateexists is' + this.checkDateExists);
+        if (this.checkDateExists == 0) {
+          this.userservice
+            .postTrackTime(this.trackTimeForm.value)
+            .pipe(
+              catchError(async (error) => {
+                this.errorAlert = true;
+              })
+            )
+            .subscribe((data) => {
+              if (data) {
+                this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
+                this.dateErrorAlert = false;
+                this.success = true;
+              }
+            });
+        }
+        if (this.checkDateExists > 0) {
+          this.dateErrorAlert = true;
+        }
       });
-
-      if (this.checkDate == 0) {
-        this.userservice
-          .postTrackTime(this.trackTimeForm.value)
-          .pipe(
-            catchError(async (error) => {
-              this.errorAlert = true;
-            })
-          )
-          .subscribe((data) => {
-            if (data) {
-              this.commonservice.recentTrackTime = `${this.trackTimeForm.value.timeHours}.${this.trackTimeForm.value.timeMinutes}`;
-              this.success = true;
-            }
-          });
-      }
-      if(this.checkDate !==0){
-        this.dateErrorAlert = true;
-      }
     }
   }
   // cancel alert
@@ -117,7 +123,7 @@ export class TrackTimeComponent implements OnInit {
     this.success = false;
     this.errorAlert = false;
   }
-    // cancel date alert
+  // cancel date alert
   cancelDateErrorAlert() {
     this.success = false;
     this.dateErrorAlert = false;

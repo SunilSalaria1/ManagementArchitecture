@@ -17,9 +17,11 @@ export class UserService {
   postTrackTime(resultArr: any) {
     return this.http.post('http://localhost:3000/userTrackTime', resultArr);
   }
+  // get full data
   getData() {
     return this.http.get<any>('http://localhost:3000/userTrackTime');
   }
+  // get particular user data
   renderUserTrackTime(userId: number) {
     return this.http.get<any>(`http://localhost:3000/userTrackTime/${userId}`);
   }
