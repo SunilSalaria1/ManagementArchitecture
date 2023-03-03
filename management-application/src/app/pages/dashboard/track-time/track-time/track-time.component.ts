@@ -23,6 +23,8 @@ export class TrackTimeComponent implements OnInit {
   monthOnly: any;
   // check if date exists
   checkDateExists: any;
+  // open dropdown
+  openDropdown: boolean = false;
   // tracktime form
   trackTimeForm!: FormGroup;
   constructor(
@@ -37,6 +39,8 @@ export class TrackTimeComponent implements OnInit {
     this.dateOnly = this.currentDate.substring(8, 10);
     // month only
     this.monthOnly = this.currentDate.substring(5, 7);
+    console.log(this.trackTimeForm.value.project);
+    
   }
 
   ngOnInit(): void {
@@ -86,7 +90,7 @@ export class TrackTimeComponent implements OnInit {
         console.log(data);
         console.log('track time data is' + this.trackTimeForm.value.date);
         console.log(this.trackTimeForm.value.currentUserId);
-        
+
         let checkDate = data.filter((item: any) => {
           return (
             item.date === this.trackTimeForm.value.date &&
@@ -137,5 +141,9 @@ export class TrackTimeComponent implements OnInit {
         `admin-portal/user-details/${this.commonservice.userDettailsId}`
       );
     }
+  }
+  // project dropdown
+  projectDropdown() {
+    this.openDropdown = !this.openDropdown;
   }
 }

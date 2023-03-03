@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from './services/common/common';
 import { UserService } from './services/user/user.service';
@@ -23,11 +23,22 @@ export class AppComponent {
     private route: Router,
     private activatedroute: ActivatedRoute
   ) {}
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    window.onbeforeunload = function () {
+      alert('going to clear');
+      // localStorage.clear();
+      return '';
+    };
+  }
+
   ngDoCheck(): void {
     this.mainMargin = this.commonservice.aside;
     this.asideHeader = this.commonservice.asideHeader;
     console.log(this.activatedroute);
-    
+
     // this.activatedroute.data.subscribe((data) => console.log(data));
     if (
       localStorage.getItem('loggedInUser') === null &&

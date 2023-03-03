@@ -15,7 +15,8 @@
     <div class="alert position-absolute p-2 shadow-sm ms-auto align-items-center alert-danger rounded-0" role="alert"
         *ngIf="dateErrorAlert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div><span class="small">You have alreay logged your time for this date.<br> You can go back to the dashboard and edit your time.</span>
+            <div><span class="small">You have alreay logged your time for this date.<br> You can go back to the
+                    dashboard and edit your time.</span>
             </div>
             <button type="button" class="btn-close me-0 mt-0 small m-auto" aria-label="Close"
                 (click)="cancelDateErrorAlert()"></button>
@@ -55,10 +56,11 @@
     <!-- /success toast -->
     <!-- /form confirmation alert -->
     <div class="container-fluid">
-         <!-- breadcrumb -->
+        <!-- breadcrumb -->
         <div class="row">
             <div class="col m-3 py-3 bg-white shadow-sm">
-                <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb m-0">
+                <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
+                    class="breadcrumb m-0">
                     <ol class="breadcrumb m-0">
                         <li (click)="backToDashboard()" class="breadcrumb-item"><span> Dashboard </span><i
                                 class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
@@ -66,10 +68,11 @@
                         <li class="breadcrumb-item active">Track Time</li>
                     </ol>
                 </nav>
-                <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb m-0">
+                <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
+                    class="breadcrumb m-0">
                     <ol class="breadcrumb m-0 align-items-center">
-                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
-                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Admin Portal </span><i
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i class="fa fa-home small"
+                                aria-hidden="true"></i><span class="ms-2 small">Admin Portal </span><i
                                 class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
                         <li (click)="backToDashboard()" class="breadcrumb-item"><span class="small">User Details
@@ -177,13 +180,38 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Project <span class="text-danger">*</span></label>
+                                        <label class="form-label">Select Project</label>
                                         <select class="form-select shadow-sm rounded-0" formControlName="project">
-                                            <option value="Project 1">Project 1</option>
-                                            <option value="Project 2">Project 2</option>
-                                            <option value="Project 3">Project 3</option>
-                                            <option value="Project 4">Project 4</option>
+                                            <option [selected]="true" value="Select Project">Select Project</option>
+                                            <option value="EmpowerID">EmpowerID</option>
+                                            <option value="Constellant">Constellant</option>
+                                            <option value="Sisoma">Sisoma</option>
+                                            <option value="Impacter Pathway">Impacter Pathway</option>
                                         </select>
+
+                                    
+                                        <!-- <label class="form-label">Project <span class="text-danger">*</span></label>
+                                        <div class="dropdown form-control shadow-sm rounded-0 position-relative"><span
+                                                (click)="projectDropdown()">
+                                                Select Project
+                                            </span>
+                                            <div class="project-checkbox form-control shadow-sm position-absolute"
+                                                *ngIf="openDropdown">
+
+                                                <label for="EmpowerID" class="ms-2"><input type="checkbox"
+                                                        id="EmpowerID" name="EmpowerID" value="EmpowerID"
+                                                        formControlName="project">EmpowerID</label><br>
+                                                <input type="checkbox" id="Constellant" name="Constellant"
+                                                    value="Constellant">
+                                                <label for="Constellant" class="ms-2">Constellant</label><br>
+                                                <input type="checkbox" id="Sisoma" name="Sisoma" value="Sisoma">
+                                                <label for="Sisoma" class="ms-2">Sisoma</label><br>
+                                                <input type="checkbox" id="Impacter Pathway" name="Impacter Pathway"
+                                                    value="Impacter Pathway">
+                                                <label for="Impacter Pathway" class="ms-2">Impacter Pathway</label><br>
+                                            </div>
+                                        </div> -->
+
                                         <!-- project validation errors -->
                                         <div class="text-danger small mt-2"
                                             *ngIf="trackTimeForm.controls['project'].invalid && (trackTimeForm.controls['project'].dirty || trackTimeForm.controls['project'].untouched)">

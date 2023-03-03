@@ -103,7 +103,7 @@
                                                 class="text-decoration-none text-dark">Forgot Passsword?</a></div>
                                     </div>
                                     <div class="mb-3 form-check">
-                                        <input type="checkbox" id="rememberMe" class="form-check-input rounded-0 shadow-sm">
+                                        <input (click)="checkCheckbox($event)" type="checkbox" id="rememberMe" class="form-check-input rounded-0 shadow-sm">
                                         <label for="rememberMe" class="remember form-check-label">Remember me</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary shadow-sm rounded-0 w-100 mb-3"

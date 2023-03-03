@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  // checkbox
+  checkbox:any = false;
   // password type
   passwordType: string = 'password';
   svgColor: string = '#000000';
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
       });
     }
     if (this.loginForm.valid) {
+      localStorage.setItem('rememberMe',this.checkbox);
       this.auth
         .loginUser()
         .pipe(
@@ -114,5 +117,13 @@ export class LoginComponent implements OnInit {
   }
   hidePassword() {
     this.passwordType = 'password';
+  }
+// checkbox
+  checkCheckbox(event: any) {
+    if (event.target.checked == true) {
+      this.checkbox = true;
+    } else {
+      this.checkbox = false;
+    }
   }
 }
