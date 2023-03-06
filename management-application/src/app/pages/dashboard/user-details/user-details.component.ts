@@ -167,8 +167,10 @@ export class UserDetailsComponent implements OnInit {
             }
           }
           // overtime
-          console.log("overtime" + this.hoursCurrentMonth + this.totalMonthlyHours);
-          
+          console.log(
+            'overtime' + this.hoursCurrentMonth + this.totalMonthlyHours
+          );
+
           if (this.hoursCurrentMonth > this.totalMonthlyHours) {
             this.overtime = this.hoursCurrentMonth - this.totalMonthlyHours;
           }
@@ -179,8 +181,7 @@ export class UserDetailsComponent implements OnInit {
             this.percentage = 100;
             this.x = 180;
           }
-        }
-        else {
+        } else {
           this.hoursCurrentWeek = 0;
           this.hoursCurrentMonth = 0;
           this.overtime = 0;

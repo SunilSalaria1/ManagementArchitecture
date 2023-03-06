@@ -95,7 +95,7 @@ main {
 
 /* aside */
 aside {
-    transition: all 0.5s;
+    transition: width 0.5s;
 }
 
 /* body-wrapper */

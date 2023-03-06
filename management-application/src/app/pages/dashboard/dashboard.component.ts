@@ -207,7 +207,8 @@ export class DashboardComponent implements OnInit {
             this.percentage = 100;
             this.x = 180;
           }
-        } else {
+        } 
+        else {
           this.hoursCurrentWeek = 0;
           this.hoursCurrentMonth = 0;
           this.overtime = 0;
