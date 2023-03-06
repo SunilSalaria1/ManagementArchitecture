@@ -52,8 +52,9 @@
                 <nav *ngIf="loggedInUser" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
                     class="breadcrumb m-0">
                     <ol class="breadcrumb m-0 align-items-center">
-                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
-                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Dashboard </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i class="fa fa-home small"
+                                aria-hidden="true"></i><span class="ms-2 small">Dashboard </span><i
+                                class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
                         <li class="small breadcrumb-item active">Edit Track Time</li>
                     </ol>
@@ -63,8 +64,8 @@
                 <nav *ngIf="loggedInAdmin" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
                     class="breadcrumb m-0">
                     <ol class="breadcrumb m-0 align-items-center">
-                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i
-                            class="fa fa-home small" aria-hidden="true"></i><span class="ms-2 small">Admin
+                        <li [routerLink]="['/admin-portal']" class="breadcrumb-item"><i class="fa fa-home small"
+                                aria-hidden="true"></i><span class="ms-2 small">Admin
                                 Portal </span><i class="me-1 small text-dark opacity-50 fa-solid fa-chevron-right"></i>
                         </li>
                         <li (click)="backToDashboard()" class="small breadcrumb-item"><span> User Details
@@ -166,10 +167,10 @@
                                     <div class="mb-3">
                                         <label class="form-label">Project <span class="text-danger">*</span></label>
                                         <select class="form-select shadow-sm rounded-0" formControlName="project">
-                                            <option value="Project 1">Project 1</option>
-                                            <option value="Project 2">Project 2</option>
-                                            <option value="Project 3">Project 3</option>
-                                            <option value="Project 4">Project 4</option>
+                                            <option value="EmpowerID">EmpowerID</option>
+                                            <option value="Constellant">Constellant</option>
+                                            <option value="Sisoma">Sisoma</option>
+                                            <option value="Impacter Pathway">Impacter Pathway</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">

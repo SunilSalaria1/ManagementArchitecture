@@ -19,10 +19,10 @@ header #aside-toggle-btn {
     display: none !important;
 }
 
-header .navbar.nav-link:focus,
+/* header .navbar.nav-link:focus,
 header .nav-link:hover {
     background-color: #f2f2f2;
-}
+} */
 
 #asideToggleBtn {
     cursor: pointer;
@@ -40,13 +40,15 @@ header .nav-link:hover {
 .header-full {
     width: 100%;
 }
-
+.user-dropdown{
+    cursor: pointer;
+}
 @media (min-width: 300px) and (max-width: 768px) {
     .header-calc {
         width: 100%;
     }
 
     header .dropdown .show {
-        left: 0;
+        left: auto;
     }
 }

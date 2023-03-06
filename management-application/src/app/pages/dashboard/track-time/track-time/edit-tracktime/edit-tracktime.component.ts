@@ -36,6 +36,8 @@ export class EditTracktimeComponent implements OnInit {
     let trackUserId = this.activatedroute.snapshot.params['trackUserId'];
     this.userservice.renderUserTrackTime(trackUserId).subscribe((response) => {
       this.userDetails = response;
+      console.log(this.userDetails.project);
+
       // prefilled form
       if (localStorage.getItem('loggedInAdmin') == 'true') {
         this.commonservice.dashboard = false;
